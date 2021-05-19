@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Guest')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
 });
+
+
+Route::namespace('admin')->prefix('admin')->group(function(){
+    Route::get('/', 'LoginController@index')->name('login');
+
+    Route::post('/', 'LoginController@authenticate')->name('login.auth');
+
+    Route::get('logout', 'LoginController@logout')->name('logout');
+
+    Route::middleware('auth')->group(function(){
+        Route::resource('dashboard', 'DashboardController')->names([
+            'index'=> 'dashboard.index'
+        ]);
+    });
+});
