@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Banner;
 
 class HomeController extends Controller
 {
@@ -15,12 +16,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $listside = [
-            ['active' => 'active', 'img' => 'slide/slideruby-1.jpg', 'title' => 'Welcome to Ruby Lable', 'content' => 'Sự hài lòng của bạn là niềm vui của chúng tôi' ],
-            [ 'img' => 'slide/slideruby-2.jpg', 'title' => 'Welcome to Ruby Lable', 'content' => 'Sự hài lòng của bạn là niềm vui của chúng tôi' ],
-            [ 'img' => 'slide/slideruby-3.jpg', 'title' => 'Welcome to Ruby Lable', 'content' => 'Sự hài lòng của bạn là niềm vui của chúng tôi' ],
-        ];
-        return view('guest.home', ["active" => $this->active, 'listside'=> $listside]);
+        $banner = new Banner();
+        $banner_list = $banner->getBannersforHome();
+        return view('guest.home', ["active" => $this->active, 'banner_list'=> $banner_list]);
     }
 
     /**
