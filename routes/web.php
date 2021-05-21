@@ -18,7 +18,7 @@ Route::namespace('Guest')->group(function(){
 });
 
 
-Route::namespace('admin')->prefix('admin')->group(function(){
+Route::namespace('Admin')->prefix('admin')->group(function(){
     Route::get('/', 'LoginController@index')->name('login');
 
     Route::post('/', 'LoginController@authenticate')->name('login.auth');
