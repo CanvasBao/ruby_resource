@@ -40,7 +40,11 @@ class Banner extends Model
     {
         try{
             $id=DB::select("SHOW TABLE STATUS LIKE 'Banners'");
-            $next_id=$id[0]->Auto_increment;
+            if(empty($id)){
+                $next_id = 1;
+            }else{
+                $next_id=$id[0]->Auto_increment;
+            }
 
             $file_img = $param['img_file'];
             $file_name = "rubybanner-".$next_id.".".$file_img->extension();
