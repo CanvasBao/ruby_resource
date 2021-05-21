@@ -26,8 +26,8 @@ Route::namespace('admin')->prefix('admin')->group(function(){
     Route::get('logout', 'LoginController@logout')->name('logout');
 
     Route::middleware('auth')->group(function(){
-        Route::resource('dashboard', 'DashboardController')->names([
-            'index'=> 'dashboard.index'
-        ]);
+        Route::resource('dashboard', 'DashboardController')->only(["index"]);
+
+        Route::resource('banner', 'BannerController')->only(["index", "store", "update", "destroy"]);
     });
 });

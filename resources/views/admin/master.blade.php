@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ruby Lable</title>
+  <title>Ruby Label</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -32,26 +32,24 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/admin/style.css') }}" rel="stylesheet">
   
+  <!-- JS File -->
+  <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  
   
 </head>
 <body>
-  <!-- ============================================================== -->
-  <!-- Preloader - style you can find in spinners.css -->
-  <!-- ============================================================== -->
+  <!-- Preloader -->
   <div class="preloader">
       <div class="lds-ripple">
           <div class="lds-pos"></div>
           <div class="lds-pos"></div>
       </div>
   </div>
-  <!-- ============================================================== -->
-  <!-- Main wrapper - style you can find in pages.scss -->
-  <!-- ============================================================== -->
+  <!-- Main wrapper -->
   <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
       data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-      <!-- ============================================================== -->
-      <!-- Topbar header - style you can find in pages.scss -->
-      <!-- ============================================================== -->
+      <!-- Topbar header -->
       <header class="topbar" data-navbarbg="skin5">
           <nav class="navbar top-navbar navbar-expand-md navbar-light">
               <div class="navbar-header" data-logobg="skin6">
@@ -103,11 +101,11 @@
                           <span class="hide-menu">Dashboard</span>
                       </a>
                   </li>
-                  <li class="sidebar-item">
-                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
+                  <li class="sidebar-item pt-2">
+                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('banner.index') }}"
                           aria-expanded="false">
-                          <i class="fa fa-info-circle" aria-hidden="true"></i>
-                          <span class="hide-menu">Error 404</span>
+                          <i class="far fa-image" aria-hidden="true"></i>
+                          <span class="hide-menu">Banner</span>
                       </a>
                   </li>
               </ul>
@@ -118,14 +116,43 @@
     </aside>
 
     <div class="page-wrapper">
-      @yield('main')
+        <div class="page-breadcrumb bg-white">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">{{ $sub_name }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            @yield('main')
+        </div>
+    </div>
+  </div>
+  
+  <!-- The Modal -->
+  <div class="modal" id="confirmModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="confirm" type="button" class="btn btn-primary" data-dismiss="modal">Đồng ý</button>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery-sticky/jquery.sticky.js') }}"></script>
   <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
@@ -138,7 +165,7 @@
   <script src="{{ asset('assets/js/admin/app-style-switcher.js') }}"></script>
   <script src="{{ asset('assets/js/admin/custom.js') }}"></script>
   <script src="{{ asset('assets/js/admin/waves.js') }}"></script>
-  
+  @yield('include-js')
 </body>
 
 </html>

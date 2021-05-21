@@ -33,3 +33,50 @@ $(function() {
     $(window).on("resize", setsidebartype);
 
 });
+
+function addMessageExcute(error_ob, success, msg) {    
+    var message = "";
+    var type = "";
+    if(success){
+        type = "alert-success";
+        message = "<strong>Success!</strong> " + msg;
+    }else{
+        type = "alert-danger";
+        message = "<strong>Danger!</strong> " + msg;
+    }
+    var box = "<div class='alert " + type + " alert-dismissible fade show'></div>"
+    
+    var msg_box = $(box);
+    $(msg_box).append("<button type='button' class='close' data-dismiss='alert'>&times;</button>");
+    $(msg_box).append(message);
+    $(error_ob).append(msg_box);          // Insert new elements after <img>
+}
+
+
+function addMessageExcute(error_ob, success, msg) {    
+    var message = "";
+    var type = "";
+    if(success){
+        type = "alert-success";
+        message = "<strong>Success!</strong> " + msg;
+    }else{
+        type = "alert-danger";
+        message = "<strong>Danger!</strong> " + msg;
+    }
+    var box = "<div class='alert " + type + " alert-dismissible fade show'></div>"
+    
+    var msg_box = $(box);
+    $(msg_box).append("<button type='button' class='close' data-dismiss='alert'>&times;</button>");
+    $(msg_box).append(message);
+    $(error_ob).append(msg_box);          // Insert new elements after <img>
+}
+
+function showConfirm(msg, callback){
+    $('#confirmModal').modal('show'); 
+    $("#confirmModal .modal-body").text(msg); 
+    $("#confirmModal #confirm").off("click.confirm" );
+    if (typeof callback != 'function') { 
+        callback = function(){};
+      }
+    $("#confirmModal #confirm").on("click.confirm", callback );
+}
