@@ -27,6 +27,8 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
 
     Route::middleware('auth')->group(function(){
         Route::resource('dashboard', 'DashboardController')->only(["index"]);
+        
+        Route::resource('about', 'AboutController')->only(["index", "update"]);
 
         Route::resource('banner', 'BannerController')->only(["index", "store", "update", "destroy"]);
     });
