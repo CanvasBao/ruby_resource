@@ -121,12 +121,16 @@ class Banner extends Model
      */
     public function getBannersforHome()
     {
-        $result = $this::select(DB::raw('concat("banner/" , banner_img) as img, banner_title as title, banner_content as content'))
+        $banner = $this::select(DB::raw('concat("banner/" , banner_img) as img, banner_title as title, banner_content as content'))
                     ->orderBy('order_index')
                     ->get();
-        $result[0]['active'] = 'active';
+        
+        if(count($banner) < 1){
+            $banner = [['img' => '', 'title' => '', 'content' => '']];
+        }
+        $banner[0]['active'] = 'active';
 
-        return $result;
+        return $banner;
     }
 
     /**
