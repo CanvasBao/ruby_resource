@@ -4,11 +4,11 @@
         <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             @foreach( $banner_list as $item)
-            <div class="carousel-item {{ $item['active'] ?? null }}" style="background-image: url(assets/img/{{ $item['img'] }});">
+            <div class="carousel-item {{ $item['active'] ?? null }}" style="background-image: url(assets/img/{{ $item['img'] ?? '' }});">
             <div class="carousel-container">
                 <div class="carousel-content animate__animated animate__fadeInUp">
-                <h2>{{ $item['title'] }}</h2>
-                <p>{{ $item['content'] }}</p>
+                <h2>{{ $item['title'] ?? '' }}</h2>
+                <p>{{ $item['content'] ?? '' }}</p>
                 </div>
             </div>
             </div>
