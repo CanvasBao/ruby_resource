@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 use Exception;
 use File;
 
+class About extends Model
+{
+
     /**
      * The attributes that are mass assignable.
      *
@@ -33,9 +36,7 @@ use File;
     protected $hidden = [
         'updated_at', 'created_at'
     ];
-
-class About extends Model
-{
+    
     /**
      * get.
      *

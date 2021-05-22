@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\AdminController as AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Banner;
+use App\Models\About;
 use Exception;
 use Session;
 
@@ -17,7 +17,7 @@ class AboutController extends AdminController
 
     public function __construct()
     {
-        $this->model = new Banner();
+        $this->model = new About();
     }
     /**
      * Display a listing of the resource.
@@ -26,8 +26,10 @@ class AboutController extends AdminController
      */
     public function index()
     {
+        $about = $this->model->getAbout();
         return view('admin.about.index',[
-            'sub_name' => $this->sub_name
+            'sub_name' => $this->sub_name,
+            'about' => $about
         ]);
     }
 
