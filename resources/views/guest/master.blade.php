@@ -50,7 +50,7 @@
           <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
           <li class=""><a href="#">Giới thiệu</a></li>
           <li class=""><a href="#">Sản Phẩm</a></li>
-          <li class=""><a href="{{ route('home') }}">Liên hệ</a></li>
+          <li class=""><a href="{{ route('contact.index') }}">Liên hệ</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
