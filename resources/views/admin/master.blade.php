@@ -102,6 +102,13 @@
                       </a>
                   </li>
                   <li class="sidebar-item pt-2">
+                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('about.index') }}"
+                          aria-expanded="false">
+                          <i class=" far fa-address-card" aria-hidden="true"></i>
+                          <span class="hide-menu">About</span>
+                      </a>
+                  </li>
+                  <li class="sidebar-item pt-2">
                       <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('banner.index') }}"
                           aria-expanded="false">
                           <i class="far fa-image" aria-hidden="true"></i>

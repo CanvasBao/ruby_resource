@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Guest')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
+
+    Route::resource('contact', 'ContactController')->only(["index"]);
 });
 
 
@@ -27,6 +29,8 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
 
     Route::middleware('auth')->group(function(){
         Route::resource('dashboard', 'DashboardController')->only(["index"]);
+        
+        Route::resource('about', 'AboutController')->only(["index", "update"]);
 
         Route::resource('banner', 'BannerController')->only(["index", "store", "update", "destroy"]);
     });

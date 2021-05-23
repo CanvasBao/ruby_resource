@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\About;
 
-class HomeController extends Controller
+class ContactController extends Controller
 {
-    private $active = "1";
+    private $active = "4";
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +19,11 @@ class HomeController extends Controller
     {
         $about = (new About())->getAboutforGuest();
         $defaul_assign = ["active" => $this->active, 'about'=> $about];
-        $banner = new Banner();
-        $banner_list = $banner->getBannersforHome();
 
-        $assign = array_merge($defaul_assign, ['banner_list'=> $banner_list]);
-        return view('guest.home', $assign);
+        $about['map'] = "http://maps.google.com/maps?q=". $about['longitude'] .",". $about['latitude'] ."&z=19&output=embed";
+
+        $assign = array_merge($defaul_assign, []);
+        return view('guest.contact.index', $assign);
     }
 
     /**
