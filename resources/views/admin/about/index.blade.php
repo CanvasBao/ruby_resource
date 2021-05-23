@@ -2,14 +2,16 @@
 
 @section('main')
 <link href="{{ asset('assets/css/admin/about.css') }}" rel="stylesheet">
-<form id="update-form" action="banner" class="form-horizontal form-material" method="POST">
+<form id="update-form" action="about" class="form-horizontal form-material" method="POST">
+  @csrf
+  @method('PUT')
 <div class="row">
   <!-- Column -->
   <div class="col-lg-4 col-xlg-3 col-md-12">
       <div class="white-box">
           <div class="logo-update-bg">
             <div class="overlay-box">
-          <img width="100%" class="old-logo-img" src="{{ $about['logo'] ?? '' }}">
+          <img width="100%" class="old-logo-img" src="{{ asset($about['logo_path'] ?? '') }}">
           <img width="100%" class="new-logo-img" src="" style="display: none">
         </div>
           </div>
@@ -29,13 +31,13 @@
         <div class="form-group mb-4">
           <h5 class="input-title"><label class="col-md-12 p-0">Tên Công Ty</label></h5>
           <div class="col-md-12 mb-4 border-bottom p-0 company-name-box">
-              <input type="text" value="{{ $about['conpany_name'] }}"
-              class="form-control p-0 border-0" name="conpany_name"></div>
+              <input type="text" value="{{ $about['company_name'] }}"
+              class="form-control p-0 border-0" name="company_name"></div>
         </div>
         <div class="form-group mb-4">
           <h5 class="input-title"><label class="col-md-12 p-0">Mô tả</label></h5>
           <div class="col-md-12 border-bottom p-0">
-              <textarea rows="6" class="form-control p-0 border-0" name="decription"></textarea>
+              <textarea rows="6" class="form-control p-0 border-0" name="decription">{{ $about['decription'] }}</textarea>
           </div>
         </div>
       </div>

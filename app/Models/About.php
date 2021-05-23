@@ -18,7 +18,7 @@ class About extends Model
      */
     protected $fillable =[
         'logo',
-        'conpany_name',
+        'company_name',
         'decription',
         'street_address',
         'area_address',
@@ -62,6 +62,20 @@ class About extends Model
 
         return $about;
     }
+    
+    /**
+     * get.
+     *
+     * @var array
+     */
+    public function getAboutforGuest()
+    {
+        $about = $this->getAbout();
+        $about["company_name_array"] = explode(" ",$about["company_name"]);
+
+        return $about;
+    }
+    
     
     /**
      * get.

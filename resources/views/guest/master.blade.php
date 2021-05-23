@@ -34,21 +34,29 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="{{ route('home') }}"><span>Ruby</span>Label</a></h1>
+    <div class="mr-auto">
+      @if(isset($about['logo_path']))
+        <a href="{{ route('home') }}" class="logo"><img src="{{ asset($about['logo_path'] ?? '') }}" alt="" class="img-fluid"></a>
+      @else
+        <h1 class="logo"><a href="{{ route('home') }}">
+          @foreach( $about["company_name_array"] as $key => $name ) @if($key % 2 != 0){{$name}}@else<span>{{$name}}</span>@endif @endforeach 
+        </a></h1>
+      @endif
+    </div>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="header_menu" class="nav-menu d-none d-lg-block">
         <ul>
           <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
           <li class=""><a href="#">Giới thiệu</a></li>
           <li class=""><a href="#">Sản Phẩm</a></li>
-          <li class=""><a href="#">Liên hệ</a></li>
+          <li class=""><a href="{{ route('home') }}">Liên hệ</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
       <div class="header-social-links">
         <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="zalo"><i class="icofont-id-card"></i></a>
       </div>
 
     </div>
@@ -62,13 +70,12 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>RubyLabel</h3>
-            <p>
-              Nguyễn Tư Giản <br>
-              Phường 12, Quận Gò Vấp<br>
-              Hồ Chí Minh, Việt Nam <br><br>
-              <strong>Phone:</strong> 09xxxxxxxx<br>
-              <strong>Email:</strong> info@example.com<br>
+            <h3>{{ $about['company_name'] ?? '' }}</h3>
+            <p>{{ $about['street_address'] ?? '' }}<br>
+              {{ $about['area_address'] ?? '' }}<br>
+              {{ $about['city_address'] ?? '' }}, {{ $about['country_address'] ?? '' }}<br><br>
+              <strong>Phone:</strong> {{ $about['phone'] ?? '' }}<br>
+              <strong>Email:</strong> {{ $about['email'] ?? '' }}<br>
             </p>
           </div>
           <div class="col-md-6 footer-links">
@@ -87,6 +94,7 @@
             <div class="social-links text-center text-md-right pt-3 pt-md-0">
               <h4>Liên Hệ</h4>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="zalo"><i class="bx bxs-id-card"></i></a>
             </div>
           </div>
 
