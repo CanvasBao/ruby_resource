@@ -48,16 +48,16 @@ class AboutController extends AdminController
         ];
 
         try{
-            $input = $request->only(['title', 'content']);
+            $field = $this->model->getFillable();
+            
+            $input = $request->only($field);
             $param = $input;
-            $param['id'] = $id;
-
-            if($request->hasfile('img-file')){
-                $file_img = $request->file('img-file');
-                $param['img_file'] = $file_img;
+            
+            if($request->hasfile('logo-img')){
+                $file_img = $request->file('logo-img');
+                $param['logo-img'] = $file_img;
             }
-
-            $result_exc = $this->model->updateBanners($param);
+            $result_exc = $this->model->updateAbout($param);
     
             if(!$result_exc){
                 throw new Exception();
