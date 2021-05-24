@@ -39,8 +39,6 @@
 
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function() {
-
-    console.log(activeMenu);
     $("#header_menu ul li").eq(activeMenu - 1).addClass( "active" );
 
     if (window.location.hash) {
@@ -89,19 +87,6 @@
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
 
-  // Intro carousel
-  var heroCarousel = $("#heroCarousel");
-  var heroCarouselIndicators = $("#hero-carousel-indicators");
-  heroCarousel.find(".carousel-inner").children(".carousel-item").each(function(index) {
-    (index === 0) ?
-    heroCarouselIndicators.append("<li data-target='#heroCarousel' data-slide-to='" + index + "' class='active'></li>"):
-      heroCarouselIndicators.append("<li data-target='#heroCarousel' data-slide-to='" + index + "'></li>");
-  });
-
-  heroCarousel.on('slid.bs.carousel', function(e) {
-    $(this).find('.carousel-content ').addClass('animate__animated animate__fadeInDown');
-  });
-
   // Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
@@ -138,15 +123,6 @@
     $(document).ready(function() {
       $('.venobox').venobox();
     });
-  });
-
-  // Skills section
-  $('.skills-content').waypoint(function() {
-    $('.progress .progress-bar').each(function() {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    });
-  }, {
-    offset: '80%'
   });
 
   // product details carousel

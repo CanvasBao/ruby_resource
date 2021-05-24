@@ -4,9 +4,8 @@
 * Author: BootstrapMade.com
 */
 !(function($) {
-  "use strict";
-
-  $('form.php-email-form').submit(function(e) {
+    
+  $('form.send-contact-frame').submit(function(e) {
     e.preventDefault();
     
     var f = $(this).find('.form-group'),
@@ -112,18 +111,18 @@
     if ( $(this).data('recaptcha-site-key') ) {
       var recaptcha_site_key = $(this).data('recaptcha-site-key');
       grecaptcha.ready(function() {
-        grecaptcha.execute(recaptcha_site_key, {action: 'php_email_form_submit'}).then(function(token) {
-          php_email_form_submit(this_form,action,this_form.serialize() + '&recaptcha-response=' + token);
+        grecaptcha.execute(recaptcha_site_key, {action: 'send_contact_submit'}).then(function(token) {
+            send_contact_submit(this_form,action,this_form.serialize() + '&recaptcha-response=' + token);
         });
       });
     } else {
-      php_email_form_submit(this_form,action,this_form.serialize());
+        send_contact_submit(this_form,action,this_form.serialize());
     }
     
     return true;
   });
 
-  function php_email_form_submit(this_form, action, data) {
+  function send_contact_submit(this_form, action, data) {
     $.ajax({
       type: "POST",
       url: action,
@@ -161,5 +160,6 @@
       this_form.find('.error-message').slideDown().html(error_msg);
     });
   }
+
 
 })(jQuery);

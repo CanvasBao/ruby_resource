@@ -10,6 +10,7 @@ use App\Models\About;
 class ContactController extends Controller
 {
     private $active = "4";
+    private $sub_header = "Contact";
     /**
      * Display a listing of the resource.
      *
@@ -18,22 +19,12 @@ class ContactController extends Controller
     public function index()
     {
         $about = (new About())->getAboutforGuest();
-        $defaul_assign = ["active" => $this->active, 'about'=> $about];
+        $defaul_assign = ["active" => $this->active, 'about'=> $about, 'sub_header' => $this->sub_header];
 
         $about['map'] = "http://maps.google.com/maps?q=". $about['longitude'] .",". $about['latitude'] ."&z=19&output=embed";
 
         $assign = array_merge($defaul_assign, []);
         return view('guest.contact.index', $assign);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -44,51 +35,6 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return 'OK';
     }
 }

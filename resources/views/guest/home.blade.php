@@ -1,7 +1,7 @@
 @extends('guest.master')
 @section('main')
-    <section id="hero">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <section id="banner">
+        <div id="bannerCarousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             @foreach( $banner_list as $item)
             <div class="carousel-item {{ $item['active'] ?? null }}" style="background-image: url(assets/img/{{ $item['img'] ?? '' }});">
@@ -15,20 +15,26 @@
             @endforeach
         </div>
 
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
 
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
 
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+        <ol class="carousel-indicators" id="banner-carousel-indicators"></ol>
 
         </div>
     </section>
     <main id="main">
+        
+        <section id="contact" class="contact">
+            <div class="container">
+                <x-FrameSendContact ></x-FrameSendContact>
+            </div>
+        </section>
     </main>
 @endsection

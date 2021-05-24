@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Guest')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('contact', 'ContactController')->only(["index"]);
+    Route::resource('contact', 'ContactController')->only(["index", "store"]);
 });
 
 
