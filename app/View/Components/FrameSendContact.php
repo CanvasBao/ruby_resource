@@ -4,20 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class TwocolGridView extends Component
+class FrameSendContact extends Component
 {
-    public $griddata;
-    public $editFlag;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($griddata, $editFlag)
+    public function __construct()
     {
-        $this->griddata = $griddata;
-        $this->editFlag = $editFlag;
+        //
     }
 
     /**
@@ -27,6 +23,6 @@ class TwocolGridView extends Component
      */
     public function render()
     {
-        return view('components.twocol-grid-view');
+        return view('components.frame-send-contact');
     }
 }

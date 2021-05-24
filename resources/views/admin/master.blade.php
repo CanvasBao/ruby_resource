@@ -147,7 +147,6 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body">
-          Modal body..
         </div>
         <!-- Modal footer -->
         <div class="modal-footer">

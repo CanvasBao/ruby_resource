@@ -27,6 +27,20 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/guest/home.css') }}" rel="stylesheet">
+
+  <!-- Template Main JS File -->
+  <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <!-- Vendor JS Files -->
+  <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/jquery-sticky/jquery.sticky.js') }}"></script>
+  <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/venobox/venobox.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+
   
 </head>
 <body>  
@@ -124,20 +138,9 @@
   <script>
     activeMenu = {{ $active }};
   </script>
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-  <script src="{{ asset('assets/vendor/jquery-sticky/jquery.sticky.js') }}"></script>
-  <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/venobox/venobox.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-
   <!-- Template Main JS File -->
-  <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script src="{{ asset('assets/js/guest/main.js') }}"></script>
+  <script src="{{ asset('assets/js/guest/home.js') }}"></script>
 </body>
 
 </html>
