@@ -62,8 +62,8 @@
       <nav id="header_menu" class="nav-menu d-none d-lg-block">
         <ul>
           <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
-          <li class=""><a href="#">Giới thiệu</a></li>
-          <li class=""><a href="#">Sản Phẩm</a></li>
+          <li class=""><a href="{{ route('about-us.index') }}">Giới thiệu</a></li>
+          <li class=""><a href="{{ route('product.index') }}">Sản Phẩm</a></li>
           <li class=""><a href="{{ route('contact.index') }}">Liên hệ</a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -75,6 +75,19 @@
 
     </div>
   </header><!-- End Header -->
+  
+  <!-- Sub Header -->
+  @if(isset($sub_header))
+  <section id="subheader" class="subheader">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>{{ $sub_header }}</h2>
+      </div>
+    </div>
+  </section>
+  
+  @endif
+
   @yield('main')
   <!-- ======= Footer ======= -->
   <footer id="footer">

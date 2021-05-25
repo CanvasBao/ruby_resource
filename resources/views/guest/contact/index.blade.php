@@ -2,18 +2,6 @@
 @section('main')
 <link href="{{ asset('assets/css/guest/contact.css') }}" rel="stylesheet">
 <main id="main">
-
-  <!-- ======= Breadcrumbs ======= -->
-  <section id="subheader" class="subheader">
-    <div class="container">
-
-      <div class="d-flex justify-content-between align-items-center">
-        <h2>{{ $sub_header }}</h2>
-      </div>
-
-    </div>
-  </section><!-- End Breadcrumbs -->
-
   <!-- ======= Contact Section ======= -->
   <div class="map-section">
     <iframe style="border:0; width: 100%; height: 350px;" src="{{ $about['map'] ?? '' }}" frameborder="0" allowfullscreen></iframe>
