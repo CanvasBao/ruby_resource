@@ -37,7 +37,7 @@
         <div class="form-group mb-4">
           <h5 class="input-title"><label class="col-md-12 p-0">Mô tả</label></h5>
           <div class="col-md-12 border-bottom p-0">
-              <textarea rows="6" class="form-control p-0 border-0" name="decription">{{ $about['decription'] }}</textarea>
+              <textarea rows="6" class="form-control p-0 border-0" name="description">{{ $about['description'] }}</textarea>
           </div>
         </div>
       </div>

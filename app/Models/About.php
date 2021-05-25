@@ -19,7 +19,7 @@ class About extends Model
     protected $fillable =[
         'logo',
         'company_name',
-        'decription',
+        'description',
         'street_address',
         'area_address',
         'city_address',
