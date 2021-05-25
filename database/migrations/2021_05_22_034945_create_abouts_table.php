@@ -17,7 +17,7 @@ class CreateAboutsTable extends Migration
             $table->id();
             $table->string('logo')->nullable(true);
             $table->string('company_name');
-            $table->string('decription')->nullable(true);
+            $table->string('description')->nullable(true);
             $table->string('street_address')->nullable(true);
             $table->string('area_address')->nullable(true);
             $table->string('city_address')->nullable(true);
