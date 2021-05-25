@@ -71,7 +71,16 @@ class About extends Model
     public function getAboutforGuest()
     {
         $about = $this->getAbout();
-        $about["company_name_array"] = explode(" ",$about["company_name"]);
+
+
+        $header_arr = explode(" ",$about["company_name"]);
+        foreach( $header_arr as $key => $name ){
+            if($key % 2 != 0){
+                continue;
+            }
+            $header_arr[$key] = '<span>'.$name.'</span>';
+        }
+        $about['coname_header'] = implode(' ',$header_arr);
 
         return $about;
     }

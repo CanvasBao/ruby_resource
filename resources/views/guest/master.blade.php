@@ -52,9 +52,7 @@
       @if(isset($about['logo_path']))
         <a href="{{ route('home') }}" class="logo"><img src="{{ asset($about['logo_path'] ?? '') }}" alt="" class="img-fluid"></a>
       @else
-        <h1 class="logo"><a href="{{ route('home') }}">
-          @foreach( $about["company_name_array"] as $key => $name ) @if($key % 2 != 0){{$name}}@else<span>{{$name}}</span>@endif @endforeach 
-        </a></h1>
+        <h1 class="logo"><a href="{{ route('home') }}">{!! $about['coname_header'] !!}</a></h1>
       @endif
     </div>
       <!-- Uncomment below if you prefer to use an image logo -->
