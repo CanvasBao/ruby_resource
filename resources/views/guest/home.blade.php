@@ -30,7 +30,7 @@
         </div>
     </section>
     <main id="main">
-        
+        <x-AboutUsTop :about="$about" ></x-AboutUsTop>
         <section id="contact" class="contact">
             <div class="container">
                 <x-FrameSendContact ></x-FrameSendContact>
