@@ -17,8 +17,11 @@ Route::namespace('Guest')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('contact', 'ContactController')->only(["index", "store"]);
-});
 
+    Route::resource('about-us', 'AboutUsController')->only(["index"]);
+
+    Route::resource('product', 'ProductController')->only(["index"]);
+});
 
 Route::namespace('Admin')->prefix('admin')->group(function(){
     Route::get('/', 'LoginController@index')->name('login');

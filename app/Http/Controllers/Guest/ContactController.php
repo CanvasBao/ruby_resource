@@ -10,7 +10,7 @@ use App\Models\About;
 class ContactController extends Controller
 {
     private $active = "4";
-    private $sub_header = "Contact";
+    private $sub_header = "Liên Hệ";
     /**
      * Display a listing of the resource.
      *
