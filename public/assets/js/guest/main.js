@@ -103,13 +103,13 @@
     return false;
   });
 
-  // Porfolio isotope and filter
+  // Product
   $(window).on('load', function() {
     var productIsotope = $('.product-container').isotope({
       itemSelector: '.product-item'
     });
 
-    $('#product-flters li').on('click', function() {
+    /*$('#product-flters li').on('click', function() {
       $("#product-flters li").removeClass('filter-active');
       $(this).addClass('filter-active');
 
@@ -117,7 +117,7 @@
         filter: $(this).data('filter')
       });
       aos_init();
-    });
+    });*/
 
     // Initiate venobox (lightbox feature used in portofilo)
     $(document).ready(function() {

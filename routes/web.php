@@ -20,7 +20,7 @@ Route::namespace('Guest')->group(function(){
 
     Route::resource('about-us', 'AboutUsController')->only(["index"]);
 
-    Route::resource('product', 'ProductController')->only(["index"]);
+    Route::resource('product', 'ProductController')->only(["index", "show"]);
 });
 
 Route::namespace('Admin')->prefix('admin')->group(function(){

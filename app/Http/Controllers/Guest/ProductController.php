@@ -6,11 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\About;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     private $active = "3";
     private $sub_header = "Sản Phẩm";
+    private $defaul_assign = [];
+
+    public function __construct (){
+        $about = (new About())->getAboutforGuest();
+        $this->defaul_assign = [
+            'active' => $this->active, 
+            'about'=> $about, 
+            'sub_header' => $this->sub_header
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,32 +30,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $about = (new About())->getAboutforGuest();
-        $defaul_assign = ["active" => $this->active, 'about'=> $about, 'sub_header' => $this->sub_header];
+        $products = (new Product())->getProducts();
 
-        $assign = array_merge($defaul_assign, []);
+        $assign = array_merge($this->defaul_assign, ['products' => $products]);
         return view('guest.product.index', $assign);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -54,40 +44,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $product_info = (new Product())->getProductDetail($id);
+        
+        $assign = array_merge($this->defaul_assign, ['product_info' => $product_info]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('guest.product.show', $assign);
     }
 }
