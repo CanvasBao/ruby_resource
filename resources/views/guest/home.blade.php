@@ -31,6 +31,7 @@
     </section>
     <main id="main">
         <x-AboutUsTop :about="$about" ></x-AboutUsTop>
+        <x-ProductList :products="$products ?? []" ></x-ProductList>
         <section id="contact" class="contact">
             <div class="container">
                 <x-FrameSendContact ></x-FrameSendContact>
