@@ -115,6 +115,13 @@
                           <span class="hide-menu">Banner</span>
                       </a>
                   </li>
+                  <li class="sidebar-item pt-2">
+                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('manage.product.index') }}"
+                          aria-expanded="false">
+                          <i class="fas fa-cube" aria-hidden="true"></i>
+                          <span class="hide-menu">Product</span>
+                      </a>
+                  </li>
               </ul>
           </nav>
           <!-- End Sidebar navigation -->
@@ -159,7 +166,6 @@
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery-sticky/jquery.sticky.js') }}"></script>
   <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/venobox/venobox.min.js') }}"></script>

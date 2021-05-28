@@ -14676,3 +14676,12 @@ html body .waves-notransition {
 		font-size: 36px
 	}
 }
+
+.main-button-group{
+	text-align: center;
+}
+.main-button-group button{
+	line-height: 1.8rem;
+    width: 200px;
+	font-size: 22px;
+}
