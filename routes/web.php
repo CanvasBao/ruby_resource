@@ -36,5 +36,7 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
         Route::resource('about', 'AboutController')->only(["index", "update"]);
 
         Route::resource('banner', 'BannerController')->only(["index", "store", "update", "destroy"]);
+
+        Route::resource('product', 'ProductController',['as' => 'manage'])->except(["show"]);
     });
 });
