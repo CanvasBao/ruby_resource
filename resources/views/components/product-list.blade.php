@@ -8,7 +8,8 @@
     <div class="row product-container" data-aos="fade-up">
       @if ( ! empty($products) )
         @foreach ($products as $product)
-            <div class="col-lg-4 col-md-6 product-item filter-app">
+          <div class="col-lg-4 col-md-6 product-item filter-app">
+            <div class="shadow-product">
               <img src="{{ asset($product['product_img']) }}" class="img-fluid" alt="">
               <div class="product-title">
                 <h3>{{ $product['product_name'] ?? '' }}</h3>
@@ -20,6 +21,7 @@
                 <a href="product/{{ $product['product_id'] ?? '' }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
+          </div>
         @endforeach
       @endif
     </div>
