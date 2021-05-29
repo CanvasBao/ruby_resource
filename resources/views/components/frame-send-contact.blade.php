@@ -1,8 +1,10 @@
 <link href="{{ asset('assets/css/guest/frame-send-contact.css') }}" rel="stylesheet">
 <div class="row mt-5 justify-content-center" data-aos="fade-up">
     <div class="col-lg-10">
-        <h2 class="my-4">Liên hệ với chúng tôi</h2>
         <form action="contact" method="post" role="form" class="send-contact-frame">
+        <div class="section-title" data-aos="fade-up">
+            <h3>Gửi liên hệ đến chúng tôi</h3>
+        </div>
         @csrf
         <div class="form-row">
             <div class="col-md-6 form-group">

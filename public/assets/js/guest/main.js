@@ -109,7 +109,7 @@
       itemSelector: '.product-item'
     });
 
-    /*$('#product-flters li').on('click', function() {
+    /*$('.product-item').on('click', function() {
       $("#product-flters li").removeClass('filter-active');
       $(this).addClass('filter-active');
 
@@ -118,6 +118,15 @@
       });
       aos_init();
     });*/
+
+    
+  $( ".product-item .shadow-product" ).hover(
+    function() {
+      $(this).addClass('active'); 
+    }, function() {
+      $(this).removeClass('active');
+    }
+  );
 
     // Initiate venobox (lightbox feature used in portofilo)
     $(document).ready(function() {
