@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AdminController as AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
@@ -10,7 +10,7 @@ use Exception;
 use Session;
 
 
-class ProductController extends Controller
+class ProductController extends AdminController
 {
     public  $sub_name = 'Product';
     protected $model;

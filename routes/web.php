@@ -38,5 +38,9 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
         Route::resource('banner', 'BannerController')->only(["index", "store", "update", "destroy"]);
 
         Route::resource('product', 'ProductController',['as' => 'manage'])->except(["show"]);
+
+        Route::resource('images-library', 'ImagesLibraryController')->except(["create"]);
+
+        Route::get('images-library/{dir_id}/merger', 'ImagesLibraryController@merger')->name('images-library.merger');
     });
 });

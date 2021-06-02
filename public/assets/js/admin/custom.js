@@ -84,12 +84,14 @@ function addMessageExcute(error_ob, success, msg) {
     $(error_ob).append(msg_box);          // Insert new elements after <img>
 }
 
-function showConfirm(msg, callback){
+function showConfirm(msg, callback, html_append = ""){
     $('#confirmModal').modal('show'); 
     $("#confirmModal .modal-body").text(msg); 
+    $("#confirmModal .modal-body").append(html_append); 
     $("#confirmModal #confirm").off("click.confirm" );
     if (typeof callback != 'function') { 
         callback = function(){};
-      }
+    }
+    
     $("#confirmModal #confirm").on("click.confirm", callback );
 }

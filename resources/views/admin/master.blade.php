@@ -122,6 +122,13 @@
                           <span class="hide-menu">Product</span>
                       </a>
                   </li>
+                  <li class="sidebar-item pt-2">
+                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('images-library.index') }}"
+                          aria-expanded="false">
+                          <i class="fas fa-archive" aria-hidden="true"></i>
+                          <span class="hide-menu">Images Library</span>
+                      </a>
+                  </li>
               </ul>
           </nav>
           <!-- End Sidebar navigation -->
