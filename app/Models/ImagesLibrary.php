@@ -107,4 +107,43 @@ class ImagesLibrary extends Model
 
         return true;
     }
+
+
+    /**
+     * 
+     */
+    public function uploadFile($folder_id, $file_upload)
+    {
+        try{
+            $folder_id = sprintf('%04d', $folder_id);
+            $parent_path = (new Folder)->getFullpathFolder($folder_id);
+            $real_path = $this->root_dir . $parent_path;
+
+            $id = (new Imgfile())::max('file_id');
+            $next_id = (int)$id + 1;
+
+            $insert_data = [];
+            $now_at = date("Y-m-d H:i:s");
+            foreach($file_upload as $file)
+            {
+                $name = time().'.'.$file->extension();
+                $file->move($real_path.'/', $name);  
+                $insert_data[] = [
+                    'file_id' => sprintf('%04d', $next_id),
+                    'parent_folder_id' => $folder_id,
+                    'file_name' => $name,
+                    'created_at' => $now_at,
+                    'updated_at' => $now_at
+                ];
+                $next_id++;
+            }
+
+            (new Imgfile())->insert($insert_data);
+
+        }catch(Exception $e){
+            return false;
+        }
+
+        return true;
+    }
 }

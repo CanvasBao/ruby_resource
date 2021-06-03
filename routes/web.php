@@ -42,5 +42,8 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
         Route::resource('images-library', 'ImagesLibraryController')->except(["create"]);
 
         Route::get('images-library/{dir_id}/merger', 'ImagesLibraryController@merger')->name('images-library.merger');
+
+        Route::resource('file-upload', 'FileUploadController')->only(["create" , "store"]);
+
     });
 });

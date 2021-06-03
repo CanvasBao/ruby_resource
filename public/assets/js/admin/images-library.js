@@ -22,6 +22,7 @@ class FileFolderGrid {
         $(topBar).append("<a href=\"#\" class=\"back btn btn-outline-danger\"><i class=\"fas fas fa-backward\"></i> Quay Lại</a>");
         $(topBar).append("<a href=\"#\" class=\"create btn btn-outline-danger\"><i class=\"fas fa-folder\"></i> Thêm mới</a>");
         $(topBar).append("<a href=\"#\" class=\"btn btn-outline-danger\"><i class=\"fas fa-font\"></i> Đối Tên</a>");
+        $(topBar).append("<a href=\"#\" class=\"upload btn btn-outline-danger\"><i class=\"fas fa-upload\"></i> Upload File</a>");
 
         let that = this;
         $($(this.box).find(".back.btn")).on("click.back-parent",  function() {
@@ -63,6 +64,12 @@ class FileFolderGrid {
             let html_append = "<input name='folder_name'></input>";
             showConfirm(msg, callback, html_append);
         });
+
+        $($(this.box).find(".upload.btn")).click(function () {
+            let url = location.origin + "/admin/file-upload/create";
+            newPopup(url);
+        }); 
+        
     }
     render(folder_list = {}, file_list = {}){
         $(this.box).find("h3.box-title").text(this.name);
@@ -125,7 +132,8 @@ class FileFolderGrid {
 
 $(function () {
     var grid = new FileFolderGrid('img-grid-view', 'root', '0000');
-    grid.load();
+    let id_selected = $("#folder_id_selected").val();
+    grid.load(id_selected);
 });
 
 

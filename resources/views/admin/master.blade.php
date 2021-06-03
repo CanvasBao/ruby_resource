@@ -171,6 +171,14 @@
     </div>
   </div>
 
+  <!-- The popup Modal -->
+  <div class="modal" id="popupModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery-sticky/jquery.sticky.js') }}"></script>

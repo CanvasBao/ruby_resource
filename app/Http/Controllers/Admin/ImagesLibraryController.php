@@ -26,14 +26,13 @@ class ImagesLibraryController extends AdminController
      */
     public function index()
     {
-        list($folder_list, $file_list) = $this->model->getDir();
-
+        $id = session()->get('folder_selected', false); 
+        if( $id === false ){
+            $id = "0000"; 
+        }
         return view('admin.images-library.index',[
             'sub_name' => $this->sub_name,
-            'folder_list' => $folder_list,
-            'file_list' => $file_list,
-            'dir_name' => 'root',
-            'dir_path' => 'root'
+            'folder_id' => $id,
         ]);
     }
 
@@ -76,7 +75,6 @@ class ImagesLibraryController extends AdminController
             }
             
         }catch(Exception $e){
-            return false;
             $result['status'] = false;
             
         }
@@ -93,6 +91,7 @@ class ImagesLibraryController extends AdminController
     public function show($id)
     {
         list($folder_list, $file_list, $show_path, $parent_id) = $this->model->getDir($id);
+        session(['folder_selected' => $id]);
         $result = [
             'status' => true,
             'token' => csrf_token(),

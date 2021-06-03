@@ -16,6 +16,8 @@ class Imgfile extends Model
         'file_id',
         'parent_folder_id',
         'file_name',
+        'created_at',
+        'updated_at' 
     ];
     
     /**
@@ -25,6 +27,15 @@ class Imgfile extends Model
      */
     protected $hidden = [
         'updated_at', 'created_at'
+    ];
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
     
     protected $root_path = "/assets/img/";

@@ -95,3 +95,13 @@ function showConfirm(msg, callback, html_append = ""){
     
     $("#confirmModal #confirm").on("click.confirm", callback );
 }
+
+
+function newPopup(url) {   
+    
+    var id = $(this).data('assigned-id');
+    //var route = location;
+    $('#popupModal .modal-content').load(url);
+
+    $('#popupModal').modal('show'); 
+}
