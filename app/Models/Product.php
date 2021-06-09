@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Exception;
 use File;
 use App\Models\PdImg;
+use App\Models\ProductDetailImg;
 
 class Product extends Model
 {
@@ -56,7 +57,7 @@ class Product extends Model
         if( !empty($product_info['product_img']) ){
             $product_info['product_img_path'] =  "assets/img/product/" . $product_info['product_img'] ;
         }
-        $img_list = (new PdImg())->getProductImgList($id);
+        $img_list = (new ProductDetailImg())->getProductImgList($id);
         $product_info['img_list'] = $img_list;
        
         
@@ -130,6 +131,10 @@ class Product extends Model
                     throw new Exception();
                 }
             }
+
+            $detail_img = new ProductDetailImg();
+            $detail_img->updateProductImg( $id, $param['detail_img']);
+
 
             $data_update["product_name"] = $param['product_name'];
             $data_update["product_description"] = $param['product_description'];

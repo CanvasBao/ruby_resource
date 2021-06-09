@@ -101,6 +101,11 @@ $(function () {
         $(imgBox).find(".new-img").show();
         readURL(this, $(imgBox).find(".new-img"));
     });
+
+    $("#addDetailImg").click(function(){
+        let url = location.origin + "/admin/images-library/show-choose-img";
+        newPopup(url);
+    });
 });
 
 

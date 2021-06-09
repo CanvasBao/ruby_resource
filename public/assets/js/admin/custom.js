@@ -97,11 +97,17 @@ function showConfirm(msg, callback, html_append = ""){
 }
 
 
-function newPopup(url) {   
-    
+function newPopup(url) {
     var id = $(this).data('assigned-id');
-    //var route = location;
+    //var route = location; 
+    $('#popupModal .modal-content').empty();
     $('#popupModal .modal-content').load(url);
 
     $('#popupModal').modal('show'); 
+}
+
+function closePop() {
+    $('#popupModal .modal-content').empty();
+
+    $('#popupModal').modal('hide'); 
 }

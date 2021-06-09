@@ -35,6 +35,7 @@
   <!-- JS File -->
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('assets/js/admin/file-folder-grid.js') }}"></script>
   
   
 </head>
@@ -192,6 +193,7 @@
   <script src="{{ asset('assets/js/admin/app-style-switcher.js') }}"></script>
   <script src="{{ asset('assets/js/admin/custom.js') }}"></script>
   <script src="{{ asset('assets/js/admin/waves.js') }}"></script>
+
   @yield('include-js')
 </body>
 

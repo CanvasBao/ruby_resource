@@ -151,4 +151,22 @@ class ImagesLibraryController extends AdminController
         ];
         return response()->json($result);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showChooseImg()
+    {
+        $id = session()->get('folder_selected', false); 
+        if( $id === false ){
+            $id = "0000"; 
+        }
+        return view('admin.images-library.show-choose-img',[
+            'sub_name' => $this->sub_name,
+            'folder_id' => $id,
+        ]);
+    }
+
 }

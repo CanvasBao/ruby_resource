@@ -55,6 +55,33 @@
         </div>
       </div>
   </div>
+  
+  <div class="col-sm-12">
+    <div class="white-box">
+    <div>
+      <button id="addDetailImg" class="float-sm-right btn btn-success"><i class="fas fa-plus-square"></i> Thêm hình ảnh</button>
+    </div>
+      <h3 class="box-title">Danh sách hình ảnh chi tiết</h3>
+      
+
+      <div class="row detail-img-box">
+        @if ( ! empty($product['img_list']) )
+        @foreach ($product['img_list'] as $image)
+        <div class="col-lg-2 mb-4 detail-img-card">
+          <div class="card h-100 shadow p-3 rounded">
+            <a href="#"><img class="card-img-top" src="{{ $image['img_path'] }}" alt=""></a>
+            <div style="font-size: 20px;" class="card-text">
+              <a class="delete p-2 float-sm-right" data-item="{{ $image['img_id'] }}"><i  class="fas fa-trash"></i></a>
+            </div>
+          </div>
+        </div> 
+
+        @endforeach
+        @endif
+
+      </div>
+    </div>
+</div>
   <div class="main-button-group mb-4">
     <div class="col-sm-12">
         <button class="btn btn-success">@if (isset($id)) CẬP NHẬP @else TẠO MỚI @endif</button>
@@ -65,4 +92,40 @@
 @endsection
 @section('include-js')
   <script src="{{ asset('assets/js/admin/product.js') }}"></script>
+  <script>
+    function deleteImgCard(object){
+       let card = $(object).closest("div.detail-img-card");
+       if($(card).hasClass("new-img")){
+        $(card).remove();
+       }else{
+        let id = $(object).data("item");
+        let hidden_path = "<input type=\"hidden\" name=\"detail_img[delete_old][]\" value=\"" + id +"\">";
+        $(card).append(hidden_path);
+        $(card).hide();
+
+       }
+    }
+
+    function addDetailImg(path){
+      let box = $('<div class="col-lg-2 mb-4 detail-img-card new-img"><div class="card h-100 shadow p-3 rounded"></div></div>');
+      let img = '<img class="card-img-top" src="'+ path +'" alt="">';
+      let hidden_path = "<input type=\"hidden\" name=\"detail_img[new][]\" value=\"" + path +"\">";
+      let btn = '<div style="font-size: 20px;" class="card-text"><a class="delete p-2 float-sm-right"><i class="fas fa-trash"></i></a></div>';
+      $($(box).find(".card")).append(img, hidden_path, btn);
+      $($(box).find(".card .delete")).click(function(){
+        deleteImgCard(this);
+      });
+      $(".detail-img-box").append(box);
+      closePop();
+    }
+ 
+
+
+    
+  $(function () {
+    $(".delete").click(function(){
+      deleteImgCard(this);
+    });
+  });
+  </script>
 @endsection

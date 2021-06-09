@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-  <title>Laravel 7 Multiple File Upload Example</title>
+  <title>File Upload</title>
 </head>
 <body>
 <div class="modal-header">

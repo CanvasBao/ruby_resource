@@ -38,7 +38,7 @@ class Imgfile extends Model
         'updated_at' => 'datetime',
     ];
     
-    protected $root_path = "/assets/img/";
+    protected $root_path = "/assets/img";
     //
 
     /**

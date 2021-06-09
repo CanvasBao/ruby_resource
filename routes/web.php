@@ -39,9 +39,10 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
 
         Route::resource('product', 'ProductController',['as' => 'manage'])->except(["show"]);
 
+        Route::get('images-library/{dir_id}/merger', 'ImagesLibraryController@merger')->name('images-library.merger');
+        Route::get('images-library/show-choose-img', 'ImagesLibraryController@showChooseImg')->name('images-library.show-choose-img');
         Route::resource('images-library', 'ImagesLibraryController')->except(["create"]);
 
-        Route::get('images-library/{dir_id}/merger', 'ImagesLibraryController@merger')->name('images-library.merger');
 
         Route::resource('file-upload', 'FileUploadController')->only(["create" , "store"]);
 

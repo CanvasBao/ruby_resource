@@ -11,7 +11,7 @@
           <div class="owl-carousel product-details-carousel">
             @if ( ! empty($product_info['img_list']) )
               @foreach ($product_info['img_list'] as $carousel_img)
-                <img src="{{ asset($carousel_img['img_name']) }}" class="img-fluid" alt="">
+                <img src="{{ asset($carousel_img['img_path']) }}" class="img-fluid" alt="">
               @endforeach
             @endif
           </div>

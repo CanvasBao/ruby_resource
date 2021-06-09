@@ -63,7 +63,7 @@ class ProductController extends AdminController
         ];
 
         try{
-            $input = $request->only(['product_name', 'product_description']);
+            $input = $request->only(['product_name', 'product_description', 'detail_img']);
         
             if(!$request->hasfile('product_img')){
                 throw new Exception();
@@ -135,7 +135,7 @@ class ProductController extends AdminController
         ];
 
         try{
-            $param = $request->only(['product_name', 'product_description']);
+            $param = $request->only(['product_name', 'product_description', 'detail_img']);
             $param['id'] = $id;
 
             if($request->hasfile('product_img')){
