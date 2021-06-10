@@ -82,7 +82,7 @@ class FileFolderGrid {
         // add folder card
         folder_list.forEach(element => {
             let new_card = $("<div class='card-object p-3 folder-box' data-id='"+element.id+"'><div class='card h-100 shadow rounded'></div></div>");
-            let imgStr = "<img class=\"card-img-top\" src=\"" + location.origin + element.icon_path +"\">";
+            let imgStr = "<span style=\"font-size: 65px; color: #fece00;\" ><i class=\"fas fa-folder-open\"></i><span>";
             let titleStr = "<div class=\"card-title\"><span>"+ element.name +"</span></div>";
     
             $($(new_card).find(".card")).append(imgStr, titleStr);
