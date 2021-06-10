@@ -44,7 +44,7 @@ class ProductDetailImg extends Model
             $now_at = date("Y-m-d H:i:s");
             $insert_data = [];
             foreach($new_img as $img){
-                 $insert_data[] = [
+                $insert_data[] = [
                     'product_id' => $product_id,
                     'img_path' => $img,
                     'created_at' => $now_at,
@@ -65,14 +65,12 @@ class ProductDetailImg extends Model
                 }
                 
                 $this::where('img_id', $id)->delete();
-           }
+            }
         }
 
-
-        return $img_list;
+        return true;
     }
 
-    
     /**
      * get.
      *

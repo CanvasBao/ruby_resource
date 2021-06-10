@@ -23,7 +23,7 @@
             <div class="input-group mb-3">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="product_img" id="imgInput">
-                <label class="custom-file-label img-file-name" for="imgInput">Chọn hình ảnh</label>
+                <label class="custom-file-label img-file-name" for="imgInput">Chọn ảnh đại diện cho sản phẩm</label>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
   <div class="col-sm-12">
     <div class="white-box">
     <div>
-      <button id="addDetailImg" class="float-sm-right btn btn-success"><i class="fas fa-plus-square"></i> Thêm hình ảnh</button>
+      <a id="addDetailImg" class="float-sm-right btn btn-success"><i class="fas fa-plus-square"></i> Thêm hình ảnh</a>
     </div>
       <h3 class="box-title">Danh sách hình ảnh chi tiết</h3>
       <div class="row detail-img-box">

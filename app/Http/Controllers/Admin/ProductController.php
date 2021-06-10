@@ -59,28 +59,26 @@ class ProductController extends AdminController
     { 
         $result = [
             'status' => true,
-            'message' => ''
+            'message' => 'Tạo mới thành công'
         ];
 
         try{
             $input = $request->only(['product_name', 'product_description', 'detail_img']);
-        
+
             if(!$request->hasfile('product_img')){
-                throw new Exception();
+                throw new Exception("Chưa chọn ảnh đại diện");
             }
             $file_img = $request->file('product_img');
     
             $param = $input;
             $param['img_file'] = $file_img;
             $result_exc = $this->model->createProduct($param);
-    
-            if(!$result_exc){
-                throw new Exception();
-            } 
+
         }catch(Exception $e){
+            $message = $e->getMessage() == "" ? "Tạo mới thất bại" :  $e->getMessage() ;
             $result = [
                 'status' => false,
-                'message' => 'insert fail'
+                'message' => $message
             ];
         }
         return response()->json($result);
@@ -131,7 +129,7 @@ class ProductController extends AdminController
     {
         $result = [
             'status' => true,
-            'message' => ''
+            'message' => 'Đã chỉnh sửa thành công'
         ];
 
         try{
@@ -149,9 +147,10 @@ class ProductController extends AdminController
                 throw new Exception();
             }
         }catch(Exception $e){
+            $message = $e->getMessage() == "" ? "Chỉnh sửa thất bại" :  $e->getMessage() ;
             $result = [
                 'status' => false,
-                'message' => 'update fail'
+                'message' => $message
             ];
         }
         return response()->json($result);
@@ -167,7 +166,7 @@ class ProductController extends AdminController
     {
         $result = [
             'status' => true,
-            'message' => ''
+            'message' => 'Đã xóa thành công'
         ];
 
         try{
@@ -177,9 +176,10 @@ class ProductController extends AdminController
                 throw new Exception();
             } 
         }catch(Exception $e){
+            $message = $e->getMessage() == "" ? "Xóa thất bại" :  $e->getMessage() ;
             $result = [
                 'status' => false,
-                'message' => 'delete fail'
+                'message' => $message
             ];
         }
         return response()->json($result);

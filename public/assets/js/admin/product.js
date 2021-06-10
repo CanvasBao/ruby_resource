@@ -18,8 +18,6 @@ $(function () {
             url = url + "/" + id;
         }
 
-        var msg_ob = $(form).find(".msg_show");
-
         var file = $("#product-form input[name='product_img']")[0].files[0];
         if(file) { // append file if the file is not empty
             formData.append('file', file, file.name);
@@ -36,10 +34,9 @@ $(function () {
             success: function(json)
             {
                 var result = JSON.parse(json);
+                alert(result.message);
                 if(result.status){
-                    addMessageExcute(msg_ob, true, "update thành công");
-                }else{
-                    addMessageExcute(msg_ob, false, "update thất bại");
+                    location.href = location.origin + "/admin/product";
                 }
             }
         });
@@ -66,11 +63,9 @@ $(function () {
                 },
                 success: function (json)
                 {
+                    alert(json.message);
                     if(json.status == true){
                         $(row).remove();
-                        alert("Da delete");
-                    }else{
-                        alert("False");
                     }
                 }
             });
