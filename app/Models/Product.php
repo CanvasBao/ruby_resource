@@ -95,8 +95,10 @@ class Product extends Model
             $this->save();
             $product_id = $this->id;
             
-            $detail_img = new ProductDetailImg();
-            //$detail_img->updateProductImg( $product_id, $param['detail_img']);
+            if( isset($param['detail_img']) ){
+                $detail_img = new ProductDetailImg();
+                $detail_img->updateProductImg( $product_id, $param['detail_img']);
+            }
         }
         catch(Exception $e){
             return false;
@@ -116,11 +118,13 @@ class Product extends Model
             $id = $param['id'];
             $product = $this::where('product_id', $id)->get();
             $data_update = [];
-            if(isset($param['img_file'])){
 
-                $old_file_path = 'assets/img/product/'.$product[0]['product_img'];
-                if (file_exists ($old_file_path) ){
-                    unlink($old_file_path);
+            if( isset($param['img_file']) ){
+                if( !empty($product[0]['product_img']) ){
+                    $old_file_path = 'assets/img/product/'.$product[0]['product_img'];
+                    if ( file_exists($old_file_path) ){
+                        unlink($old_file_path);
+                    }
                 }
 
                 $file_img = $param['img_file'];
@@ -130,20 +134,20 @@ class Product extends Model
                 $file_img->move('assets/img/product/', $file_name);
     
                 $file_path = 'assets/img/product/'.$file_name;
-                if (!file_exists ($file_path) ){
+                if ( !file_exists($file_path) ){
                     throw new Exception();
                 }
             }
 
-            $detail_img = new ProductDetailImg();
-            $detail_img->updateProductImg( $id, $param['detail_img']);
-
-
+            if( isset($param['detail_img']) ){
+                $detail_img = new ProductDetailImg();
+                $detail_img->updateProductImg( $id, $param['detail_img']);
+            }
+            
             $data_update["product_name"] = $param['product_name'];
             $data_update["product_description"] = $param['product_description'];
-
-            $this::where('product_id', $id)
-              ->update($data_update);
+            
+            $this::where('product_id', $id)->update($data_update);
             
         }
         catch(Exception $e){
