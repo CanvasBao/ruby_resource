@@ -35,6 +35,7 @@
   <!-- JS File -->
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('assets/js/admin/file-folder-grid.js') }}"></script>
   
   
 </head>
@@ -122,6 +123,13 @@
                           <span class="hide-menu">Product</span>
                       </a>
                   </li>
+                  <li class="sidebar-item pt-2">
+                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('images-library.index') }}"
+                          aria-expanded="false">
+                          <i class="fas fa-archive" aria-hidden="true"></i>
+                          <span class="hide-menu">Images Library</span>
+                      </a>
+                  </li>
               </ul>
           </nav>
           <!-- End Sidebar navigation -->
@@ -164,6 +172,14 @@
     </div>
   </div>
 
+  <!-- The popup Modal -->
+  <div class="modal" id="popupModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery-sticky/jquery.sticky.js') }}"></script>
@@ -177,6 +193,7 @@
   <script src="{{ asset('assets/js/admin/app-style-switcher.js') }}"></script>
   <script src="{{ asset('assets/js/admin/custom.js') }}"></script>
   <script src="{{ asset('assets/js/admin/waves.js') }}"></script>
+
   @yield('include-js')
 </body>
 

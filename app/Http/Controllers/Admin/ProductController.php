@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AdminController as AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
@@ -10,7 +10,7 @@ use Exception;
 use Session;
 
 
-class ProductController extends Controller
+class ProductController extends AdminController
 {
     public  $sub_name = 'Product';
     protected $model;
@@ -63,7 +63,7 @@ class ProductController extends Controller
         ];
 
         try{
-            $input = $request->only(['product_name', 'product_description']);
+            $input = $request->only(['product_name', 'product_description', 'detail_img']);
         
             if(!$request->hasfile('product_img')){
                 throw new Exception();
@@ -135,7 +135,7 @@ class ProductController extends Controller
         ];
 
         try{
-            $param = $request->only(['product_name', 'product_description']);
+            $param = $request->only(['product_name', 'product_description', 'detail_img']);
             $param['id'] = $id;
 
             if($request->hasfile('product_img')){
