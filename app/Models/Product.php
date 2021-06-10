@@ -93,7 +93,10 @@ class Product extends Model
             $this->product_name = $param['product_name'];
             $this->product_description = $param['product_description'];
             $this->save();
+            $product_id = $this->id;
             
+            $detail_img = new ProductDetailImg();
+            //$detail_img->updateProductImg( $product_id, $param['detail_img']);
         }
         catch(Exception $e){
             return false;
@@ -171,12 +174,15 @@ class Product extends Model
                 throw new Exception();
             }
 
+            (new ProductDetailImg())->deleteProductImg( $product[0]['product_id']);
+
             if (file_exists ($file_path) ){
                 $result = unlink($file_path);
                 if(!$result){
                     throw new Exception();
                 }
             }
+
             
         }
         catch(Exception $e){

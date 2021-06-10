@@ -38,7 +38,7 @@ class ProductDetailImg extends Model
      */
     public function updateProductImg($product_id, $detail_img)
     {
-        if( !empty( $detail_img['new'] ) ){
+        if( isset($detail_img['new']) && !empty( $detail_img['new'] ) ){
             $new_img = $detail_img['new'];
             
             $now_at = date("Y-m-d H:i:s");
@@ -55,7 +55,7 @@ class ProductDetailImg extends Model
         }
 
         
-        if( !empty( $detail_img['delete_old'] ) ){
+        if( isset($detail_img['delete_old']) && !empty( $detail_img['delete_old'] ) ){
             $delete_img = $detail_img['delete_old'];
             
             foreach($delete_img as $id){
@@ -70,5 +70,15 @@ class ProductDetailImg extends Model
 
 
         return $img_list;
+    }
+
+    
+    /**
+     * get.
+     *
+     * @var array
+     */
+    public function deleteProductImg($product_id){
+        $this::where('product_id', $product_id)->delete();
     }
 }

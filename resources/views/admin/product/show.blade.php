@@ -46,14 +46,6 @@
           </div>
         </div>
       </div>
-      
-      <div class="extend-des">
-      </div>
-      <div class=" mb-4">
-        <div class="col-sm-12">
-            <div id='addDes' class="btn btn-secondary float-sm-right">THÊM MÔ TẢ</div>
-        </div>
-      </div>
   </div>
   
   <div class="col-sm-12">
@@ -62,8 +54,6 @@
       <button id="addDetailImg" class="float-sm-right btn btn-success"><i class="fas fa-plus-square"></i> Thêm hình ảnh</button>
     </div>
       <h3 class="box-title">Danh sách hình ảnh chi tiết</h3>
-      
-
       <div class="row detail-img-box">
         @if ( ! empty($product['img_list']) )
         @foreach ($product['img_list'] as $image)
@@ -75,12 +65,19 @@
             </div>
           </div>
         </div> 
-
         @endforeach
         @endif
-
       </div>
     </div>
+</div>
+
+      
+<div class="extend-des">
+</div>
+<div class=" mb-4">
+  <div class="col-sm-12">
+      <div id='addDes' class="btn btn-secondary float-sm-right">THÊM MÔ TẢ</div>
+  </div>
 </div>
   <div class="main-button-group mb-4">
     <div class="col-sm-12">

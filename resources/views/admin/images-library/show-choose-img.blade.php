@@ -18,10 +18,10 @@ $(function () {
     $('#confirmChoose').click(function(){
         let img_select = grid.getSelected().split(",");
         img_select.forEach(element => {
-            addDetailImg(element);
+            if(element != ""){
+                addDetailImg(element);
+            }
         });
-        console.log(img_select);
-        //addDetailImg(path)
     });
 });
 </script>
