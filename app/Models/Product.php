@@ -72,12 +72,6 @@ class Product extends Model
     public function createProduct($param)
     {
         try{
-            // $id=DB::select("SHOW TABLE STATUS LIKE 'Products'");
-            // if(empty($id)){
-            //     $next_id = 1;
-            // }else{
-            //     $next_id=$id[0]->Auto_increment;
-            // }
 
             $file_img = $param['img_file'];
             $file_name = $file_img->getClientOriginalName();
@@ -86,7 +80,7 @@ class Product extends Model
 
             $file_path = 'assets/img/product/'.$file_name;
             if (!file_exists ($file_path) ){
-                throw new Exception();
+                throw new Exception("copy file thất bại");
             }
 
             $this->product_img = $file_name;
@@ -94,6 +88,9 @@ class Product extends Model
             $this->product_description = $param['product_description'];
             $this->save();
             $product_id = $this->id;
+            if (! $product_id ){
+                throw new Exception("Đăng ký product thất bại");
+            }
             
             if( isset($param['detail_img']) ){
                 $detail_img = new ProductDetailImg();
@@ -101,7 +98,7 @@ class Product extends Model
             }
         }
         catch(Exception $e){
-            return false;
+            throw $e;
         }
 
         return true;
@@ -135,7 +132,7 @@ class Product extends Model
     
                 $file_path = 'assets/img/product/'.$file_name;
                 if ( !file_exists($file_path) ){
-                    throw new Exception();
+                    throw new Exception("copy file thất bại");
                 }
             }
 
@@ -151,7 +148,7 @@ class Product extends Model
             
         }
         catch(Exception $e){
-            return false;
+            throw $e;
         }
 
         return true;
