@@ -23,6 +23,16 @@ $(function () {
             formData.append('file', file, file.name);
         }
 
+        let new_extend_card = $(form).find("div.extend-des div.des-new-card");
+        let new_extend_des = $(new_extend_card).map(function() {
+            let title = $($(this).find(".des-title")).val();
+            let content = $($(this).find(".des-content")).val();
+            return {title:title, content:content};
+        }).get(); 
+        if(new_extend_des.length > 0) { // append file if new_extend_des is not empty
+            formData.append('detail_des[new_des]', JSON.stringify(new_extend_des));
+        }
+
         $.ajax({
             type: "POST",
             url: url,  

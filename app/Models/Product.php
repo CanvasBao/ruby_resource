@@ -9,6 +9,7 @@ use Exception;
 use File;
 use App\Models\PdImg;
 use App\Models\ProductDetailImg;
+use App\Models\ProductDetailDescription;
 
 class Product extends Model
 {
@@ -57,9 +58,9 @@ class Product extends Model
         if( !empty($product_info['product_img']) ){
             $product_info['product_img_path'] =  "assets/img/product/" . $product_info['product_img'] ;
         }
-        $img_list = (new ProductDetailImg())->getProductImgList($id);
-        $product_info['img_list'] = $img_list;
-       
+        $product_info['img_list'] = (new ProductDetailImg())->getProductImgList($id);
+
+        $product_info['des_list'] = (new ProductDetailDescription)->getDetailDes($id);
         
         return $product_info;
     }
@@ -92,9 +93,14 @@ class Product extends Model
                 throw new Exception("Đăng ký product thất bại");
             }
             
-            if( isset($param['detail_img']) ){
-                $detail_img = new ProductDetailImg();
-                $detail_img->updateProductImg( $product_id, $param['detail_img']);
+            if( isset($param['detail_img']['new']) ){
+                $detail_img = $param['detail_img']['new'] ;
+                (new ProductDetailImg())->insertProductImg($product_id, $detail_img);
+            }
+            
+            if( isset($param['detail_des']['new_des']) ){
+                $detail_des = json_decode($param['detail_des']['new_des'], true);
+                (new ProductDetailDescription)->insertDetailDes( $product_id, $detail_des);
             }
         }
         catch(Exception $e){
@@ -137,8 +143,11 @@ class Product extends Model
             }
 
             if( isset($param['detail_img']) ){
-                $detail_img = new ProductDetailImg();
-                $detail_img->updateProductImg( $id, $param['detail_img']);
+                (new ProductDetailImg())->updateProductImg( $id, $param['detail_img']);
+            }
+
+            if( isset($param['detail_des']) ){
+                (new ProductDetailDescription)->updateDetailDes( $id, $param['detail_des']);
             }
             
             $data_update["product_name"] = $param['product_name'];
@@ -177,6 +186,8 @@ class Product extends Model
 
             (new ProductDetailImg())->deleteProductImg( $product[0]['product_id']);
 
+            (new ProductDetailDescription)->deleteDetailDes( $product[0]['product_id']);
+            
             if (file_exists ($file_path) ){
                 $result = unlink($file_path);
                 if(!$result){

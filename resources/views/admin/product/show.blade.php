@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('main')
-    
+<link href="{{ asset('assets/css/admin/product.css') }}" rel="stylesheet">
 <form id="product-form" action="{{ route('manage.product.index') }}" class="form-horizontal form-material" method="POST">
   @csrf
     @method('POST')  
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-  </div>
+    </div>
   
   <div class="col-sm-12">
     <div class="white-box">
@@ -69,10 +69,28 @@
         @endif
       </div>
     </div>
-</div>
-
-      
+</div>  
 <div class="extend-des">
+  @if ( ! empty($product['des_list']) )
+  @foreach ($product['des_list'] as $detail_des)
+    <div class="col-lg-8 col-md-12 des-card"><div class="card"><div class="card-body">
+      <input type="hidden" name="detail_des[{{$detail_des['des_id']}}][id]" value="{{$detail_des['des_id']}}">
+      <input type="checkbox" class="delete-check" name="detail_des[{{$detail_des['des_id']}}][is_delete]" style="display:none" />
+      <div class="form-group mb-4">
+        <h5 class="input-title"><label class="col-md-12 p-0">Tiêu Đề</label></h5>
+        <div class="col-md-12 mb-4 border-bottom p-0 company-name-box">
+          <input type="text" class="form-control p-0 border-0" name="detail_des[{{$detail_des['des_id']}}][title]" value="{{ $detail_des['des_title'] }}">
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <h5 class="input-title"><label class="col-md-12 p-0">Mô Tả</label></h5>
+        <div class="col-md-12 border-bottom p-0">
+          <textarea rows="6" class="form-control p-0 border-0" name="detail_des[{{$detail_des['des_id']}}][content]">{{ $detail_des['des_content'] }}</textarea>
+        </div>
+      </div>
+    </div></div></div>
+  @endforeach
+  @endif
 </div>
 <div class=" mb-4">
   <div class="col-sm-12">
@@ -117,11 +135,34 @@
     }
  
 
+    function addDetailDes(){
+      $(".extend-des").find(".des-card .des-id");
+      let card = $('<div class="col-lg-8 col-md-12 des-new-card"><div class="card"><div class="card-body"></div></div></div>');
+      let title = '<div class="form-group mb-4">'
+                  + '<h5 class="input-title"><label class="col-md-12 p-0">Tiêu Đề</label></h5>'
+                  + '<div class="col-md-12 mb-4 border-bottom p-0 company-name-box">'
+                  + '<input type="text" class="form-control p-0 border-0 des-title" >'
+                  + '</div></div>';
+      let content =  '<div class="form-group mb-4">'
+                    + '<h5 class="input-title"><label class="col-md-12 p-0">Mô Tả</label></h5>'
+                    + '<div class="col-md-12 border-bottom p-0">'
+                      + '<textarea rows="6" class="form-control p-0 border-0 des-content"></textarea>'
+                      + '</div></div>';
+        
+      $($(card).find(".card-body")).append(title, content);
+      // $($(card).find(".delete-des")).click(function(){
+      //   deleteImgCard(this);
+      // });
+      $(".extend-des").append(card);
+    }
 
     
   $(function () {
     $(".delete").click(function(){
       deleteImgCard(this);
+    });
+    $("#addDes").click(function(){
+      addDetailDes();
     });
   });
   </script>
