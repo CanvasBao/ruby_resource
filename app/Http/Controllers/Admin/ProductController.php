@@ -63,7 +63,7 @@ class ProductController extends AdminController
         ];
 
         try{
-            $input = $request->only(['product_name', 'product_description', 'detail_img']);
+            $input = $request->only(['product_name', 'product_description', 'detail_img', 'detail_des']);
 
             if(!$request->hasfile('product_img')){
                 throw new Exception("Chưa chọn ảnh đại diện");
@@ -133,7 +133,7 @@ class ProductController extends AdminController
         ];
 
         try{
-            $param = $request->only(['product_name', 'product_description', 'detail_img']);
+            $param = $request->only(['product_name', 'product_description', 'detail_img', 'detail_des']);
             $param['id'] = $id;
 
             if($request->hasfile('product_img')){
@@ -142,10 +142,10 @@ class ProductController extends AdminController
             }
 
             $result_exc = $this->model->updateProduct($param);
-
             if(!$result_exc){
                 throw new Exception();
             }
+
         }catch(Exception $e){
             $message = $e->getMessage() == "" ? "Chỉnh sửa thất bại" :  $e->getMessage() ;
             $result = [

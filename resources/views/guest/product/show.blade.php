@@ -9,6 +9,9 @@
         <div class="product-details-container">
 
           <div class="owl-carousel product-details-carousel">
+            @if ( ! empty($product_info['product_img_path']) )
+              <img src="{{ asset($product_info['product_img_path']) }}" class="img-fluid" alt="">
+            @endif
             @if ( ! empty($product_info['img_list']) )
               @foreach ($product_info['img_list'] as $carousel_img)
                 <img src="{{ asset($carousel_img['img_path']) }}" class="img-fluid" alt="">
@@ -31,6 +34,14 @@
           <p>{{ $product_info['product_description'] ?? ''}}</p>
         </div>
 
+        @if ( ! empty($product_info['des_list']) )
+          @foreach ($product_info['des_list'] as $detail_des)
+            <div class="product-description">
+              <h2>{{ $detail_des['des_title'] ?? ''}}</h2>
+              <p>{{ $detail_des['des_content'] }}</p>
+            </div>
+          @endforeach
+        @endif
       </div>
     </section><!-- End product Details Section -->
 

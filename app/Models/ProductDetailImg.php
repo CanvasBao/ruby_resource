@@ -36,22 +36,30 @@ class ProductDetailImg extends Model
      *
      * @var array
      */
+    public function insertProductImg($product_id, $detail_img)
+    {
+        $now_at = date("Y-m-d H:i:s");
+        $insert_data = [];
+        foreach($detail_img as $img){
+            $insert_data[] = [
+                'product_id' => $product_id,
+                'img_path' => $img,
+                'created_at' => $now_at,
+                'updated_at' => $now_at
+            ];
+        }
+        $this->insert($insert_data);
+    }
+
+    /**
+     * get.
+     *
+     * @var array
+     */
     public function updateProductImg($product_id, $detail_img)
     {
         if( isset($detail_img['new']) && !empty( $detail_img['new'] ) ){
-            $new_img = $detail_img['new'];
-            
-            $now_at = date("Y-m-d H:i:s");
-            $insert_data = [];
-            foreach($new_img as $img){
-                $insert_data[] = [
-                    'product_id' => $product_id,
-                    'img_path' => $img,
-                    'created_at' => $now_at,
-                    'updated_at' => $now_at
-                ];
-            }
-            $this->insert($insert_data);
+            $this->insertProductImg($detail_img['new']);
         }
 
         
