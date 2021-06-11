@@ -118,4 +118,25 @@ class Folder extends Model
         }
         return $path[0]->path;
     }
+
+    public function checkExistsFolderName($folder_name, $parent_id = '0000' ){
+        try{
+            $info = $this::select(DB::raw('getfullpath (folder_id) as path, parent_folder_id as parent_id, folder_id as id, folder_name as name'))
+                            ->where('parent_folder_id', $parent_id)
+                            ->where('folder_name', $folder_name)
+                            ->first();
+
+            if( empty($info) ){
+                throw new Exception();
+            }
+
+            if( !is_dir($this->root_dir . $info['path']) ){
+                throw new Exception();
+            }
+        }catch(Exception $e){
+            return false;
+        }
+
+        return $info;
+    }
 }

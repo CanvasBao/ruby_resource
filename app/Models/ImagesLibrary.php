@@ -10,7 +10,7 @@ use Exception;
 class ImagesLibrary extends Model
 {
     protected $root_dir = "../public/assets/img";
-    protected $root_path = "/assets/img/";
+    protected $root_path = "/assets/img";
     //
     /**
      * 
@@ -145,5 +145,42 @@ class ImagesLibrary extends Model
         }
 
         return true;
+    }
+
+    
+    /**
+     * upload Product Avatar and register record to Library
+     */
+    public function uploadProductAvatarImg($file)
+    {
+        try{
+            //get product folder
+            $dir_info = (new Folder)->checkExistsFolderName("product");
+            //get image id
+            $id = (new Imgfile())::max('file_id');
+            $next_id = (int)$id + 1;
+            $now_at = date("Y-m-d H:i:s");
+            // copy image
+            $name = time().'.'.$file->extension();
+            $real_path = $this->root_dir . $dir_info['path'];
+            $file->move($real_path.'/', $name);  
+            // register record to Library
+            $insert_data = [];
+            $insert_data[] = [
+                'file_id' => sprintf('%04d', $next_id),
+                'parent_folder_id' => sprintf('%04d', $dir_info['id']),
+                'file_name' => $name,
+                'created_at' => $now_at,
+                'updated_at' => $now_at
+            ];
+
+            (new Imgfile())->insert($insert_data);
+
+            $file_path = $this->root_path . $dir_info['path'] . '/' . $name;
+        }catch(Exception $e){
+            return false;
+        }
+
+        return  $file_path;
     }
 }
