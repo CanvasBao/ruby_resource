@@ -48,7 +48,7 @@ class Product extends Model
     }
 
     /**
-     * get.
+     * get product info
      *
      * @var array
      */
@@ -66,16 +66,16 @@ class Product extends Model
     }
     
     /**
-     * get.
+     * create new product
      *
      * @var array
      */
     public function createProduct($param)
     {
         try{
-            (new ImagesLibrary)->uploadProductAvatarImg($param['img_file']);
+            $avatar_path = (new ImagesLibrary)->uploadProductAvatarImg($param['img_file']);
 
-            $this->product_img = $file_name;
+            $this->product_img = $avatar_path;
             $this->product_name = $param['product_name'];
             $this->product_description = $param['product_description'];
             $this->save();
@@ -102,7 +102,7 @@ class Product extends Model
     }
   
     /**
-     * update product.
+     * update product info
      *
      * @var array
      */
@@ -170,7 +170,6 @@ class Product extends Model
                     throw new Exception();
                 }
             }
-
             
         }
         catch(Exception $e){

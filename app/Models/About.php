@@ -47,7 +47,7 @@ class About extends Model
     }
 
     /**
-     * get.
+     * get about info
      *
      * @var array
      */
@@ -57,14 +57,14 @@ class About extends Model
                     ->get();
         $about = $result[0];
         if( !empty($about['logo']) ){
-            $about['logo_path'] = 'assets/img/'.$about['logo'];
+            $about['logo_path'] = $about['logo'];
         }
 
         return $about;
     }
     
     /**
-     * get.
+     * get about info for show
      *
      * @var array
      */
@@ -87,7 +87,7 @@ class About extends Model
     
     
     /**
-     * get.
+     * update about info
      *
      * @var array
      */
@@ -112,24 +112,13 @@ class About extends Model
             }
             
             if(isset($param['logo-img'])){
+                $root = [
+                    'id' => '0000',
+                    'path' => ''
+                ];
+                $file_path = (new Imgfile())->uploadOneFile($param['logo-img'], $root);
 
-                if( !empty($about['logo']) ){
-                    $old_logo_path = 'assets/img/'.$about['logo'];
-                    if( file_exists($old_logo_path) ){
-                        unlink($old_logo_path);
-                    }
-                }
-
-                $logo_img = $param['logo-img'];
-                $logo_name = "logo.".$logo_img->extension();
-                $logo_img->move('assets/img/', $logo_name);
-
-                $new_logo_path = 'assets/img/'.$logo_name;
-                if (!file_exists ($new_logo_path) ){
-                    throw new Exception();
-                }
-
-                $data_update['logo'] = $logo_name;
+                $data_update['logo'] = $file_path;
             }
 
             $this::where('id', $id)

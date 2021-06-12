@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\Folder;
 
 class Imgfile extends Model
 {
@@ -39,10 +40,11 @@ class Imgfile extends Model
     ];
     
     protected $root_path = "/assets/img";
+    protected $root_dir = "../public/assets/img";
     //
 
     /**
-     * get.
+     * get all files in folder
      *
      * @var array
      */
@@ -58,7 +60,7 @@ class Imgfile extends Model
     }
 
     /**
-     * create
+     * create new file record
      */
     public function createFile($name, $parent_id = '0000')
     {
@@ -84,5 +86,34 @@ class Imgfile extends Model
         $this->save();
 
         return true;
+    }
+
+    
+    /**
+     * copy and register new image file
+     */
+    public function uploadOneFile($file, $parent_info)
+    {
+        try{
+            // copy image
+            $name = time().'.'.$file->extension();
+            $real_path = $this->root_dir . $parent_info['path'];
+            $file->move($real_path.'/', $name);   
+            
+            //get image id
+            $id = (new Imgfile())::max('file_id');
+            $next_id = (int)$id + 1;
+
+            // register record to Library
+            $this->file_id = sprintf('%04d', $next_id);
+            $this->parent_folder_id = sprintf('%04d', $parent_info['id']);
+            $this->file_name = $name;
+            $this->save();
+
+            $file_path = $this->root_path . $parent_info['path'] . '/' . $name;
+        }catch(Exception $e){
+            return false;
+        }
+        return $file_path;
     }
 }

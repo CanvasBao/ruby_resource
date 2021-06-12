@@ -32,7 +32,7 @@ class Banner extends Model
     ];
 
     /**
-     * get.
+     * create new banner
      *
      * @var array
      */
@@ -46,18 +46,14 @@ class Banner extends Model
                 $next_id=$id[0]->Auto_increment;
             }
 
-            $file_img = $param['img_file'];
-            $file_name = "rubybanner-".$next_id.".".$file_img->extension();
-
-            $file_img->move('assets/img/banner/', $file_name);
-
-            $file_path = 'assets/img/banner/'.$file_name;
-            if (!file_exists ($file_path) ){
-                throw new Exception();
+            
+            $file_path = (new ImagesLibrary)->uploadBannerImg($param['img_file']);
+            if ($file_path === false){
+                throw new Exception("upload file fail");
             }
 
             $this->order_index = $next_id;
-            $this->banner_img = $file_name;
+            $this->banner_img = $file_path;
             $this->banner_title = $param['title'];
             $this->banner_content = $param['content'];
             $this->save();
@@ -71,7 +67,7 @@ class Banner extends Model
     }
 
     /**
-     * get.
+     * update banner info
      *
      * @var array
      */
@@ -83,21 +79,12 @@ class Banner extends Model
             $data_update = [];
             if(isset($param['img_file'])){
 
-                $old_file_path = 'assets/img/banner/'.$banner[0]['banner_img'];
-                if (file_exists ($old_file_path) ){
-                    unlink($old_file_path);
+                $file_path = (new ImagesLibrary)->uploadBannerImg($param['img_file']);
+                if ($file_path === false){
+                    throw new Exception("upload file fail");
                 }
+                $data_update["banner_img"] = $file_path;
 
-                $file_img = $param['img_file'];
-                $file_name = "rubybanner-".$id.".".$file_img->extension();
-                $data_update["banner_img"] = $file_name;
-    
-                $file_img->move('assets/img/banner/', $file_name);
-    
-                $file_path = 'assets/img/banner/'.$file_name;
-                if (!file_exists ($file_path) ){
-                    throw new Exception();
-                }
             }
 
             $data_update["banner_title"] = $param['title'];
@@ -115,13 +102,13 @@ class Banner extends Model
     }
 
     /**
-     * get.
+     * get all banner show in home page
      *
      * @var array
      */
     public function getBannersforHome()
     {
-        $banner = $this::select(DB::raw('concat("banner/" , banner_img) as img, banner_title as title, banner_content as content'))
+        $banner = $this::select(DB::raw('banner_img as img, banner_title as title, banner_content as content'))
                     ->orderBy('order_index')
                     ->get();
         
@@ -134,13 +121,13 @@ class Banner extends Model
     }
 
     /**
-     * get.
+     * get all folder
      *
      * @var array
      */
     public function getBannersGrid()
     {
-        $result = $this::select(DB::raw('banner_id as id, concat("assets/img/banner/" , banner_img) as img, banner_title as title, banner_content as content'))
+        $result = $this::select(DB::raw('banner_id as id, banner_img as img, banner_title as title, banner_content as content'))
                     ->orderBy('order_index')
                     ->get();
 
@@ -149,7 +136,7 @@ class Banner extends Model
 
     
     /**
-     * get.
+     * delete banner
      *
      * @var array
      */
@@ -161,21 +148,11 @@ class Banner extends Model
                 throw new Exception();
             }
             
-            $file_path = 'assets/img/banner/'.$banner[0]['banner_img'];
-            
             $result = $this::where('banner_id', $banner[0]['banner_id'])->delete();
             if($result != 1)
             {
                 throw new Exception();
             }
-
-            if (file_exists ($file_path) ){
-                $result = unlink($file_path);
-                if(!$result){
-                    throw new Exception();
-                }
-            }
-            
         }
         catch(Exception $e){
             return false;

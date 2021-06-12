@@ -11,9 +11,9 @@ class ImagesLibrary extends Model
 {
     protected $root_dir = "../public/assets/img";
     protected $root_path = "/assets/img";
-    //
+    
     /**
-     * 
+     * get all file and folder in folder
      */
     public function getDir($folder_id = '0000')
     {
@@ -38,7 +38,7 @@ class ImagesLibrary extends Model
     }
 
     /**
-     * 
+     * reister folder record and file record in folder to database, if not registered yet
      */
     public function mergerDirAndDB($folder_id = '0000')
     {          
@@ -65,7 +65,7 @@ class ImagesLibrary extends Model
     }
 
     /**
-     * 
+     * get full path folder from root folder
      */
     public function getFullpathFolder($folder_id){
         try{
@@ -78,7 +78,7 @@ class ImagesLibrary extends Model
     }
 
     /**
-     * 
+     * create new folder
      */
     public function createFolder($params){
         try{
@@ -110,7 +110,7 @@ class ImagesLibrary extends Model
 
 
     /**
-     * 
+     * upload file
      */
     public function uploadFile($folder_id, $file_upload)
     {
@@ -156,27 +156,37 @@ class ImagesLibrary extends Model
         try{
             //get product folder
             $dir_info = (new Folder)->checkExistsFolderName("product");
-            //get image id
-            $id = (new Imgfile())::max('file_id');
-            $next_id = (int)$id + 1;
-            $now_at = date("Y-m-d H:i:s");
-            // copy image
-            $name = time().'.'.$file->extension();
-            $real_path = $this->root_dir . $dir_info['path'];
-            $file->move($real_path.'/', $name);  
-            // register record to Library
-            $insert_data = [];
-            $insert_data[] = [
-                'file_id' => sprintf('%04d', $next_id),
-                'parent_folder_id' => sprintf('%04d', $dir_info['id']),
-                'file_name' => $name,
-                'created_at' => $now_at,
-                'updated_at' => $now_at
-            ];
+            if($dir_info === false){
+                throw new Exception("product folder is not exists");
+            }
+           
+            $file_path = (new Imgfile())->uploadOneFile($file, $dir_info);
+            if($file_path === false){
+                throw new Exception("upload file fail");
+            }
+        }catch(Exception $e){
+            return false;
+        }
 
-            (new Imgfile())->insert($insert_data);
+        return  $file_path;
+    }
 
-            $file_path = $this->root_path . $dir_info['path'] . '/' . $name;
+    /**
+     * upload Banner image and register record to Library
+     */
+    public function uploadBannerImg($file){
+
+        try{
+            //get product folder
+            $dir_info = (new Folder)->checkExistsFolderName("banner");
+            if($dir_info === false){
+                throw new Exception("banner folder is not exists");
+            }
+
+            $file_path = (new Imgfile())->uploadOneFile($file, $dir_info);
+            if($file_path === false){
+                throw new Exception("upload file fail");
+            }
         }catch(Exception $e){
             return false;
         }
