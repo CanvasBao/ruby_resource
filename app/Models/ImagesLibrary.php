@@ -193,4 +193,29 @@ class ImagesLibrary extends Model
 
         return  $file_path;
     }
+
+    /**
+     * delete image file from Library
+     */
+    public function deleteImageFile($params){
+
+        try{
+            //get folder
+            $dir_info = (new Folder)->checkExists($params['folder_id']);
+            if($dir_info === false){
+                throw new Exception("folder is not exists");
+            }
+
+            $file_ids = explode(",", $params['file_id']);
+            $result = (new Imgfile())->deleteFile($file_ids, $dir_info);
+            if($result === false){
+                throw new Exception("delete file fail");
+            }
+        }catch(Exception $e){
+            $message = $e->getMessage() == "" ? "delete file" :  $e->getMessage() ;
+            return $message;
+        }
+
+        return "delete success";
+    }
 }

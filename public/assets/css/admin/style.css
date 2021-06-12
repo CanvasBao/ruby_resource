@@ -12632,8 +12632,10 @@ html[dir=ltr] body .p-l-0 {
 
 .white-box .box-title {
 	font-weight: 700;
-	line-height: 30px;
-	font-size: 18px
+    line-height: 30px;
+    font-size: 25px;
+    font-family: cursive;
+    color: #3c93ef;
 }
 
 .list-inline {

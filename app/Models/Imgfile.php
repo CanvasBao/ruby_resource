@@ -116,4 +116,34 @@ class Imgfile extends Model
         }
         return $file_path;
     }
+
+    /**
+     * delete file 
+     */
+    public function deleteFile($file_ids, $parent_info){
+
+        if(!is_array($file_ids)){
+            $file_ids = [$file_ids];
+        }
+
+        foreach($file_ids as $id){
+            $file_id = sprintf('%04d', $id);
+            $file_info = $this::select(DB::raw('file_id as id, file_name as name'))
+                        ->where('file_id', $file_id)
+                        ->get();
+
+            if(count($file_info) == 0){
+                continue;
+            }
+            
+            $file_path = $this->root_dir . $parent_info['path'] . '/' . $file_info[0]['name'];
+            if(file_exists($file_path)){
+                unlink($file_path);
+            }
+
+            $this::where('file_id', $file_id)->delete();
+        }
+
+        return true;
+    }
 }
