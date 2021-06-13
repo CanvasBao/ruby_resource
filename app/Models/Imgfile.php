@@ -96,7 +96,7 @@ class Imgfile extends Model
     {
         try{
             // copy image
-            $name = time().'.'.$file->extension();
+            $name = time().'.'.$file->getClientOriginalExtension();
             $real_path = $this->root_dir . $parent_info['path'];
             $file->move($real_path.'/', $name);   
             
