@@ -41,14 +41,14 @@ class Product extends Model
      */
     public function getProducts()
     {
-        $products = $this::select(DB::raw('concat("assets/img/product/" , product_img) as product_img, product_description, product_price, product_name, product_id'))
+        $products = $this::select(DB::raw('product_img, product_description, product_price, product_name, product_id'))
                         ->get();
         
         return $products;
     }
 
     /**
-     * get.
+     * get product info
      *
      * @var array
      */
@@ -56,7 +56,7 @@ class Product extends Model
     {
         $product_info = $this::where('product_id', $id)->first();
         if( !empty($product_info['product_img']) ){
-            $product_info['product_img_path'] =  "assets/img/product/" . $product_info['product_img'] ;
+            $product_info['product_img_path'] =  $product_info['product_img'] ;
         }
         $product_info['img_list'] = (new ProductDetailImg())->getProductImgList($id);
 
@@ -66,25 +66,16 @@ class Product extends Model
     }
     
     /**
-     * get.
+     * create new product
      *
      * @var array
      */
     public function createProduct($param)
     {
         try{
+            $avatar_path = (new ImagesLibrary)->uploadProductAvatarImg($param['img_file']);
 
-            $file_img = $param['img_file'];
-            $file_name = $file_img->getClientOriginalName();
-
-            $file_img->move('assets/img/product/', $file_name);
-
-            $file_path = 'assets/img/product/'.$file_name;
-            if (!file_exists ($file_path) ){
-                throw new Exception("copy file thất bại");
-            }
-
-            $this->product_img = $file_name;
+            $this->product_img = $avatar_path;
             $this->product_name = $param['product_name'];
             $this->product_description = $param['product_description'];
             $this->save();
@@ -111,7 +102,7 @@ class Product extends Model
     }
   
     /**
-     * update product.
+     * update product info
      *
      * @var array
      */
@@ -123,23 +114,8 @@ class Product extends Model
             $data_update = [];
 
             if( isset($param['img_file']) ){
-                if( !empty($product[0]['product_img']) ){
-                    $old_file_path = 'assets/img/product/'.$product[0]['product_img'];
-                    if ( file_exists($old_file_path) ){
-                        unlink($old_file_path);
-                    }
-                }
-
-                $file_img = $param['img_file'];
-                $file_name = $file_img->getClientOriginalName();
-                $data_update["product_img"] = $file_name;
-    
-                $file_img->move('assets/img/product/', $file_name);
-    
-                $file_path = 'assets/img/product/'.$file_name;
-                if ( !file_exists($file_path) ){
-                    throw new Exception("copy file thất bại");
-                }
+                $avatar_path = (new ImagesLibrary)->uploadProductAvatarImg($param['img_file']);
+                $data_update['product_img'] = $avatar_path;
             }
 
             if( isset($param['detail_img']) ){
@@ -194,7 +170,6 @@ class Product extends Model
                     throw new Exception();
                 }
             }
-
             
         }
         catch(Exception $e){

@@ -21,7 +21,7 @@ class ProductDetailDescription extends Model
     ];
 
    /**
-    * get.
+    * get all description of product
     *
     * @var array
     */
@@ -34,7 +34,7 @@ class ProductDetailDescription extends Model
     }
     
     /**
-     * get.
+     * add extend description to product
      *
      * @var array
      */
@@ -57,7 +57,7 @@ class ProductDetailDescription extends Model
     }
 
     /**
-     * get.
+     * update extand descriptions of product 
      *
      * @var array
      */
@@ -93,11 +93,11 @@ class ProductDetailDescription extends Model
     }
 
     /**
-     * get.
+     * delete extend description od product
      *
      * @var array
      */
     public function deleteDetailDes($product_id){
-        $this::where('product_id', $product_id)->delete();
+        return $this::where('product_id', $product_id)->delete();
     }
 }

@@ -10,10 +10,10 @@ use Exception;
 class ImagesLibrary extends Model
 {
     protected $root_dir = "../public/assets/img";
-    protected $root_path = "/assets/img/";
-    //
+    protected $root_path = "/assets/img";
+    
     /**
-     * 
+     * get all file and folder in folder
      */
     public function getDir($folder_id = '0000')
     {
@@ -38,7 +38,7 @@ class ImagesLibrary extends Model
     }
 
     /**
-     * 
+     * reister folder record and file record in folder to database, if not registered yet
      */
     public function mergerDirAndDB($folder_id = '0000')
     {          
@@ -65,7 +65,7 @@ class ImagesLibrary extends Model
     }
 
     /**
-     * 
+     * get full path folder from root folder
      */
     public function getFullpathFolder($folder_id){
         try{
@@ -78,7 +78,7 @@ class ImagesLibrary extends Model
     }
 
     /**
-     * 
+     * create new folder
      */
     public function createFolder($params){
         try{
@@ -110,7 +110,7 @@ class ImagesLibrary extends Model
 
 
     /**
-     * 
+     * upload file
      */
     public function uploadFile($folder_id, $file_upload)
     {
@@ -145,5 +145,77 @@ class ImagesLibrary extends Model
         }
 
         return true;
+    }
+
+    
+    /**
+     * upload Product Avatar and register record to Library
+     */
+    public function uploadProductAvatarImg($file)
+    {
+        try{
+            //get product folder
+            $dir_info = (new Folder)->checkExistsFolderName("product");
+            if($dir_info === false){
+                throw new Exception("product folder is not exists");
+            }
+           
+            $file_path = (new Imgfile())->uploadOneFile($file, $dir_info);
+            if($file_path === false){
+                throw new Exception("upload file fail");
+            }
+        }catch(Exception $e){
+            return false;
+        }
+
+        return  $file_path;
+    }
+
+    /**
+     * upload Banner image and register record to Library
+     */
+    public function uploadBannerImg($file){
+
+        try{
+            //get product folder
+            $dir_info = (new Folder)->checkExistsFolderName("banner");
+            if($dir_info === false){
+                throw new Exception("banner folder is not exists");
+            }
+
+            $file_path = (new Imgfile())->uploadOneFile($file, $dir_info);
+            if($file_path === false){
+                throw new Exception("upload file fail");
+            }
+        }catch(Exception $e){
+            return false;
+        }
+
+        return  $file_path;
+    }
+
+    /**
+     * delete image file from Library
+     */
+    public function deleteImageFile($params){
+
+        try{
+            //get folder
+            $dir_info = (new Folder)->checkExists($params['folder_id']);
+            if($dir_info === false){
+                throw new Exception("folder is not exists");
+            }
+
+            $file_ids = explode(",", $params['file_id']);
+            $result = (new Imgfile())->deleteFile($file_ids, $dir_info);
+            if($result === false){
+                throw new Exception("delete file fail");
+            }
+        }catch(Exception $e){
+            $message = $e->getMessage() == "" ? "delete file" :  $e->getMessage() ;
+            return $message;
+        }
+
+        return "delete success";
     }
 }

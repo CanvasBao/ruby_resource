@@ -31,7 +31,7 @@ class Folder extends Model
     protected $root_dir = "../public/assets/img";
 
     /**
-     * get.
+     * check folder is exists
      *
      * @var array
      */
@@ -66,7 +66,7 @@ class Folder extends Model
     }
 
     /**
-     * get.
+     * get all folder in folder
      *
      * @var array
      */
@@ -81,7 +81,7 @@ class Folder extends Model
     }
 
     /**
-     * create
+     * create new folder
      */
     public function createFolder($name, $parent_id = '0000')
     {
@@ -109,7 +109,9 @@ class Folder extends Model
         return true;
     }
 
-    
+    /**
+     * get full path folder from root folder
+     */
     public function getFullpathFolder($folder_id){
         $path = DB::select(DB::raw("select getfullpath ( ? ) as path"), [$folder_id]);
         if(empty($path[0]->path))
@@ -117,5 +119,29 @@ class Folder extends Model
             return false; 
         }
         return $path[0]->path;
+    }
+
+    /**
+     * check exists folder name in parent folder
+     */
+    public function checkExistsFolderName($folder_name, $parent_id = '0000' ){
+        try{
+            $info = $this::select(DB::raw('getfullpath (folder_id) as path, parent_folder_id as parent_id, folder_id as id, folder_name as name'))
+                            ->where('parent_folder_id', $parent_id)
+                            ->where('folder_name', $folder_name)
+                            ->first();
+
+            if( empty($info) ){
+                throw new Exception();
+            }
+
+            if( !is_dir($this->root_dir . $info['path']) ){
+                throw new Exception();
+            }
+        }catch(Exception $e){
+            return false;
+        }
+
+        return $info;
     }
 }

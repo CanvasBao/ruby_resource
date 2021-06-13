@@ -132,9 +132,16 @@ class ImagesLibraryController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $params = $request->only(['folder_id', 'file_id']);
+
+        $message = $this->model->deleteImageFile($params); 
+        $result = [
+            'status' => true,
+            'message' => $message
+        ];
+        return response()->json($result);
     }
 
     /**

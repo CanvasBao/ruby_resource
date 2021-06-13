@@ -19,7 +19,7 @@ class ProductDetailImg extends Model
    ];
 
    /**
-    * get.
+    * get all image list of product
     *
     * @var array
     */
@@ -32,7 +32,7 @@ class ProductDetailImg extends Model
    }
    
     /**
-     * get.
+     * add image list to product
      *
      * @var array
      */
@@ -52,7 +52,7 @@ class ProductDetailImg extends Model
     }
 
     /**
-     * get.
+     * update image list of product
      *
      * @var array
      */
@@ -80,11 +80,11 @@ class ProductDetailImg extends Model
     }
 
     /**
-     * get.
+     * delete image of product
      *
      * @var array
      */
     public function deleteProductImg($product_id){
-        $this::where('product_id', $product_id)->delete();
+        return $this::where('product_id', $product_id)->delete();
     }
 }
