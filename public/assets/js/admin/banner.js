@@ -80,7 +80,7 @@ $(function () {
             alert("no file selected");
             return;
         }
-        formData.append('file', file, file.name);
+        formData.append('img_file', file, file.name);
         $.ajax({
             type: "POST",
             url: url,  
@@ -113,7 +113,7 @@ $(function () {
 
         var file = $("#update-form input[name='img-file']")[0].files[0];
         if(file) { // append file if the file is not empty
-            formData.append('file', file, file.name);
+            formData.append('img_file', file, file.name);
         }
 
         $.ajax({

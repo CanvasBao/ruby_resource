@@ -49,10 +49,10 @@ class BannerController extends AdminController
         try{
             $input = $request->only(['title', 'content']);
         
-            if(!$request->hasfile('img-file')){
+            if(!$request->hasfile('img_file')){
                 throw new Exception();
             }
-            $file_img = $request->file('img-file');
+            $file_img = $request->file('img_file');
     
             $param = $input;
             $param['img_file'] = $file_img;
@@ -89,20 +89,21 @@ class BannerController extends AdminController
             $param = $input;
             $param['id'] = $id;
 
-            if($request->hasfile('img-file')){
-                $file_img = $request->file('img-file');
+            if($request->hasfile('img_file')){
+                $file_img = $request->file('img_file');
                 $param['img_file'] = $file_img;
             }
-
+            
             $result_exc = $this->model->updateBanners($param);
     
             if(!$result_exc){
                 throw new Exception();
             } 
         }catch(Exception $e){
+            $message = $e->getMessage() == "" ? "Tạo mới thất bại" :  $e->getMessage() ;
             $result = [
                 'status' => false,
-                'message' => 'insert fail'
+                'message' => $message
             ];
         }
         return response()->json($result);

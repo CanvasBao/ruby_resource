@@ -46,7 +46,6 @@ class Banner extends Model
                 $next_id=$id[0]->Auto_increment;
             }
 
-            
             $file_path = (new ImagesLibrary)->uploadBannerImg($param['img_file']);
             if ($file_path === false){
                 throw new Exception("upload file fail");
@@ -95,7 +94,7 @@ class Banner extends Model
             
         }
         catch(Exception $e){
-            return false;
+            throw $e;
         }
 
         return true;

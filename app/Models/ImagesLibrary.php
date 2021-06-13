@@ -165,7 +165,7 @@ class ImagesLibrary extends Model
                 throw new Exception("upload file fail");
             }
         }catch(Exception $e){
-            return false;
+            throw $e;
         }
 
         return  $file_path;
@@ -188,7 +188,7 @@ class ImagesLibrary extends Model
                 throw new Exception("upload file fail");
             }
         }catch(Exception $e){
-            return false;
+            throw $e;
         }
 
         return  $file_path;
