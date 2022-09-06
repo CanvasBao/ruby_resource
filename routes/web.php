@@ -1,6 +1,11 @@
 <?php
 
+use App\Actions\Fortify\EmailVerification;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use \App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,38 +18,71 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('Guest')->group(function(){
-    Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('pages.top');
+})->name('top');
 
-    Route::resource('contact', 'ContactController')->only(["index", "store"]);
-
-    Route::resource('about-us', 'AboutUsController')->only(["index"]);
-
-    Route::resource('product', 'ProductController')->only(["index", "show"]);
+// verification
+Route::controller(EmailVerification::class)->name('verification.')->prefix('email')->group(function () {
+    Route::get('/verify', function (Request $request) {
+        return view('auth.verify-email');
+    })->name('notice');
+    Route::post('/verification-notification', 'send')->name('send');
+    Route::get('/verify/{id}/{hash}', 'verify')->name('verify');
 });
 
-Route::namespace('Admin')->prefix('admin')->group(function(){
-    Route::get('/', 'LoginController@index')->name('login');
+Route::name('profile.')->prefix('profile')->middleware('auth')->group(function () {
+    Route::get('/', function () {
+        $user = Auth::user();
+        return view('pages.profile', compact('user'));
+    })->name('show');
 
-    Route::post('/', 'LoginController@authenticate')->name('login.auth');
+    Route::get('/edit', function () {
+        $user = Auth::user();
+        return view('pages.profile-edit', compact('user'));
+    })->name('edit');
 
-    Route::get('logout', 'LoginController@logout')->name('logout');
-
-    Route::middleware('auth')->group(function(){
-        Route::resource('dashboard', 'DashboardController')->only(["index"]);
-        
-        Route::resource('about', 'AboutController')->only(["index", "update"]);
-
-        Route::resource('banner', 'BannerController')->only(["index", "store", "update", "destroy"]);
-
-        Route::resource('product', 'ProductController',['as' => 'manage'])->except(["show"]);
-
-        Route::get('images-library/{dir_id}/merger', 'ImagesLibraryController@merger')->name('images-library.merger');
-        Route::get('images-library/show-choose-img', 'ImagesLibraryController@showChooseImg')->name('images-library.show-choose-img');
-        Route::resource('images-library', 'ImagesLibraryController')->except(["create"]);
-
-
-        Route::resource('file-upload', 'FileUploadController')->only(["create" , "store"]);
-
-    });
+    Route::get('/password', function () {
+        return view('pages.profile-password');
+    })->name('password');
 });
+
+Route::get('/home', function () {
+    return view('welcome');
+})->middleware('auth')->name('home');
+
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+})->middleware('verified')->name('dashboard');
+
+Route::get('/home2', function () {
+    return view('welcome');
+})->middleware(['verified', 'password.confirm'])->name('home2');
+
+Route::delete('/user', function (Request $request) {
+    $user = User::find(Auth::user()->id);
+
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    if ($user->delete()) {
+        return redirect('login')->with('status', 'Your account has been deleted!');
+    }
+})->middleware('auth', 'password.confirm')->name('profile.delete');
+
+
+// お問い合わせ
+Route::controller(ContactController::class)->name('contact.')->prefix('contact')->group(function () {
+    Route::get('/', function () {
+        return view('pages.contact.contact');
+    })->name('show');
+    Route::post('/send', 'sendMail')->name('send');
+    Route::get('/completed', function () {
+        return view('pages.contact.completed');
+    })->name('completed');
+});
+// default error route
+Route::get('/{any?}', function () {
+    return redirect()->route('top');
+})->where('any', '.*');
