@@ -1,0 +1,1 @@
+<div class="px-5 md:px-12 lg:px-20 flex flex-wrap justify-center text-sm {{!empty($class) ? $class : ''}}">{{ $slot }}</div>

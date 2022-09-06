@@ -1,0 +1,247 @@
+// /* menu */
+$scaleRate: scaleX(0.6);
+$timeAni: 1s;
+
+@keyframes menuAct {
+    0% {
+        top: 15px;
+        right: 15px;
+    }
+    20% {
+        top: 40px;
+        right: 17px;
+    }
+    100% {
+        top: 40px;
+        right: 17px;
+    }
+}
+@keyframes menuUnact {
+    100% {
+        top: 15px;
+        right: 15px;
+    }
+    20% {
+        top: 15px;
+        right: 15px;
+    }
+    0% {
+        top: 40px;
+        right: 17px;
+    }
+}
+@keyframes topLine {
+    0% {
+        top: -7px;
+        transform: rotate(0) scaleX(1);
+    }
+    20% {
+        top: -7px;
+        transform: rotate(0) scaleX(1);
+    }
+    60% {
+        top: 0px;
+        transform: rotate(0) $scaleRate;
+    }
+    100% {
+        top: 0px;
+        transform: rotate(135deg) $scaleRate;
+    }
+}
+@keyframes topLineUnact {
+    100% {
+        top: -7px;
+        transform: rotate(0) scaleX(1);
+    }
+    60% {
+        top: 0px;
+        transform: rotate(0) $scaleRate;
+    }
+    20% {
+        top: 0px;
+        transform: rotate(135deg) $scaleRate;
+    }
+    0% {
+        top: 0px;
+        transform: rotate(135deg) $scaleRate;
+    }
+}
+@keyframes centerLine {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes centerLineUnact {
+    100% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(0);
+    }
+    0% {
+        transform: scale(0);
+    }
+}
+@keyframes bottomLine {
+    0% {
+        top: 7px;
+        transform: rotate(0) scaleX(1);
+    }
+    20% {
+        top: 7px;
+        transform: rotate(0) scaleX(1);
+    }
+    60% {
+        top: 0px;
+        transform: rotate(0) $scaleRate;
+    }
+    100% {
+        top: 0px;
+        transform: rotate(45deg) $scaleRate;
+    }
+}
+@keyframes bottomLineUnact {
+    100% {
+        top: 7px;
+        transform: rotate(0) scaleX(1);
+    }
+    60% {
+        top: 0px;
+        transform: rotate(0) $scaleRate;
+    }
+    20% {
+        top: 0px;
+        transform: rotate(45deg) $scaleRate;
+    }
+    0% {
+        top: 0px;
+        transform: rotate(45deg) $scaleRate;
+    }
+}
+
+.menu-button-icon {
+    padding-top: 7px;
+    width: 36px;
+    height: 15px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 101;
+    top: 24px;
+    right: 20px;
+    // animation: menuUnact 1s;
+
+    > div {
+        position: relative;
+    }
+
+    span.menu-line {
+        background: #987b68;
+        display: block;
+        width: 36px;
+        height: 2px;
+        position: absolute;
+        z-index: 101;
+
+        &:nth-child(1) {
+            top: -7px;
+        }
+        &:nth-child(2) {
+            top: 0px;
+        }
+        &:nth-child(3) {
+            top: 7px;
+        }
+    }
+
+    &.unactive {
+        // animation: menuUnact $timeAni;
+
+        span.menu-line {
+            &:nth-child(1) {
+                animation: topLineUnact $timeAni;
+            }
+            &:nth-child(2) {
+                animation: centerLineUnact $timeAni;
+            }
+            &:nth-child(3) {
+                animation: bottomLineUnact $timeAni;
+            }
+        }
+    }
+
+    &.active {
+        // top: 40px;
+        // right: 17px;
+        // animation: menuAct $timeAni;
+
+        span.menu-line {
+            &:nth-child(1) {
+                top: 0px;
+                transform: rotate(135deg) $scaleRate;
+                animation: topLine $timeAni;
+            }
+            &:nth-child(2) {
+                transform: scale(0);
+                animation: centerLine $timeAni;
+            }
+            &:nth-child(3) {
+                top: 0px;
+                transform: rotate(45deg) $scaleRate;
+                animation: bottomLine $timeAni;
+            }
+        }
+    }
+}
+
+@keyframes menuShow {
+    0% {
+        visibility: hidden;
+        left: -100%;
+    }
+    1% {
+        visibility: visible;
+        left: -100%;
+    }
+    100% {
+        visibility: visible;
+        left: 0;
+    }
+}
+@keyframes menuUnshow {
+    100% {
+        visibility: hidden;
+        left: -100%;
+    }
+    99% {
+        visibility: visible;
+        left: -100%;
+    }
+    0% {
+        visibility: visible;
+        left: 0;
+    }
+}
+@media screen and (max-width: 767px) {
+    .menu{
+        z-index: 99;
+        visibility: hidden;
+
+        &.active{
+            visibility: visible;
+            animation: menuShow $timeAni;
+        }
+        &.unactive{
+            visibility: hidden;
+            animation: menuUnshow $timeAni;
+        }
+    }
+}

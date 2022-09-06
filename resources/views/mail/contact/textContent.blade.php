@@ -1,0 +1,11 @@
+{{ $last_name }}
+{{ $first_name }}
+{{ $last_name_kana }}
+{{ $first_name_kana }}
+{{ $user_mail }}
+{{ $user_phone }}
+{{ $content }}
+{{ $company }}
+{{ $company_postcode }}
+{{ $company_address }}
+{{ $company_tel }}
