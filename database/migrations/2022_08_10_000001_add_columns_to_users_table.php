@@ -22,7 +22,8 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('last_name')->nullable()->after('email');
             $table->string('first_name')->nullable()->after('last_name');
-            $table->string('address')->nullable()->after('first_name');
+            $table->string('company')->nullable()->after('first_name');
+            $table->string('address')->nullable()->after('company');
             $table->string('tel')->nullable()->after('address');
             $table->smallInteger('role')->default(1)->after('tel');
             $table->timestamp('created_at')->useCurrent();
