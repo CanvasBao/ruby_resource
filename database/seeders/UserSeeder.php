@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $hasAdmin = DB::table('users')->where('role', 9)->exists();
         if (!$hasAdmin) {
             DB::table('users')->insert([
-                'last_name' => 'admin',
+                'name' => 'admin',
                 'email' => 'admin@admin.canvas',
                 'password' => Hash::make('22canvas'),
                 'role' => 9,

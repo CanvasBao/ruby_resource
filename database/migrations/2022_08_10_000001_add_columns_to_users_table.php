@@ -14,14 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(array_merge([
-                'name'
-            ]));
             $table->dropTimestamps();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->string('last_name')->nullable()->after('email');
-            $table->string('first_name')->nullable()->after('last_name');
             $table->string('company')->nullable()->after('first_name');
             $table->string('address')->nullable()->after('company');
             $table->string('tel')->nullable()->after('address');
