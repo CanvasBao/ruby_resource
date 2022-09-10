@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\API\ApiController as Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -11,18 +12,18 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Actions\Fortify\PasswordValidationRules;
 
-class UserApi extends ApiController
+class UserApi extends Controller
 {
     use PasswordValidationRules;
 
     /**
-     * ユーザー一覧取得
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function list(Request $request)
+    public function index()
     {
-        $input = $request->all();
+        $input = request()->all();
         try {
             $query = User::query();
 
@@ -35,35 +36,18 @@ class UserApi extends ApiController
     }
 
     /**
-     *　ユーザーIDをもとにユーザー情報取得
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function detail()
-    {
-        $user = Auth::user();
-        //存在チェック
-        if ($user === null) {
-            return $this->response->error('レコードがありません。');
-        }
-
-        return new UserResource($user);
-    }
-
-    /**
-     * ユーザー登録
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request)
+    public function store(Request $request)
     {
         //入力チェック
         $input = $request->input();
         $valiRule = [
-            'last_name' => 'required|max:50',
-            'first_name' => 'required|max:50',
-            'last_name_kana' => 'required|kana_ex|max:50',
-            'first_name_kana' => 'required|kana_ex|max:50',
+            'name' => 'required|max:50',
+            'company' => 'required|max:50',
             'email' => [
                 'required',
                 'email_ex',
@@ -72,15 +56,6 @@ class UserApi extends ApiController
             'password' => $this->passwordRules(),
             'tel' => ['required', 'regex:/^[0-9]+$/', 'digits_between:8,11'],
         ];
-
-        if (empty($request->role) || $request->role != 9) {
-            $valiRule = array_merge($valiRule, [
-                'post_code' => ['required', 'numeric'],
-                'address_1' => ['required', 'max:255'],
-                'address_2' => ['nullable', 'max:255'],
-                'birthday' => ['nullable', 'date'],
-            ]);
-        }
 
         $validator = Validator::make($input, $valiRule);
         if ($validator->fails()) {
@@ -101,10 +76,28 @@ class UserApi extends ApiController
         return $this->response->registed();
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = User::find($id);
+        //存在チェック
+        if ($user === null) {
+            return $this->response->error('レコードがありません。');
+        }
+
+        return new UserResource($user);
+    }
 
     /**
-     * ユーザー情報編集
+     * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -118,10 +111,8 @@ class UserApi extends ApiController
         //入力チェック
         $input = $request->all();
         $valiRule = [
-            'last_name' => ['sometimes', 'required', 'max:50'],
-            'first_name' => ['sometimes', 'required', 'max:50'],
-            'last_name_kana' => ['sometimes', 'required', 'kana_ex', 'max:50'],
-            'first_name_kana' => ['sometimes', 'required', 'kana_ex', 'max:50'],
+            'name' => ['sometimes', 'required', 'max:50'],
+            'company' => ['sometimes', 'required', 'max:50'],
             'email' => [
                 'sometimes',
                 'required',
@@ -134,15 +125,6 @@ class UserApi extends ApiController
         $password = $request->password;
         if (!empty($password)) {
             $valiRule['password'] = $this->passwordRules();
-        }
-
-        if (empty($request->role) || $request->role != 9) {
-            $valiRule = array_merge($valiRule, [
-                'post_code' => ['sometimes', 'required', 'numeric'],
-                'address_1' => ['sometimes', 'required', 'max:255'],
-                'address_2' => ['nullable', 'max:255'],
-                'birthday' => ['nullable', 'date'],
-            ]);
         }
 
         $validator = Validator::make($input, $valiRule);
@@ -170,11 +152,12 @@ class UserApi extends ApiController
     }
 
     /**
-     * ユーザー削除
+     * Remove the specified resource from storage.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request, $id)
+    public function destroy($id)
     {
         //存在チェック
         $user = User::find($id);

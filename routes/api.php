@@ -16,6 +16,8 @@ use App\Http\Controllers\API\ProductApi;
 |
 */
 
+// sail artisan route:list --path=api/ 
+
 //　Auth
 Route::controller(AuthApi::class)->group(function () {
     Route::post('/login', 'login');
@@ -29,18 +31,10 @@ Route::controller(AuthApi::class)->group(function () {
 Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     //　ユーザー
     Route::controller(UserApi::class)->prefix('user')->group(function () {
-        Route::get('/list', 'list');
-        Route::post('/register', 'register');
-        Route::post('/{id}/update', 'update');
-        Route::get('/info', 'detail');
-        Route::delete('/{id}', 'delete');
     });
+    Route::apiResource('user', UserApi::class);
     //　商品
     Route::controller(ProductApi::class)->prefix('product')->group(function () {
-        Route::get('/list', 'list');
-        Route::post('/register', 'register');
-        Route::post('/{id}/update', 'update');
-        Route::get('/{id}', 'detail');
-        Route::delete('/{id}', 'delete');
     });
+    Route::apiResource('product', ProductApi::class);
 });

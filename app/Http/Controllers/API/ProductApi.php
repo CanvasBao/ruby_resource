@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\API\ApiController;
+use App\Http\Controllers\API\ApiController as Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -10,32 +10,17 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Models\ProductImage;
 
-class ProductApi extends ApiController
+class ProductApi extends Controller
 {
+
     /**
-     *　商品IDをもとに商品情報取得
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function detail($id)
+    public function index()
     {
-        $product = Product::with('images')->find($id);
-        //存在チェック
-        if ($product === null) {
-            return $this->response->error('商品が存在しません。');
-        }
-
-        return new ProductResource($product);
-    }
-
-    /**
-     *　商品一覧取得
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function list(Request $request)
-    {
-        $input = $request->all();
+        $input = request()->all();
         try {
             $query = Product::query();
 
@@ -52,11 +37,12 @@ class ProductApi extends ApiController
     }
 
     /**
-     * 商品登録
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
+    public function store(Request $request)
     {
         $input = $request->all();
 
@@ -102,37 +88,27 @@ class ProductApi extends ApiController
     }
 
     /**
-     * 商品画像登録
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    private function productImageRegist($product, Request $request)
+    public function show($id)
     {
-        try {
-            // ファイルチェック
-            $productImage = $request->file('image');
-            if (!$productImage) {
-                throw new \Exception();
-            }
-
-            // メイン画像
-            foreach ($productImage as $file) {
-                $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-                $this->saveImage($file, 'product/', $fileName);
-
-                ProductImage::create([
-                    'product_id' =>  $product->id,
-                    'image' =>  $fileName,
-                ]);
-            }
-        } catch (\Exception $e) {
-            throw new \Exception('画像のアップロードに失敗しました。再度アップロードをお願いいたします。', 3000);
+        $product = Product::with('images')->find($id);
+        //存在チェック
+        if ($product === null) {
+            return $this->response->error('商品が存在しません。');
         }
+
+        return new ProductResource($product);
     }
 
-
-
     /**
-     * 商品編集
+     * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -179,6 +155,53 @@ class ProductApi extends ApiController
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //存在チェック
+        $product = Product::find($id);
+        if ($product === null) {
+            return $this->response->error('商品が存在しません。');
+        }
+
+        //DBに登録
+        $product->delete();
+
+        return $this->response->success();
+    }
+
+    /**
+     * 商品画像登録
+     */
+    private function productImageRegist($product, Request $request)
+    {
+        try {
+            // ファイルチェック
+            $productImage = $request->file('image');
+            if (!$productImage) {
+                throw new \Exception();
+            }
+
+            // メイン画像
+            foreach ($productImage as $file) {
+                $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $this->saveImage($file, 'product/', $fileName);
+
+                ProductImage::create([
+                    'product_id' =>  $product->id,
+                    'image' =>  $fileName,
+                ]);
+            }
+        } catch (\Exception $e) {
+            throw new \Exception('画像のアップロードに失敗しました。再度アップロードをお願いいたします。', 3000);
+        }
+    }
+
+    /**
      * 商品画像登録
      */
     private function productImageUpdate($product, Request $request)
@@ -218,25 +241,5 @@ class ProductApi extends ApiController
         } catch (\Exception $e) {
             throw new \Exception('画像のアップロードに失敗しました。再度アップロードをお願いいたします。', 3000);
         }
-    }
-
-
-    /**
-     * 商品削除
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(Request $request, $id)
-    {
-        //存在チェック
-        $product = Product::find($id);
-        if ($product === null) {
-            return $this->response->error('商品が存在しません。');
-        }
-
-        //DBに登録
-        $product->delete();
-
-        return $this->response->success();
     }
 }
