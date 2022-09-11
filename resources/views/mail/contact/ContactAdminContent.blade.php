@@ -2,13 +2,13 @@
 
 <body>
     <div class="content_mail">
-        ※{{ $company }}サイトより以下のお問い合わせメールが届いています。<br />
+        ※Mail này đã được gửi từ trang web {{$company}}.<br />
         <br />
-        お名前：{{ $last_name }}&nbsp;{{ $first_name }}<br>
-        フリガナ：{{ $last_name_kana }}&nbsp;{{ $first_name_kana }}<br>
-        メールアドレス：{{ $user_mail }}<br>
-        電話番号：{{ $user_phone }}<br>
-        お問い合わせ内容：<br>
+        Họ và Tên: {{ $user_name }}<br>
+        Tên Công Ty: {{ $user_company }}<br>
+        E-mail: {{ $user_mail }}<br>
+        Số điện thoại: {{ $user_phone }}<br>
+        Nội dung liên hệ:<br>
         {!! $content !!}
         <div>
 </body>

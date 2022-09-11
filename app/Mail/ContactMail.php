@@ -17,10 +17,8 @@ class ContactMail extends Mailable
     public $company_address = '◯◯◯◯◯◯◯◯◯◯◯◯◯◯◯◯';
     public $company_tel = '◯◯◯-◯◯◯-◯◯◯◯';
 
-    public $first_name;
-    public $last_name;
-    public $first_name_kana;
-    public $last_name_kana;
+    public $user_name;
+    public $user_company;
     public $user_mail;
     public $user_phone;
     public $content;
@@ -33,10 +31,8 @@ class ContactMail extends Mailable
     public function __construct($content_param, $admin_flag = false)
     {
         $this->admin_flag = $admin_flag;
-        $this->first_name = nl2br(htmlentities($content_param['first_name']));
-        $this->last_name = nl2br(htmlentities($content_param['last_name']));
-        $this->first_name_kana = nl2br(htmlentities($content_param['first_name_kana']));
-        $this->last_name_kana = nl2br(htmlentities($content_param['last_name_kana']));
+        $this->user_name = nl2br(htmlentities($content_param['name']));
+        $this->user_company = nl2br(htmlentities($content_param['company']));
         $this->user_mail = nl2br(htmlentities($content_param['email']));
         $this->user_phone = nl2br(htmlentities($content_param['tel']));
         $this->content = nl2br(htmlentities($content_param['content']));

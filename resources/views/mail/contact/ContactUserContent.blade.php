@@ -2,26 +2,25 @@
  
 <body>
     <div class="content_mail">
-        ※このメールはシステムからの自動返信です。<br />
+        ※Này là e-mail được gửi tự động từ hệ thống。<br />
         <br />
-        {{ $last_name }}&nbsp;{{ $first_name }} 様<br />
+        Chào anh(chị) {{ $user_name }}<br />
         <br />
-        お世話になっております。<br />
-        この度は、{{ $company }}サイトへご訪問いただき誠にありがとうございます。<br />
-        下記の通りお問合せをお受けいたしました。<br />
-        準備ができ次第、メールにてご返答させていただきます。<br />
-        しばらくお待ちくださいませ。<br />
+        Kính chào quý khách!<br />
+        Cảm ơn bạn đã ghé thăm trang web {{$company}}.<br />
+        Chúng tôi đã nhận được yêu cầu của quý khách như bên dưới.<br />
+        Chúng tôi sẽ trả lời qua e-mail ngay khi sẵn sàng. <br />
+        Làm ơn đợi một chút.<br />
         <br />
-        お名前：{{ $last_name }}&nbsp;{{ $first_name }}<br>
-        フリガナ：{{ $last_name_kana }}&nbsp;{{ $first_name_kana }}<br>
-        メールアドレス：{{ $user_mail }}<br>
-        電話番号：{{ $user_phone }}<br>
-        お問い合わせ内容：<br>
+        Họ và Tên：{{ $user_name }}<br>
+        Tên Công ty：{{ $user_company }}<br>
+        E-mail：{{ $user_mail }}<br>
+        Số điện thoại：{{ $user_phone }}<br>
+        Nội dung liên hệ：<br>
         {!! $content !!}<br />
         <br />
         ===============================<br />
         {{ $company }}<br />
-        〒{{ $company_postcode }}<br />
         {{ $company_address }}<br />
         TEL{{ $company_tel }}<br />
         ===============================
