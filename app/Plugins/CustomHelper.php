@@ -9,10 +9,7 @@ trait CustomHelper
 {
 
     /**
-     * 画像ファイルを保存する。
-     * ・元幅画像
-     * ・800px幅画像
-     * ・350px幅サムネイル画像元画像
+     * Save Image
      *
      * @param $imageFile
      * @param $desPath

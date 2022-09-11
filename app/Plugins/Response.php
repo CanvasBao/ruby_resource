@@ -2,7 +2,7 @@
 
 namespace App\Plugins;
 
-//クラス定義 : Response
+//class definition : Response
 class Response
 {
     private $data = null;
@@ -21,7 +21,7 @@ class Response
      *
      * @return \Illuminate\Http\Response
      */
-    public function success($message = '成功！', $code = 200)
+    public function success($message = 'success', $code = 200)
     {
         return $this->send($message, $code);
     }
@@ -31,7 +31,7 @@ class Response
      *
      * @return \Illuminate\Http\Response
      */
-    public function registed($message = '登録完了しました！')
+    public function registed($message = 'registed')
     {
         return $this->send($message, 201);
     }
@@ -44,7 +44,7 @@ class Response
     public function valiError($data)
     {
         $this->data($data);
-        return $this->send('検証エラー。', 403);
+        return $this->send('Validation error.', 403);
     }
 
     /**
@@ -52,7 +52,7 @@ class Response
      *
      * @return \Illuminate\Http\Response
      */
-    public function error($message = 'エラーが発生しました。', $code = 404)
+    public function error($message = 'Error.', $code = 404)
     {
         if ($this->data instanceof \Exception) {
             if ($this->data->getCode() === 3000) {
@@ -69,7 +69,7 @@ class Response
      *
      * @return \Illuminate\Http\Response
      */
-    public function rollback($message = 'エラーが発生しました。')
+    public function rollback($message = 'Error.')
     {
         return $this->error($message, 500);
     }
