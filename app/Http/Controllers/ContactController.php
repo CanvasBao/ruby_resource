@@ -12,7 +12,7 @@ use App\Mail\ContactMailUser;
 class ContactController extends ApiController
 {
     /**
-     * お問い合わせ送信
+     * send mail contact
      *
      * @param  array  $request->input
      * @return \Illuminate\View\View
@@ -36,9 +36,9 @@ class ContactController extends ApiController
             Mail::to($input['email'])
                 ->send(new ContactMail((array) $input));
 
-            return redirect()->route('contact.completed')->with('status', '成功しました。');
+            return redirect()->route('contact.completed')->with('status', 'success');
         } catch (\Exception $e) {
-            return back()->withErrors(['msg' => 'エラーが発生しました。']);
+            return back()->withErrors(['msg' => 'Error']);
         }
     }
 }
