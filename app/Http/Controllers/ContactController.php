@@ -21,10 +21,8 @@ class ContactController extends ApiController
     {
         $input = $request->input();
         Validator::make($input, [
-            'last_name' => ['required', 'max:50'],
-            'first_name' => ['required', 'max:50'],
-            'last_name_kana' => ['required', 'kana_ex', 'max:50'],
-            'first_name_kana' => ['required', 'kana_ex', 'max:50'],
+            'name' => ['required', 'max:50'],
+            'company' => ['required', 'max:50'],
             'email' => ['required', 'email_ex', 'max:50'],
             'tel' => ['required', 'regex:/^[0-9]+$/', 'digits_between:8,11'],
             'content' => ['required', 'max:255'],

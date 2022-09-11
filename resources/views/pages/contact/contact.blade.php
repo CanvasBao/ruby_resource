@@ -1,7 +1,7 @@
 @extends('layout.html')
 
 @section('meta')
-<x-shared.meta title="お問い合わせ">
+<x-shared.meta title="Liên hệ">
     {{--
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> --}}
 </x-shared.meta>
@@ -21,21 +21,19 @@
             <form id="contactForm" class="pt-[60px] pb-20" action="{{route('contact.send')}}" method="POST">
                 {{ csrf_field() }}
                 <div class="space-y-[30px] text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]">
-                    <x-form.row rowTitle="お名前" redtitle="必須">
-                        <x-form.input type="text" name="last_name" place="姓"/>
-                        <x-form.input type="text" name="first_name" place="名"/>
+                    <x-form.row rowTitle="Tên" redtitle="bắt buộc">
+                        <x-form.input type="text" name="name" place="Họ và Tên"/>
                     </x-form.row>
-                    <x-form.row rowTitle="フリガナ" redtitle="必須">
+                    <x-form.row rowTitle="Tên Công Ty" redtitle="bắt buộc">
                         <x-form.input type="text" name="last_name_kana" place="セイ"/>
-                        <x-form.input type="text" name="first_name_kana" place="メイ"/>
                     </x-form.row>
-                    <x-form.row rowTitle="メールアドレス" redtitle="必須">
+                    <x-form.row rowTitle="địa chỉ mail" redtitle="bắt buộc">
                         <x-form.input type="text" name="email" place="samplemail@info.co.jp"/>
                     </x-form.row>
-                    <x-form.row rowTitle="TEL" redtitle="必須">
+                    <x-form.row rowTitle="điện thoại" redtitle="bắt buộc">
                         <x-form.input type="text" name="tel" place="08012345678"/>
                     </x-form.row>
-                    <x-form.row rowTitle="お問い合わせ内容" redtitle="必須">
+                    <x-form.row rowTitle="nội dung" redtitle="bắt buộc">
                         <x-form.input type="textarea" name="content" place=""/>
                     </x-form.row>
                 </div>
