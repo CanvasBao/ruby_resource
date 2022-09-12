@@ -11,7 +11,7 @@
 <x-shared.content-box>
     <div class="w-full max-w-[500px]">
         <div>
-            <x-item.page-title class="text-center text-30fs text-wood-color" title="お問い合わせ" />
+            <x-item.page-title class="text-center text-30fs text-wood-color" title="Liên hệ" />
         </div>
         <div class="smd:bg-[#ffff] smd:pt-[39px] smd:pr-[25px] smd:pb-[70px] smd:pl-[21px] smd:mt-[51px] pt-[80px]">
             <div class="smd:text-[14px] smd:leading-[22px] text-16fs-28lh font-medium text-wood-color smd:p-0">
