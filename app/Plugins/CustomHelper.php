@@ -19,16 +19,16 @@ trait CustomHelper
     {
         $storagePath =  storage_path('app/public/uploads/' . $desPath);
         if ($imageFile != null) {
-            // 元画像を保存する
+            // save the original image
             $imageFile->move($storagePath, $fileName);
         } else if ($file_path != null) {
-            // 元画像を複製する
+            // copy the original image
             copy($file_path, $storagePath . '/' . $fileName);
         } else {
             return false;
         }
 
-        // 350px幅サムネイル画像を保存する
+        // save image with size 350xh
         $imageThumb = Image::make($storagePath . '/' . $fileName);
         $imageThumb->resize(350, null, function ($constraint) {
             $constraint->aspectRatio();
@@ -39,7 +39,7 @@ trait CustomHelper
     }
 
     /**
-     * 画像を削除
+     * delete image in storage
      */
     protected function removeImage($desPath, $fileName)
     {
@@ -56,7 +56,7 @@ trait CustomHelper
     }
 
     /**
-     * パラメータで一覧取得
+     * get list within params
      *
      * @param $query
      * @param $input

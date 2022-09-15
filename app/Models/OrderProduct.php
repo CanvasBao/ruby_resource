@@ -29,10 +29,6 @@ class OrderProduct extends Model
         'product_id',
 		'price',
         'quantity',
-		'thickness',
-		'depth',
-		'length',
-		'weight',
 		'create_at'
     ];
 

@@ -60,15 +60,15 @@ class EmailVerification extends Controller
 
         $user = User::where('email', $input['email'])->where('role', 1)->first();
         if (!$user) {
-            return back()->withErrors("メールが存在しません。");
+            return back()->withErrors("email isn't exist");
         }
 
         if ($user->hasVerifiedEmail()) {
-            return back()->withErrors("メールが確認されました。");
+            return back()->withErrors("email has been confirmed");
         }
 
         $user->sendEmailVerificationNotification();
 
-        return back()->with('status', '確認メールを送信しました。');
+        return back()->with('status', 'verify mail has been send');
     }
 }
