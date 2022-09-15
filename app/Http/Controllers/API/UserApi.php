@@ -43,7 +43,7 @@ class UserApi extends Controller
      */
     public function store(Request $request)
     {
-        //入力チェック
+        // check input
         $input = $request->input();
         $valiRule = [
             'name' => 'required|max:50',
@@ -62,10 +62,11 @@ class UserApi extends Controller
             return $this->response->valiError($validator->errors());
         }
 
-        //DBに登録
+        //begin
         DB::beginTransaction();
         try {
             $input['password'] = $this->makePassword($input['password']);
+            // update DB
             User::create($input);
             DB::commit();
         } catch (\Exception $e) {
@@ -85,7 +86,7 @@ class UserApi extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        //存在チェック
+        // check exist
         if ($user === null) {
             return $this->response->error('レコードがありません。');
         }
@@ -102,13 +103,13 @@ class UserApi extends Controller
      */
     public function update(Request $request, $id)
     {
-        //存在チェック
+        //check exists
         $user = User::find($id);
         if ($user === null) {
             return $this->response->error('ユーザーが存在しません。');
         }
 
-        //入力チェック
+        //check input
         $input = $request->all();
         $valiRule = [
             'name' => ['sometimes', 'required', 'max:50'],
@@ -132,7 +133,7 @@ class UserApi extends Controller
             return $this->response->valiError($validator->errors());
         }
 
-        //DBに登録
+        //begin
         DB::beginTransaction();
         try {
             if (!empty($input['password'])) {
@@ -140,6 +141,7 @@ class UserApi extends Controller
             } elseif (isset($input['password'])) {
                 unset($input['password']);
             }
+            // update
             $user->update($input);
 
             DB::commit();
@@ -159,18 +161,18 @@ class UserApi extends Controller
      */
     public function destroy($id)
     {
-        //存在チェック
+        //check exists
         $user = User::find($id);
         if ($user === null) {
             return $this->response->error('ユーザーが存在しません。');
         }
 
-        //自分チェック
+        // check root admin
         if ($id == Auth::id()) {
             return $this->response->error('自分を削除できません。');
         }
 
-        //DBに登録
+        //update DB
         $user->delete();
 
         return $this->response->success();
