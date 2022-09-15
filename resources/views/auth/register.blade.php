@@ -1,7 +1,7 @@
 @extends('layout.html')
 
 @section('meta')
-<x-shared.meta title="ユーザー登録">
+<x-shared.meta title="regist user">
 </x-shared.meta>
 @endsection
 
@@ -9,10 +9,10 @@
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-[500px] w-full space-y-8">
         <div>
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">アカウントを登録</h2>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Đăng ký tài khoản</h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 また
-                <a href="{{route('login')}}" class="font-medium text-indigo-600 hover:text-indigo-500"> ログインへ
+                <a href="{{route('login')}}" class="font-medium text-indigo-600 hover:text-indigo-500">Login
                 </a>
             </p>
         </div>

@@ -1,7 +1,7 @@
 @extends('layout.html')
 
 @section('meta')
-<x-shared.meta title="パスワードを忘れた方">
+<x-shared.meta title="resend verify mail">
     {{--
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> --}}
 </x-shared.meta>
@@ -12,9 +12,9 @@
 
     <div class="max-w-md w-full space-y-8">
         <div>
-            <x-item.page-title title="再送確認？" />
+            <x-item.page-title title="Tái xác nhận e-mail?" />
             <p class="mt-2 text-center text-sm text-gray-600">
-                <a href="{{route('login')}}" class="font-medium text-indigo-600 hover:text-indigo-500">ログインへ </a>
+                <a href="{{route('login')}}" class="font-medium text-indigo-600 hover:text-indigo-500">go to Login </a>
             </p>
         </div>
         @if (session('status'))
@@ -26,7 +26,7 @@
         <form class="mt-8 space-y-6" action="{{route('verification.send')}}" method="POST">
             {{ csrf_field() }}
             <div>
-                <x-item.button>送信</x-item.button>
+                <x-item.button>Gửi</x-item.button>
             </div>
         </form>
     </div>

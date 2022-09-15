@@ -12,7 +12,7 @@ use App\Models\MstTaxRule;
 class TaxApi extends ApiController
 {
     /**
-     * 税率取得
+     * git tax active now
      *
      * @return \Illuminate\Http\Response
      */
@@ -23,7 +23,7 @@ class TaxApi extends ApiController
     }
 
     /**
-     * 税率一覧取得
+     * get tax list
      *
      * @return \Illuminate\Http\Response
      */
@@ -53,7 +53,7 @@ class TaxApi extends ApiController
     }
 
     /**
-     * 税率新規作成
+     * create new tax
      *
      * @return \Illuminate\Http\Response
      */
@@ -87,7 +87,7 @@ class TaxApi extends ApiController
     }
 
     /**
-     *　税率削除
+     *　delete tax
      *
      * @return \Illuminate\Http\Response
      */
