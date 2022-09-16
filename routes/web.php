@@ -34,16 +34,16 @@ Route::controller(EmailVerification::class)->name('verification.')->prefix('emai
 Route::name('profile.')->prefix('profile')->middleware('auth')->group(function () {
     Route::get('/', function () {
         $user = Auth::user();
-        return view('pages.profile', compact('user'));
+        return view('pages.profile.index', compact('user'));
     })->name('show');
 
     Route::get('/edit', function () {
         $user = Auth::user();
-        return view('pages.profile-edit', compact('user'));
+        return view('pages.profile.edit', compact('user'));
     })->name('edit');
 
     Route::get('/password', function () {
-        return view('pages.profile-password');
+        return view('pages.profile.password');
     })->name('password');
 });
 
