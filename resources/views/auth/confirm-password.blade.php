@@ -1,7 +1,7 @@
 @extends('layout.html')
 
 @section('meta')
-<x-shared.meta title="パスワードの確認">
+<x-shared.meta title="Xác nhận mật khẩu">
 </x-shared.meta>
 @endsection
 
@@ -10,9 +10,9 @@
 
     <div class="max-w-md w-full space-y-8">
         <div>
-            <x-item.page-title title="パスワードを確認" />
+            <x-item.page-title title="Xác nhận mật khẩu" />
             <p class="mt-2 text-center text-sm text-gray-600">
-                <a href="/" class="font-medium text-indigo-600 hover:text-indigo-500">トップページへ</a>
+                <a href="/" class="font-medium text-indigo-600 hover:text-indigo-500">Đến trang chủ</a>
             </p>
         </div>
         <x-shared.error-msg />
@@ -21,13 +21,13 @@
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
                     <x-form.row>
-                        <x-form.input hideError="true" type="password" name="password" place="パスワード"/>
+                        <x-form.input hideError="true" type="password" name="password" place="mật khẩu"/>
                     </x-form.row>
                 </div>
             </div>
 
             <div>
-                <x-item.button>確認</x-item.button>
+                <x-item.button>Xác nhận</x-item.button>
             </div>
         </form>
     </div>
