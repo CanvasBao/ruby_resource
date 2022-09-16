@@ -1,7 +1,7 @@
 @extends('layout.html')
 
 @section('meta')
-<x-shared.meta title="ログイン">
+<x-shared.meta title="Đăng nhập">
 </x-shared.meta>
 @endsection
 
@@ -9,7 +9,7 @@
 <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
         <div>
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">ログイン</h2>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Đăng nhập</h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 また
                 <a href="{{route('register')}}" class="font-medium text-indigo-600 hover:text-indigo-500">アカウントを登録
@@ -34,10 +34,10 @@
             {{ csrf_field() }}
             <div class="rounded-md shadow-sm -space-y-px">
                 <x-form.row>
-                    <x-form.input hideError="true" type="email" name="email" place="メールアドレス" inpClass="rounded-none rounded-t-lg"/>
+                    <x-form.input hideError="true" type="email" name="email" place="e-mail" inpClass="rounded-none rounded-t-lg"/>
                 </x-form.row>
                 <x-form.row>
-                    <x-form.input hideError="true" type="password" name="password" place="パスワード" inpClass="rounded-none rounded-b-lg"/>
+                    <x-form.input hideError="true" type="password" name="password" place="mật khẩu" inpClass="rounded-none rounded-b-lg"/>
                 </x-form.row>
             </div>
 
@@ -46,18 +46,18 @@
                     <input id="remember" name="remember" type="checkbox"
                         class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                         @checked(old('remember')==='on' )>
-                    <label for="remember" class="ml-2 block text-sm text-gray-900"> Remember me </label>
+                    <label for="remember" class="ml-2 block text-sm text-gray-900">Ghi nhớ đăng nhập</label>
                 </div>
 
                 <div class="text-sm">
                     <a href="{{route('password.request')}}" class="font-medium text-indigo-600 hover:text-indigo-500">
-                        パスワードを忘れた？
+                        Quên mật khẩu？
                     </a>
                 </div>
             </div>
 
             <div>
-                <x-item.button>ログイン</x-item.button>
+                <x-item.button>Đăng nhập</x-item.button>
             </div>
         </form>
     </div>
