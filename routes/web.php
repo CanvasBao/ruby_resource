@@ -49,15 +49,7 @@ Route::name('profile.')->prefix('profile')->middleware('auth')->group(function (
 
 Route::get('/home', function () {
     return view('welcome');
-})->middleware('auth')->name('home');
-
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->middleware('verified')->name('dashboard');
-
-Route::get('/home2', function () {
-    return view('welcome');
-})->middleware(['verified', 'password.confirm'])->name('home2');
+})->name('home');
 
 Route::delete('/user', function (Request $request) {
     $user = User::find(Auth::user()->id);
@@ -72,7 +64,7 @@ Route::delete('/user', function (Request $request) {
 })->middleware('auth', 'password.confirm')->name('profile.delete');
 
 
-// お問い合わせ
+// contact
 Route::controller(ContactController::class)->name('contact.')->prefix('contact')->group(function () {
     Route::get('/', function () {
         return view('pages.contact.contact');
