@@ -14,7 +14,7 @@ class SystemSeeder extends Seeder
      */
     public function run()
     {
-        //税率
+        //Thuế
         DB::table('mst_tax_rule')->updateOrInsert(['id' => 1], [
             'id' => 1,
             'tax_rate' => 10,
@@ -22,11 +22,12 @@ class SystemSeeder extends Seeder
             'deleted_at' => null
         ]);
 
-        //受注状況
+        //Trạng thái đơn hàng
         $orderStatus = [
-            ['id' => 1, 'status_name' => '新規受付', 'status_color' => '#437ec4', 'sort_no' => 1, 'deleted_at' => NULL],
-            ['id' => 2, 'status_name' => 'キャンセル', 'status_color' => '#c04949', 'sort_no' => 2, 'deleted_at' => NULL],
-            ['id' => 3, 'status_name' => '対応完了', 'status_color' => '#A3A3A3', 'sort_no' => 3, 'deleted_at' => NULL]
+            ['id' => 1, 'status_name' => 'Đơn Hàng Mới', 'status_color' => '#437ec4', 'sort_no' => 1, 'deleted_at' => NULL],
+            ['id' => 2, 'status_name' => 'Đã Huỷ', 'status_color' => '#c04949', 'sort_no' => 2, 'deleted_at' => NULL],
+            ['id' => 3, 'status_name' => 'Đã Hoàn Thành', 'status_color' => '#A3A3A3', 'sort_no' => 3, 'deleted_at' => NULL],
+            ['id' => 4, 'status_name' => 'Đã Giao Hàng', 'status_color' => '#A3A3A3', 'sort_no' => 4, 'deleted_at' => NULL]
         ];
         foreach ($orderStatus as $status) {
             DB::table('mst_order_status')->updateOrInsert(['id' => $status['id']], $status);
