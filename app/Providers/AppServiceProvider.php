@@ -24,17 +24,36 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // メールアドレス
+
+        $this->addValidatorConfig();
+        $this->registerClassComponent();
+    }
+
+    
+    /**
+     * validator
+     */
+    private function addValidatorConfig()
+    {
+        // e-mail
         Validator::extend('email_ex', function ($attribute, $value, $parameters, $validator) {
             return filter_var($value, FILTER_VALIDATE_EMAIL);
         });
-        // フリガナチェック
-        Validator::extend('kana_ex', function ($attribute, $value, $parameters, $validator) {
-            return preg_match('/^[ァ-ンー 　]+$/u', $value);
-        });
-        //商品コード
+        //product code
         Validator::extend('code_ex', function ($attribute, $value, $parameters, $validator) {
             return preg_match('/^[A-Za-z0-9\-]+$/u', $value);
         });
+        //TEL
+        Validator::extend('tel_ex', function ($attribute, $value, $parameters, $validator) {
+            return preg_match('/^([0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}|[0-9]{8,11})+$/u', $value);
+        });
+        
+    }
+
+    /**
+     * add class component
+     */
+    private function registerClassComponent()
+    {
     }
 }
