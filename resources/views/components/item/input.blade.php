@@ -20,6 +20,6 @@
         @endif
     </select>
 @else
-<input id="{{$name}}" name="{{$name}}" type="{{$type}}" autocomplete="off"  style="height:{{$height}};"
+<input {{$attributes->only('readonly')}} id="{{$name}}" name="{{$name}}" type="{{$type}}" autocomplete="off"  style="height:{{$height}};"
     class="{{ !empty($inpClass) ? $inpClass : '' }}" placeholder="{{!empty($place) ? $place : ''}}" value="{{$slot}}">
 @endif
