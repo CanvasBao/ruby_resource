@@ -12,22 +12,11 @@ use App\Models\MstTaxRule;
 class TaxApi extends ApiController
 {
     /**
-     * git tax active now
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getTax(){
-        $tax = (new MstTaxRule)->getTaxNow();
-
-        return $this->response->data(['tax_rate' => $tax])->success();
-    }
-
-    /**
      * get tax list
      *
      * @return \Illuminate\Http\Response
      */
-    public function getList(){
+    public function index(){
         $list = MstTaxRule::query()
         ->leftJoin('mst_tax_rule as tax_active', function($join)
         {
@@ -57,7 +46,7 @@ class TaxApi extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request){
+    public function store(Request $request){
         $input = $request->all();
 
         $validatorInput = [
@@ -91,17 +80,17 @@ class TaxApi extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
         DB::beginTransaction();
         try {
             if($id == 1){
-                return $this->response->error('削除できません。');
+                return $this->response->error('can not delete');
             }
 
             $taxRule = MstTaxRule::where('id', '=', $id)->first();
             if ($taxRule === null) {
-                return $this->response->error('税率が存在しません。');
+                return $this->response->error('tax is not exist');
             }
 
             $taxRule->delete();
@@ -113,6 +102,17 @@ class TaxApi extends ApiController
         }
 
         return $this->response->registed();
+    }
+
+    /**
+     * git tax active now
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getTax(){
+        $tax = (new MstTaxRule)->getTaxNow();
+
+        return $this->response->data(['tax_rate' => $tax])->success();
     }
 
 }
