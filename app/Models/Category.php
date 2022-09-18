@@ -4,21 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ProductImage;
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Product extends Model
+class Category extends Model
 {
 	use SoftDeletes, HasFactory;
 	const DELETED_AT = 'deleted_at';
-	protected $table = 'product';
+	protected $table = 'category';
 	public $timestamps = false;
-
 	//
 	protected $casts = [
 		'id' => 'int',
-		'price' => 'int',
 		'sort_no' => 'int'
 	];
 
@@ -28,29 +25,21 @@ class Product extends Model
 
 	protected $fillable = [
 		'id',
-		'name',
-		'price',
-		'description',
-		'code',
-		'sort_no',
-		'created_at',
-		'deleted_at'
+		'category_name',
+		'category_slug',
+		'sort_no'
 	];
-
-	public function product()
-	{
-		return $this->belongsTo(Product::class);
-	}
-
-	public function images()
-	{
-		return $this->hasMany(ProductImage::class, 'product_id')
-			->orderBy('created_at', 'desc')
-			->orderBy('id', 'desc');
-	}
 
 	public function category()
 	{
-		return $this->hasOne(Category::class, 'id', 'category_id');
+		return $this->belongsTo(Category::class);
+	}
+
+	public function products()
+	{
+		return $this->hasMany(Product::class, 'category_id')
+			->orderBy('sort_no', 'asc')
+			->orderBy('created_at', 'desc')
+			->orderBy('id', 'desc');
 	}
 }
