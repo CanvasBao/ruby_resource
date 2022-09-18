@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,8 +22,9 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
+            'category_id' => $this->randomCategory(),
             'name' => $this->faker->colorName(),
-            'price' => $this->faker->numberBetween(1000, 100000),
+            'price' => $this->faker->numberBetween(10, 100) . '00',
             'description' => $this->faker->paragraphs(2, true),
             'code' => $this->faker->unique()->regexify('[A-Z]{5}[0-4]{3}'),
             'sort_no' => Product::max('sort_no') + (++static::$index),
@@ -42,5 +44,15 @@ class ProductFactory extends Factory
                 'deleted_at' => now(),
             ];
         });
+    }
+
+    private function randomCategory()
+    {
+        $cat = Category::get();
+        if ($cat->isEmpty()) {
+            return null;
+        }
+
+        return $cat->random()->id;
     }
 }

@@ -15,8 +15,14 @@ class TestSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
-        \App\Models\Product::factory(50)->create();
+        \App\Models\User::factory(5)->create();
+        \App\Models\Category::factory(5)->create();
+        \App\Models\Product::factory(20)->create()
+            ->each(function (\App\Models\Product $product) {
+                \App\Models\ProductImage::factory(2)->create([
+                    'product_id' => $product->id,
+                ]);
+            });
     }
 
     // sail artisan migrate:refresh --seed && sail artisan db:seed --class=TestSeeder 
