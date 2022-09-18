@@ -28,4 +28,10 @@ class ProductImage extends Model
         'image',
 		'create_at'
     ];
+	
+
+	public function product()
+	{
+		return $this->hasOne(Product::class, 'id', 'product_id');
+	}
 }
