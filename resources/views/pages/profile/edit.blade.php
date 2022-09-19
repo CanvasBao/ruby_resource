@@ -41,36 +41,26 @@
             <form class="mt-8 space-y-6" action="{{route('user-profile-information.update')}}" method="POST">
                 @method('PUT')
                 {{ csrf_field() }}
-                <div class="rounded-md shadow-sm -space-y-px">
-                    <div>
-                        <label for="name" class="sr-only">Name</label>
-                        <input id="name" name="name" type="text" autocomplete="name" required
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Your name" value="{{ old('name', $user->name) }}">
-                    </div>
-                    <div>
-                        <label for="email-address" class="sr-only">Email address</label>
-                        <input id="email-address" name="email" type="email" autocomplete="email" required
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Email address" value="{{ old('email', $user->email) }}">
-                    </div>
+                <div class="rounded-md shadow-sm space-y-3">
+                    <x-form.row rowTitle="Họ và Tên">
+                        <x-form.input type="text" name="name" place="Họ và Tên" value="{{ $user->name }}"/>
+                    </x-form.row>
+                    <x-form.row rowTitle="Tên Công Ty">
+                        <x-form.input type="text" name="company" place="Tên Công Ty" value="{{ $user->company }}"/>
+                    </x-form.row>
+                    <x-form.row rowTitle="e-mail">
+                        <x-form.input type="email" name="email" place="samplemail@info.vn" value="{{ $user->email }}"/>
+                    </x-form.row>
+                    <x-form.row rowTitle="Đại chỉ">
+                        <x-form.input type="text" name="address" place="TP HCM" value="{{ $user->address }}"/>
+                    </x-form.row>
+                    <x-form.row rowTitle="Số điện thoại">
+                        <x-form.input type="text" name="tel" place="08012345678" value="{{ $user->tel }}"/>
+                    </x-form.row>
                 </div>
 
                 <div>
-                    <button type="submit"
-                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                            <!-- Heroicon name: solid/lock-closed -->
-                            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </span>
-                        Update
-                    </button>
+                    <x-item.button>Update</x-item.button>
                 </div>
             </form>
             <form class="mt-2" action="{{route('profile.delete')}}" method="POST">
@@ -78,15 +68,6 @@
                 {{ csrf_field() }}
                 <button type="submit"
                     class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                        <!-- Heroicon name: solid/lock-closed -->
-                        <svg class="h-5 w-5 text-red-500 group-hover:text-red-400" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </span>
                     Remove
                 </button>
             </form>

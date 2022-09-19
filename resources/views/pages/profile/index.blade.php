@@ -15,19 +15,22 @@
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Your profile</h2>
         </div>
         <div class="mt-8 space-y-6">
-            <div class="rounded-md shadow-sm -space-y-px">
-                <div>
-                    <label for="name" class="sr-only">Name</label>
-                    <input id="name" name="name" type="text" autocomplete="name" required
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Your name" value="{{ $user->name }}" disabled>
-                </div>
-                <div>
-                    <label for="email-address" class="sr-only">Email address</label>
-                    <input id="email-address" name="email" type="email" autocomplete="email" required
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Email address" value="{{ $user->email }}" disabled>
-                </div>
+            <div class="rounded-md shadow-sm space-y-3">
+                <x-form.row rowTitle="Họ và Tên">
+                    <x-form.input type="text" name="name" place="Họ và Tên" value="{{ $user->name }}" readonly />
+                </x-form.row>
+                <x-form.row rowTitle="Tên Công Ty">
+                    <x-form.input type="text" name="company" place="Tên Công Ty" value="{{ $user->company }}" readonly />
+                </x-form.row>
+                <x-form.row rowTitle="e-mail">
+                    <x-form.input type="email" name="email" place="samplemail@info.vn" value="{{ $user->email }}" readonly />
+                </x-form.row>
+                <x-form.row rowTitle="Đại chỉ">
+                    <x-form.input type="text" name="address" place="TP HCM" value="{{ $user->address }}" readonly />
+                </x-form.row>
+                <x-form.row rowTitle="Số điện thoại">
+                    <x-form.input type="text" name="tel" place="08012345678" value="{{ $user->tel }}" readonly />
+                </x-form.row>
             </div>
 
             <div>
