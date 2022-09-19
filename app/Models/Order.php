@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\OrderProduct;
 use App\Models\Coupon;
 use App\Models\MstOrderStatus;
-use App\Models\User;
+use App\Models\OrderCustomer;
 
 class Order extends Model
 {
-	use SoftDeletes;
+	use SoftDeletes, HasFactory;
 	const DELETED_AT = 'deleted_at';
 	protected $table = 'order';
 	public $timestamps = true;
