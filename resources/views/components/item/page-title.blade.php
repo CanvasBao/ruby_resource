@@ -1,1 +1,1 @@
-<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900  {{ !empty($class) ? $class : '' }}">{{ $title }}</h2>
+<h2 class="text-center text-3xl font-extrabold text-gray-900 {{ $class ?? '' }}">{{ $title ?? '' }}</h2>
