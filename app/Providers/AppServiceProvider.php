@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             return preg_match('/^[A-Za-z0-9\-]+$/u', $value);
         });
         //TEL
-        Validator::extend('tel_ex', function ($attribute, $value, $parameters, $validator) {
+        Validator::extend('phone_ex', function ($attribute, $value, $parameters, $validator) {
             return preg_match('/^([0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}|[0-9]{8,11})+$/u', $value);
         });
         

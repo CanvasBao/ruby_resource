@@ -24,16 +24,15 @@ class OrderCustomer extends Model
 	];
     
     protected $fillable = [
-        'id',
-        'order_id',
-		'user_id',
-		'name',
-		'company',
-		'address',
-		'address',
-		'tel',
-		'email',
-		'create_at'
+			'id',
+			'order_id',
+			'user_id',
+			'name',
+			'company',
+			'address',
+			'phone',
+			'email',
+			'create_at'
     ];
 
 	public function user(){
