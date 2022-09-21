@@ -21,7 +21,7 @@ class CreateOrderCustomerTable extends Migration
             $table->string('name')->nullable();
             $table->string('company_name')->nullable();
             $table->string('address')->nullable();
-            $table->string('tel')->nullable();
+            $table->string('phone')->nullable();
             $table->string('email')->nullable();
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
