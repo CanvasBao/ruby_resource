@@ -31,7 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
             'address' => ['required', 'string', 'max:255'],
-            'tel' => ['required', 'tel_ex']
+            'phone' => ['required', 'phone_ex']
         ])->validate();
 
         $user = User::create([
@@ -40,7 +40,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'address' => $input['address'],
-            'tel' => $input['tel']
+            'phone' => $input['phone']
         ]);
 
         return $user;

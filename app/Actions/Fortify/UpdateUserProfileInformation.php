@@ -28,7 +28,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 Rule::unique('users')->ignore($user->id)->whereNull('deleted_at'),
             ],
             'address' => ['required', 'string', 'max:255'],
-            'tel' => ['required', 'tel_ex']
+            'phone' => ['required', 'phone_ex']
         ])->validate();
 
         if (
@@ -41,7 +41,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'name' => $input['name'],
                 'company' => $input['company'],
                 'address' => $input['address'],
-                'tel' => $input['tel']
+                'phone' => $input['phone']
             ])->save();
         }
     }
