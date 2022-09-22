@@ -30,8 +30,8 @@ class CreateOrderTable extends Migration
             $table->string('note','500')->nullable();
             $table->unsignedSmallInteger('print_status')->default(0);
 
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
 
         });

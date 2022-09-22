@@ -23,8 +23,8 @@ class CreateProductTable extends Migration
             $table->string('description', '500')->nullable();
             $table->unsignedInteger('sort_no');
 
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
         });
     }

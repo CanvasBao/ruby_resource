@@ -21,8 +21,8 @@ class CreateOrderProductTable extends Migration
             $table->unsignedInteger('price')->nullable();
             $table->unsignedInteger('quantity')->nullable();
 
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
             $table->foreign('product_id')->references('id')->on('product');
             $table->foreign('order_id')->references('id')->on('order');

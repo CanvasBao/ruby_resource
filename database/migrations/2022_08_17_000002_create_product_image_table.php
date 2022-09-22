@@ -19,7 +19,7 @@ class CreateProductImageTable extends Migration
             $table->unsignedInteger('product_id');
             $table->string('image','100');
 
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->useCurrent();
 
             $table->foreign('product_id')->references('id')->on('product');
         });
