@@ -23,7 +23,7 @@ class ProductFactory extends Factory
     {
         return [
             'category_id' => $this->randomCategory(),
-            'name' => $this->faker->colorName(),
+            'name' => $this->faker->sentence(),
             'price' => $this->faker->numberBetween(10, 100) . '00',
             'description' => $this->faker->paragraphs(2, true),
             'code' => $this->faker->unique()->regexify('[A-Z]{5}[0-4]{3}'),

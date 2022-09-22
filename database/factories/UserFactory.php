@@ -20,13 +20,13 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'address' => $this->faker->address(),
-            'phone' => $this->faker->phoneNumber(),
-            'role' =>  $this->faker->randomElement([1, 9]),
+            'company' => $this->faker->company(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'address' => $this->faker->address(),
+            'phone' =>  $this->faker->regexify('0(3|5|7|8|9){1}[0-9]{8}'),
             'password' => Hash::make('baoit13'), // password
-            'remember_token' => Str::random(10),
+            'role' =>  1,
+            'email_verified_at' => now()
         ];
     }
 
