@@ -14,7 +14,7 @@
     <div class="mt-5">
       <div class="text-base sm:text-sm font-medium">
         <span>Hãy nhập vào các mục bắt buộc, sau đó nhấn nút GỬI</span> <br class="md:hidden">
-        <span class="md:hidden">Nếu bạn đang gấp, xin vui lòng liên hệ với chúng tôi qua điện thoại.</span>
+        <span>Nếu bạn đang gấp, xin vui lòng liên hệ với chúng tôi qua điện thoại.</span>
       </div>
       <form id="contactForm" class="mt-4 grid grid-cols-1 gap-y-6 sm:gap-x-4" action="{{ route('contact.send') }}"
         method="POST">
