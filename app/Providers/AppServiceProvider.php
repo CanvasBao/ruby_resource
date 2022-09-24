@@ -24,12 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $this->addValidatorConfig();
         $this->registerClassComponent();
     }
 
-    
     /**
      * validator
      */
@@ -47,7 +45,6 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('phone_ex', function ($attribute, $value, $parameters, $validator) {
             return preg_match('/^[0-9]{10}+$/u', $value);
         });
-        
     }
 
     /**
@@ -55,5 +52,9 @@ class AppServiceProvider extends ServiceProvider
      */
     private function registerClassComponent()
     {
+         //shared
+        Blade::component('shared.meta', \App\View\Components\shared\meta::class);
+        Blade::component('shared.pagination', \App\View\Components\shared\pagination::class);
+
     }
 }
