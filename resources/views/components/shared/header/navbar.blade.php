@@ -1,6 +1,6 @@
 <x-shared.header.link name="top">
-    Home
+  Trang chủ
 </x-shared.header.link>
 <x-shared.header.link name="contact.show">
-    Contact
+  Liên hệ
 </x-shared.header.link>
