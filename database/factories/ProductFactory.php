@@ -55,4 +55,20 @@ class ProductFactory extends Factory
 
         return $cat->random()->id;
     }
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterMaking(function (Product $product) {
+            //
+        })->afterCreating(function (Product $product) {
+            $num = $this->faker->numberBetween(1, 3);
+            ProductImage::factory($num)->create([
+                'product_id' => $product->id,
+            ]);
+        });
+    }
 }
