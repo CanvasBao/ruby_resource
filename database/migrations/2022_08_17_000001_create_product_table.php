@@ -18,9 +18,9 @@ class CreateProductTable extends Migration
             $table->unsignedInteger('category_id')->nullable();
 
             $table->string('code', '50')->nullable();
-            $table->string('name', '100');
-            $table->unsignedInteger('price');
-            $table->string('description', '500')->nullable();
+            $table->string('name', '100')->nullable();
+            $table->unsignedInteger('price')->nullable();
+            $table->longText('description')->nullable();
             $table->unsignedInteger('sort_no');
 
             $table->timestamp('created_at')->useCurrent();
