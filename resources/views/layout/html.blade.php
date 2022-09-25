@@ -2,37 +2,41 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="shortcut icon" href="{{asset('storage/images/favicon.ico')}}" />
+  <link rel="shortcut icon" href="{{ asset('storage/images/favicon.ico') }}" />
 
-    @production
+  @production
     {{-- analytics here --}}
-    @else
+  @else
     <meta name="robots" content="noindex, nofollow">
-    @endproduction
+  @endproduction
 
-    @yield('meta')
+  @yield('meta')
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/common.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+  <link rel="stylesheet" href="{{ mix('css/common.css') }}">
 
-    {{-- your scripts here --}}
-    @yield("scripts")
+  {{-- your scripts here --}}
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
 
-    @show
+  @yield('scripts')
+
+@show
 </head>
 
 <body>
-    <x-shared.header />
+<x-shared.header />
 
-    <main>
-        @yield('content')
-    </main>
+<main>
+  @yield('content')
+</main>
 
-    <x-shared.footer />
+<x-shared.footer />
 </body>
 
 </html>
