@@ -162,5 +162,6 @@ return [
         'title'                 => 'tiêu đề',
         'username'              => 'tên đăng nhập',
         'year'                  => 'năm',
+        'company'               => 'Tên công ty',
     ],
 ];
