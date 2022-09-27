@@ -29,13 +29,15 @@ class pagination extends Component
     {
         $this->paginator = $paginator;
         $query_array = explode('&', request()->getQueryString());
-        // dd(explode('&', request()->getQueryString()));
         foreach ($query_array as $key => $field) {
-            if (preg_match("/page=/", $field)) {
+            if (preg_match("/^(page=+.*)+$/u", $field)) {
                 unset($query_array[$key]);
             }
         }
         $this->queryString = implode('&', $query_array);
+        if (!empty($this->queryString)) {
+            $this->queryString = '&' . $this->queryString;
+        }
     }
 
     /**
