@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use \App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,24 +46,28 @@ Route::name('profile.')->prefix('profile')->middleware('auth')->group(function (
     Route::get('/password', function () {
         return view('pages.profile.password');
     })->name('password');
+
+    Route::delete('/', function (Request $request) {
+        $user = User::find(Auth::user()->id);
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        if ($user->delete()) {
+            return redirect('login')->with('status', 'Your account has been deleted!');
+        }
+    })->middleware('password.confirm')->name('delete');
+});
+
+// Product
+Route::name('product.')->prefix('product')->group(function () {
+    Route::get('/', [ProductController::class, 'index'])->name('show');
 });
 
 Route::get('/home', function () {
     return view('welcome');
 })->name('home');
-
-Route::delete('/user', function (Request $request) {
-    $user = User::find(Auth::user()->id);
-
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-
-    if ($user->delete()) {
-        return redirect('login')->with('status', 'Your account has been deleted!');
-    }
-})->middleware('auth', 'password.confirm')->name('profile.delete');
-
 
 // contact
 Route::controller(ContactController::class)->name('contact.')->prefix('contact')->group(function () {
@@ -74,6 +79,7 @@ Route::controller(ContactController::class)->name('contact.')->prefix('contact')
         return view('pages.contact.completed');
     })->name('completed');
 });
+
 // default error route
 Route::get('/{any?}', function () {
     return redirect()->route('top');
