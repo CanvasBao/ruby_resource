@@ -3,11 +3,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex">
-          <x-shared.header.logo />
+          <x-layout.header.logo />
         </div>
         <div class="hidden sm:flex sm:items-center">
           <div class="hidden sm:flex sm:space-x-4">
-            <x-shared.header.navbar />
+            <x-layout.header.navbar />
           </div>
           <div class="ml-6 space-x-2">
             @auth
@@ -30,14 +30,14 @@
           </div>
         </div>
         <div class="-mr-2 flex items-center sm:hidden">
-          <x-shared.header.menu-button />
+          <x-layout.header.menu-button />
         </div>
       </div>
     </div>
 
     <div class="sm:hidden" id="mobile-menu">
       <div class="pt-2 pb-3 space-y-1">
-        <x-shared.header.navbar />
+        <x-layout.header.navbar />
       </div>
     </div>
   </nav>

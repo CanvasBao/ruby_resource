@@ -1,9 +1,9 @@
-<x-shared.header.link name="top">
+<x-layout.header.link name="top">
   Trang chủ
-</x-shared.header.link>
-<x-shared.header.link name="product.show">
+</x-layout.header.link>
+<x-layout.header.link name="product.show">
   Sản phẩm
-</x-shared.header.link>
-<x-shared.header.link name="contact.show">
+</x-layout.header.link>
+<x-layout.header.link name="contact.show">
   Liên hệ
-</x-shared.header.link>
+</x-layout.header.link>
