@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-  <x-shared.content-box class="max-w-md">
+  <x-shared.content-box class="max-w-lg">
     <div>
       <x-item.page-title class="text-center text-30fs text-wood-color" title="LIÊN HỆ" />
     </div>
-    <div class="mt-5">
+    <div class="mx-auto mt-8 space-y-6 border py-8 px-4 lg:px-6 bg-white sm:rounded-lg border-gray-200 shadow-sm">
       <div class="text-base sm:text-sm font-medium">
         <span>Hãy nhập vào các mục bắt buộc, sau đó nhấn nút GỬI</span> <br class="md:hidden">
         <span>Nếu bạn đang gấp, xin vui lòng liên hệ với chúng tôi qua điện thoại.</span>

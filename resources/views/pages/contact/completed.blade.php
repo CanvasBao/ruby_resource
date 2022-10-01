@@ -14,7 +14,7 @@
         <a href="{{ route('top') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Đến Trang Chủ</a>
       </p>
     </div>
-    <div class="w-full text-sm md:text-base">
+    <div class="mx-auto mt-8 space-y-6 border py-8 px-4 lg:px-6 bg-white sm:rounded-lg border-gray-200 shadow-sm">
       <div class="smd:text-[17px] smd:leading-[26px] text-[24px] leading-[28px] text-wood-color smd:p-0">Cảm ơn quý khách
         đã liên hệ</div>
       <div class="pt-[50px] smd:text-[14px] smd:leading-[22px]">
