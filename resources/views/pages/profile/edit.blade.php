@@ -16,45 +16,39 @@
         </a>
       </p>
     </div>
-    @if (session('status'))
-      <div class="mb-4 font-medium text-sm text-green-600">
-        {{ session('status') }}
-      </div>
-    @endif
-    @if ($errors->any())
-      <div class="mb-4">
-        @foreach ($errors->all() as $error)
-          <div class="mb-1 font-medium text-sm text-red-600">
-            {{ $error }}
-          </div>
-        @endforeach
-      </div>
-    @endif
-    <form class="mt-8 space-y-6" action="{{ route('user-profile-information.update') }}" method="POST">
-      @method('PUT')
-      {{ csrf_field() }}
-      <div class="rounded-md shadow-sm space-y-3">
-        <x-form.row rowTitle="Họ và Tên">
-          <x-form.input type="text" name="name" place="Họ và Tên" value="{{ $user->name }}" />
-        </x-form.row>
-        <x-form.row rowTitle="Tên Công Ty">
-          <x-form.input type="text" name="company" place="Tên Công Ty" value="{{ $user->company }}" />
-        </x-form.row>
-        <x-form.row rowTitle="e-mail">
-          <x-form.input type="email" name="email" place="samplemail@info.vn" value="{{ $user->email }}" />
-        </x-form.row>
-        <x-form.row rowTitle="Đại chỉ">
-          <x-form.input type="text" name="address" place="TP HCM" value="{{ $user->address }}" />
-        </x-form.row>
-        <x-form.row rowTitle="Số điện thoại">
-          <x-form.input type="text" name="phone" place="08012345678" value="{{ $user->tel }}" />
-        </x-form.row>
-      </div>
+    <div class="mx-auto mt-8 space-y-6 border py-8 px-4 lg:px-6 bg-white sm:rounded-lg border-gray-200 shadow-sm">
 
-      <div>
-        <x-item.button>Update</x-item.button>
-      </div>
-    </form>
+      @if (session('status'))
+        <div class="mb-4 font-medium text-sm text-green-600">
+          {{ session('status') }}
+        </div>
+      @endif
+      <form class="mt-8 space-y-6" action="{{ route('user-profile-information.update') }}" method="POST">
+        @method('PUT')
+        {{ csrf_field() }}
+        <div class="rounded-md shadow-sm space-y-3">
+          <x-form.row rowTitle="Họ và Tên">
+            <x-form.input type="text" name="name" place="Họ và Tên" value="{{ $user->name }}" />
+          </x-form.row>
+          <x-form.row rowTitle="Tên Công Ty">
+            <x-form.input type="text" name="company" place="Tên Công Ty" value="{{ $user->company }}" />
+          </x-form.row>
+          <x-form.row rowTitle="e-mail">
+            <x-form.input type="email" name="email" place="samplemail@info.vn" value="{{ $user->email }}" />
+          </x-form.row>
+          <x-form.row rowTitle="Đại chỉ">
+            <x-form.input type="text" name="address" place="TP HCM" value="{{ $user->address }}" />
+          </x-form.row>
+          <x-form.row rowTitle="Số điện thoại">
+            <x-form.input type="text" name="phone" place="08012345678" value="{{ $user->tel }}" />
+          </x-form.row>
+        </div>
+
+        <div>
+          <x-item.button>Update</x-item.button>
+        </div>
+      </form>
+    </div>
     <form class="mt-2" action="{{ route('profile.delete') }}" method="POST">
       @method('delete')
       {{ csrf_field() }}

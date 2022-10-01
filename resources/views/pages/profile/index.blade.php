@@ -11,7 +11,7 @@
     <div>
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Thông tin Tài khoản</h2>
     </div>
-    <div class="mt-8 space-y-6">
+    <div class="mx-auto mt-8 space-y-6 border py-8 px-4 lg:px-6 bg-white sm:rounded-lg border-gray-200 shadow-sm max-w-lg">
       <div class="rounded-md shadow-sm space-y-3">
         <x-form.row rowTitle="Họ và Tên">
           <x-form.input type="text" name="name" place="Họ và Tên" value="{{ $user->name }}" readonly />
