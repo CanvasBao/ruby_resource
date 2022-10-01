@@ -82,5 +82,5 @@ Route::controller(ContactController::class)->name('contact.')->prefix('contact')
 
 // default error route
 Route::get('/{any?}', function () {
-    return redirect()->route('top');
+    return view('pages.404');
 })->where('any', '.*');
