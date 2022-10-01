@@ -30,13 +30,13 @@
 </head>
 
 <body>
-<x-shared.header />
+<x-layout.header />
 
 <main>
   @yield('content')
 </main>
 
-<x-shared.footer />
+<x-layout.footer />
 </body>
 
 </html>
