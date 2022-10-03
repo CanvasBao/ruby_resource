@@ -25,7 +25,8 @@ class ContactController extends ApiController
             'company' => ['required', 'max:50'],
             'email' => ['required', 'email_ex', 'max:50'],
             'phone' => ['required', 'phone_ex'],
-            'content' => ['required', 'max:255'],
+            'subject' => ['required', 'max:50'],
+            'content' => ['required', 'max:500'],
         ])->validate();
 
         try {

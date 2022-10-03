@@ -21,6 +21,7 @@ class ContactMail extends Mailable
     public $user_company;
     public $user_mail;
     public $user_phone;
+    public $subject;
     public $content;
 
     /**
@@ -34,7 +35,8 @@ class ContactMail extends Mailable
         $this->user_name = nl2br(htmlentities($content_param['name']));
         $this->user_company = nl2br(htmlentities($content_param['company']));
         $this->user_mail = nl2br(htmlentities($content_param['email']));
-        $this->user_phone = nl2br(htmlentities($content_param['tel']));
+        $this->user_phone = nl2br(htmlentities($content_param['phone']));
+        $this->subject = nl2br(htmlentities($content_param['subject']));
         $this->content = nl2br(htmlentities($content_param['content']));
     }
 
@@ -47,10 +49,10 @@ class ContactMail extends Mailable
     {
         if ($this->admin_flag) {
             $markdown = 'mail.contact.ContactAdminContent';
-            $subject = "【" . $this->last_name . " " . $this->first_name . "様より】お問い合わせ受信";
+            $subject = "[".$this->user_name."][".$this->user_company."]".$this->subject;
         } else {
             $markdown = 'mail.contact.ContactUserContent';
-            $subject = "【" . $this->last_name . " " . $this->first_name . "様】お問い合わせありがとうございます";
+            $subject = "[".$this->company."] Cảm ơn quý khách đã liên hệ với chúng tôi";
         }
 
         return $this->markdown($markdown)
