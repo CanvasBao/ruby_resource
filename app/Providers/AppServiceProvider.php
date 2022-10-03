@@ -53,6 +53,7 @@ class AppServiceProvider extends ServiceProvider
      */
     private function registerClassComponent()
     {
+        Blade::component('layout.header.link', \App\View\Components\layout\header\link::class);
          //shared
         Blade::component('shared.meta', \App\View\Components\shared\meta::class);
         Blade::component('shared.pagination', \App\View\Components\shared\pagination::class);

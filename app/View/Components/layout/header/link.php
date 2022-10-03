@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\shared\header;
+namespace App\View\Components\layout\header;
 
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +35,6 @@ class link extends Component
      */
     public function render()
     {
-        return view('components.shared.header.link');
+        return view('components.layout.header.link');
     }
 }
