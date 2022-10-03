@@ -10,16 +10,6 @@
   <x-shared.content-box class="max-w-7xl">
     <div class="relative bg-white shadow-xl">
       <h2 class="sr-only">Contact us</h2>
-
-      @if ($errors->any())
-        <div class="mb-4">
-          @foreach ($errors->all() as $error)
-            <div class="mb-1 font-medium text-sm text-red-600">
-              {{ $error }}
-            </div>
-          @endforeach
-        </div>
-      @endif
       <div class="grid grid-cols-1 lg:grid-cols-3">
         <!-- Contact information -->
         <div class="relative overflow-hidden bg-indigo-700 py-10 px-6 sm:px-10 xl:p-12">
@@ -140,7 +130,8 @@
             <x-form.field title="Tên Công Ty" type="text" name="company" />
             <x-form.field title="e-mail" type="text" name="email" />
             <x-form.field title="Số điện thoại" type="text" name="phone" />
-            <x-form.field boxclass="sm:col-span-2" title="Tiêu đề" type="text" name="subject" />
+            <x-form.field boxclass="sm:col-span-2" title="Tiêu đề" type="text" name="subject"
+              note="Tối đa 50 kí tự" />
             <x-form.field boxclass="sm:col-span-2" title="Nội dung liên hệ" type="textarea" name="content"
               note="Tối đa 500 kí tự" />
             <div class="sm:col-span-2 sm:flex sm:justify-end">

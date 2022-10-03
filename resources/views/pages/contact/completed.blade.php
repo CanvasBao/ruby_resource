@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-  <x-shared.content-box class="max-w-md">
+  <x-shared.content-box class="max-w-7xl">
     <div>
       <x-item.page-title title="Hoàn Thành Liên Hệ" />
       <p class="mt-2 text-center text-sm text-gray-600">
