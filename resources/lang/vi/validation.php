@@ -124,6 +124,9 @@ return [
     'uploaded'             => 'Trường :attribute tải lên thất bại.',
     'url'                  => 'Trường :attribute không giống với định dạng một URL.',
     'uuid'                 => 'Trường :attribute phải là một chuỗi UUID hợp lệ.',
+    'code_ex'              => 'Trường :attribute chỉ được nhập các kí tự (\'A-Z\',\'a-z\',\'0-9\') và (\'-\').',
+    'email_ex'             => 'Trường :attribute không đúng định dạng của địa chỉ email.',
+    'phone_ex'             => 'Trường :attribute không đúng định dạng của số điện thoại.',
     'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
