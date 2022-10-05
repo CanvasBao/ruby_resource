@@ -128,7 +128,7 @@
             {{ csrf_field() }}
             <x-form.field title="Họ và Tên" type="text" name="name" />
             <x-form.field title="Tên Công Ty" type="text" name="company" />
-            <x-form.field title="e-mail" type="text" name="email" />
+            <x-form.field title="Email" type="text" name="email" />
             <x-form.field title="Số điện thoại" type="text" name="phone" />
             <x-form.field boxclass="sm:col-span-2" title="Tiêu đề" type="text" name="subject"
               note="Tối đa 50 kí tự" />
