@@ -14,7 +14,7 @@
         <div class="sm:ml-6">
           <div class="sm:border-l sm:border-gray-200 sm:pl-6">
             <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Trang không tồn tại</h1>
-            <p class="mt-1 text-base text-gray-500">Please check the URL in the address bar and try again.</p>
+            <p class="mt-1 text-base text-gray-500">Hãy kiểm tra lại url trên thanh địa chỉ và thử lại</p>
           </div>
           <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
             <a href="{{ route('top') }}"
