@@ -35,6 +35,9 @@ class ProductController extends BaseController
     public function show(Request $request, $id, $text)
     {
         $product = Product::find($id);
+        if (!$product) {
+            redirect()->route('product.list');
+        }
         return view('pages.product.detail', compact(['product']));
     }
 }
