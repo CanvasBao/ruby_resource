@@ -27,4 +27,14 @@ class ProductController extends BaseController
         return view('pages.product.index', compact(['products']));
     }
 
+    /**
+     *　show product detail
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show(Request $request, $id, $text)
+    {
+        $product = Product::find($id);
+        return view('pages.product.detail', compact(['product']));
+    }
 }
