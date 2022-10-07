@@ -18,8 +18,11 @@ class ProductController extends BaseController
      */
     public function index(Request $request)
     {
-
         $query = Product::with('images');
+
+        // page
+        $perPage = request()->has('per_page') ? (int)request()->per_page : 10;
+
         $products = $query->paginate($perPage);
         return view('pages.product.index', compact(['products']));
     }
