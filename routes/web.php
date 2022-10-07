@@ -63,6 +63,7 @@ Route::name('profile.')->prefix('profile')->middleware('auth')->group(function (
 // Product
 Route::name('product.')->prefix('product')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::get('/{id}', [ProductController::class, 'show'])->name('show');
 });
 
 Route::get('/home', function () {
