@@ -1,5 +1,5 @@
 @isset($product)
-  <a href="#" class="group">
+  <a href="{{ route('product.show', 'id' => $product->id]) }}" class="group">
     <div class="aspect-w-1 aspect-h-1 w-full shadow-md overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
       <img
         src="{{ $product->images[0] ? asset('storage/uploads/product/' . $product->images[0]->image) : asset('storage/images/no_image.jpg') }}"
