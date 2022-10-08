@@ -6,6 +6,7 @@
         alt="{{ $product->name }}" class="h-full w-full object-cover object-center group-hover:opacity-75" />
     </div>
     <h3 class="mt-4 text-sm text-gray-700">{{ $product->name }}</h3>
-    <p class="mt-1 text-lg font-medium text-gray-900">{{ !empty($product->price) ? $product->price : 'Liên hệ' }}/p>
+    <p class="mt-1 text-lg font-medium text-gray-900">
+      {{ !empty($product->price) ? number_format($product->price) : 'Liên hệ' }}</p>
   </a>
 @endisset
