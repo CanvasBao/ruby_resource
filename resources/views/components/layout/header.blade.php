@@ -9,7 +9,7 @@
           <div class="hidden sm:flex sm:space-x-4">
             <x-layout.header.navbar />
           </div>
-          <div class="ml-6 space-x-2">
+          {{-- <div class="ml-6 space-x-2">
             @auth
               <a href="{{ route('profile.show') }}"
                 class="inline-block bg-indigo-500 py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75">Profile</a>
@@ -27,7 +27,7 @@
                 class="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-600 hover:bg-indigo-50">Sign
                 up</a>
             @endcan
-          </div>
+          </div> --}}
         </div>
         <div class="-mr-2 flex items-center sm:hidden">
           <x-layout.header.menu-button />
