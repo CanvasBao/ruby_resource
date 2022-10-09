@@ -1,7 +1,7 @@
 @extends('layout.html')
 
 @section('meta')
-  <x-shared.meta title="Sản Phẩm">
+  <x-shared.meta title="{{ $product->name }}">
     {{-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> --}}
   </x-shared.meta>
 @endsection
