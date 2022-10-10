@@ -17,7 +17,8 @@ class ProductImageFactory extends Factory
     public function definition()
     {
         return [
-            'image' => $this->fakeImage(storage_path('app/public/uploads/product'))
+            'image' => $this->fakeImage(storage_path('app/public/uploads/product')),
+            'description' => $this->faker->paragraphs(4, true)
         ];
     }
 
