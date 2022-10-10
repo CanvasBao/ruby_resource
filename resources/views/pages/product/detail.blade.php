@@ -10,7 +10,7 @@
   <div class="bg-white">
     <div class="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Protect your device</h2>
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $product->name }}</h2>
         <p class="mt-4 text-gray-500">As a digital creative, your laptop or tablet is at the center of your work. Keep your
           device safe with a fabric sleeve that matches in quality and looks.</p>
       </div>
