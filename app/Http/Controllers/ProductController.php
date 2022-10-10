@@ -38,6 +38,6 @@ class ProductController extends BaseController
         if (!$product) {
             redirect()->route('product.list');
         }
-        return view('pages.product.detail', compact(['product']));
+        return view('pages.product.detail-2', compact(['product']));
     }
 }

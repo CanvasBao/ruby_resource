@@ -8,49 +8,45 @@
 
 @section('content')
   <div class="bg-white">
-    <section aria-labelledby="features-heading" class="relative">
-      <div
-        class="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
-        <img src="https://tailwindui.com/img/ecommerce-images/confirmation-page-01-hero.jpg"
-          alt="Black leather journal with silver steel disc binding resting on wooden shelf with machined steel pen."
-          class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+    <div class="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Protect your device</h2>
+        <p class="mt-4 text-gray-500">As a digital creative, your laptop or tablet is at the center of your work. Keep your
+          device safe with a fabric sleeve that matches in quality and looks.</p>
       </div>
 
-      <div
-        class="mx-auto max-w-2xl px-4 pt-16 pb-24 sm:px-6 sm:pb-32 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
-        <div class="lg:col-start-2">
-          <h2 id="features-heading" class="font-medium text-gray-500">Leatherbound Daily Journal</h2>
-          <p class="mt-4 text-4xl font-bold tracking-tight text-gray-900">All in the Details</p>
-          <p class="mt-4 text-gray-500">We've obsessed over every detail of this handcrafted journal to bring you the best
-            materials for daily use.</p>
-
-          <dl class="mt-10 grid grid-cols-1 gap-y-10 gap-x-8 text-sm sm:grid-cols-2">
-            <div>
-              <dt class="font-medium text-gray-900">Durable</dt>
-              <dd class="mt-2 text-gray-500">The leather cover and machined steel disc binding stand up to daily use for
-                years to come.</dd>
+      <div class="mt-16 space-y-16">
+        <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
+          <div class="mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 lg:col-start-1">
+            <h3 class="text-lg font-medium text-gray-900">Minimal and thoughtful</h3>
+            <p class="mt-2 text-sm text-gray-500">Our laptop sleeve is compact and precisely fits 13&quot; devices. The
+              zipper allows you to access the interior with ease, and the front pouch provides a convenient place for your
+              charger cable.</p>
+          </div>
+          <div class="flex-auto lg:row-start-1 lg:col-span-7 xl:col-span-8 lg:col-start-6 xl:col-start-5">
+            <div class="aspect-w-5 aspect-h-2 overflow-hidden rounded-lg bg-gray-100">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-feature-07-detail-01.jpg"
+                alt="White canvas laptop sleeve with gray felt interior, silver zipper, and tan leather zipper pull."
+                class="object-cover object-center" />
             </div>
+          </div>
+        </div>
 
-            <div>
-              <dt class="font-medium text-gray-900">Refillable</dt>
-              <dd class="mt-2 text-gray-500">Buy it once and refill as often as you need. Subscribe and save on routine
-                refills.</dd>
+        <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
+          <div class="mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 lg:col-start-8 xl:col-start-9">
+            <h3 class="text-lg font-medium text-gray-900">Refined details</h3>
+            <p class="mt-2 text-sm text-gray-500">We design every detail with the best materials and finishes. This laptop
+              sleeve features durable canvas with double-stitched construction, a felt interior, and a high quality zipper
+              that hold up to daily use.</p>
+          </div>
+          <div class="flex-auto lg:row-start-1 lg:col-span-7 xl:col-span-8 lg:col-start-1">
+            <div class="aspect-w-5 aspect-h-2 overflow-hidden rounded-lg bg-gray-100">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-feature-07-detail-02.jpg"
+                alt="Detail of zipper pull with tan leather and silver rivet." class="object-cover object-center" />
             </div>
-
-            <div>
-              <dt class="font-medium text-gray-900">Thoughtfully designed</dt>
-              <dd class="mt-2 text-gray-500">The comfortable disc binding allows you to quickly rearrange pages or combine
-                lined, graph, and blank refills.</dd>
-            </div>
-
-            <div>
-              <dt class="font-medium text-gray-900">Locally made</dt>
-              <dd class="mt-2 text-gray-500">Responsibly and sustainably made real close to wherever you are, somehow.
-              </dd>
-            </div>
-          </dl>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 @endsection
