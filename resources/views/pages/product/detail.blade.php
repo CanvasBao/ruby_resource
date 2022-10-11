@@ -11,11 +11,25 @@
     <div class="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $product->name }}</h2>
-        <p class="mt-4 text-gray-500">As a digital creative, your laptop or tablet is at the center of your work. Keep your
-          device safe with a fabric sleeve that matches in quality and looks.</p>
+        <p class="mt-4 text-gray-500">{{ $product->description }}"></p>
       </div>
 
       <div class="mt-16 space-y-16">
+        @foreach ($product->images as $image)
+          <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
+            <div class="mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 lg:col-start-1">
+              <h3 class="text-lg font-medium text-gray-900">Minimal and thoughtful</h3>
+              <p class="mt-2 text-sm text-gray-500">{{ $image->description }}</p>
+            </div>
+            <div class="flex-auto lg:row-start-1 lg:col-span-7 xl:col-span-8 lg:col-start-6 xl:col-start-5">
+              <div class="aspect-w-5 aspect-h-2 overflow-hidden rounded-lg bg-gray-100">
+                <img src="https://tailwindui.com/img/ecommerce-images/product-feature-07-detail-01.jpg"
+                  alt="White canvas laptop sleeve with gray felt interior, silver zipper, and tan leather zipper pull."
+                  class="object-cover object-center" />
+              </div>
+            </div>
+          </div>
+        @endforeach
         <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
           <div class="mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 lg:col-start-1">
             <h3 class="text-lg font-medium text-gray-900">Minimal and thoughtful</h3>
