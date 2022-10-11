@@ -23,7 +23,7 @@
             </div>
             <div class="flex-auto lg:row-start-1 lg:col-span-7 xl:col-span-8 lg:col-start-6 xl:col-start-5">
               <div class="aspect-w-5 aspect-h-2 overflow-hidden rounded-lg bg-gray-100">
-                <img src="https://tailwindui.com/img/ecommerce-images/product-feature-07-detail-01.jpg"
+                <img src="{{ asset('storage/uploads/product/' . $image->image) }}"
                   alt="White canvas laptop sleeve with gray felt interior, silver zipper, and tan leather zipper pull."
                   class="object-cover object-center" />
               </div>
