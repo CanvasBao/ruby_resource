@@ -30,7 +30,7 @@
             </div>
           </div>
         @endforeach
-        <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
+        {{-- <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
           <div class="mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 lg:col-start-1">
             <h3 class="text-lg font-medium text-gray-900">Minimal and thoughtful</h3>
             <p class="mt-2 text-sm text-gray-500">Our laptop sleeve is compact and precisely fits 13&quot; devices. The
@@ -59,7 +59,7 @@
                 alt="Detail of zipper pull with tan leather and silver rivet." class="object-cover object-center" />
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
