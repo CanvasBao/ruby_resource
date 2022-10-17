@@ -2,7 +2,7 @@
   boxclass="rounded-sm border sm:rounded-lg border-gray-200 shadow-sm w-full h-full mb-5 p-3 text-sm bg-gray-100 {{ $boxclass ?? '' }}"
   {{ $attributes->except(['method', 'action', 'boxclass']) }}>
   @php
-    $filter_list = ['おすすめ順', '売上順', '新しい順', '価格が安い順', '価格が高い順'];
+    $filter_list = ['đề xuất', 'mới nhất'];
     $filter = request()->filter;
   @endphp
   <x-slot:leftSlot>
@@ -32,13 +32,13 @@
         @endforeach
       </div>
       <div class="hidden md:flex md:ml-1 items-center">
-        <span>(全 {{ $total }}件)</span>
+        <span>(Toàn bộ {{ $total }})</span>
       </div>
     </div>
   </x-slot:leftSlot>
   <x-slot:rightSlot>
     @isset($perPage)
-      <span>表示件数：</span>
+      <span>Số kiện hiển thị：</span>
       <select name="per_page" onchange="this.form.submit()"
         class="bg-slate-50 inline-block pl-5 pr-7 py-2 font-medium text-sm leading-tight rounded">
         @foreach ([10, 20, 50] as $value)
