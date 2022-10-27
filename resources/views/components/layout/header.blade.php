@@ -17,9 +17,10 @@
     </div>
 
     <div class="sm:hidden" id="mobile-menu">
-      <div class="pt-2 pb-3 space-y-1">
+      <div class="menu pt-2 pb-3 space-y-1">
         <x-layout.header.navbar />
       </div>
     </div>
   </nav>
+  <script></script>
 </header>
