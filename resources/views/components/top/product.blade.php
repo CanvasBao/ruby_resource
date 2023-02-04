@@ -1,4 +1,13 @@
 <div class="relative bg-white py-16 sm:py-24 lg:py-32">
+  @php
+    $products = [
+        [
+            'title' => 'Push to Deploy',
+            'content' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+                rhoncus. Et magna sit morbi vitae lobortis.",
+        ],
+    ];
+  @endphp
   <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
     <h2 class="text-lg font-semibold text-cyan-600">Dịch vụ đa dạng</h2>
     <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Everything you need to deploy
