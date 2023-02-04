@@ -32,7 +32,7 @@
 <body>
 <x-layout.header />
 
-<main>
+<main class="pt-16">
   @yield('content')
 </main>
 
