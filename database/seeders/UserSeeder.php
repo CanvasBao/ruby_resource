@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
         if (!$hasAdmin) {
             DB::table('users')->insert([
                 'name' => 'admin',
-                'email' => 'admin@admin.canvas',
-                'password' => Hash::make('22canvas'),
+                'email' => 'admin@rubylabel.test',
+                'password' => Hash::make('baoit13'),
                 'role' => 9,
             ]);
         }

@@ -16,9 +16,11 @@ class CreateCategoryTable extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('category_name')->nullable();;
+            $table->string('category_name')->nullable();
             $table->string('category_slug')->nullable();
-            $table->integer('sort_no')->nullable();;
+            $table->integer('sort_no')->nullable();
+            $table->longText('title')->nullable();
+            $table->longText('description')->nullable();
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

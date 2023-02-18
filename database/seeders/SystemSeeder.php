@@ -23,6 +23,16 @@ class SystemSeeder extends Seeder
         ]);
 
         //Trạng thái đơn hàng
+        $categorys = [
+            ['id' => 1, 'category_name' => 'Tem Nhãn', 'category_slug' => 'temnhan', 'sort_no' => 1, 'deleted_at' => NULL],
+            ['id' => 2, 'category_name' => 'Mực In', 'category_slug' => 'mucin', 'sort_no' => 2, 'deleted_at' => NULL],
+            ['id' => 3, 'category_name' => 'Máy In Mã Vạch', 'category_slug' => 'mayinmavach', 'sort_no' => 3, 'deleted_at' => NULL]
+        ];
+        foreach ($categorys as $categorys) {
+            DB::table('category')->updateOrInsert(['id' => $status['id']], $status);
+        }
+
+        //Trạng thái đơn hàng
         $orderStatus = [
             ['id' => 1, 'status_name' => 'Đơn Hàng Mới', 'status_color' => '#437ec4', 'sort_no' => 1, 'deleted_at' => NULL],
             ['id' => 2, 'status_name' => 'Đã Huỷ', 'status_color' => '#c04949', 'sort_no' => 2, 'deleted_at' => NULL],
