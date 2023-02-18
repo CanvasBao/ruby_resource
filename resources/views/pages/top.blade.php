@@ -57,14 +57,14 @@
                   <path
                     d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
-                <p class="mt-6 text-2xl font-medium text-white">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Sed urna nulla vitae laoreet augue. Amet feugiat est integer dolor auctor adipiscing nunc
-                  urna, sit.</p>
+                <p class="mt-6 text-2xl font-medium text-white">
+                  Chúng tôi luôn đầu tư một cách nghiêm túc, toàn diện về sản phẩm, dịch vụ và cơ sở vật chất để đáp ứng
+                  được yêu cầu ngày càng cao của thị trường.<br>
+                  Xác định việc hỗ trợ giải pháp cho khách hàng là nhiệm vụ quan trọng của mình, do đó, chúng tôi luôn
+                  lắng nghe yêu cầu của khách hàng, để phối hợp với nhà sản xuất thiết kế những sản phẩm phù hợp, đảm bảo
+                  chất lượng, đa dạng với giá cả cạnh tranh.
+                </p>
               </div>
-              <footer class="mt-6">
-                <p class="text-base font-medium text-white">Judith Black</p>
-                <p class="text-base font-medium text-cyan-100">CEO at PureInsights</p>
-              </footer>
             </blockquote>
           </div>
         </div>
