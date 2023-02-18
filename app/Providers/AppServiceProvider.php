@@ -57,6 +57,8 @@ class AppServiceProvider extends ServiceProvider
          //shared
         Blade::component('shared.meta', \App\View\Components\shared\meta::class);
         Blade::component('shared.pagination', \App\View\Components\shared\pagination::class);
+        //top
+        Blade::component('top.material', \App\View\Components\top\material::class);
 
     }
 }

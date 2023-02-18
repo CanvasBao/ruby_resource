@@ -1,13 +1,13 @@
 <div class="relative bg-gray-50 py-16 sm:py-24 lg:py-32">
   <div class="relative">
     <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-      <h2 class="text-lg font-semibold text-cyan-600">Learn</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Chất liệu đa dạng</p>
+      <h2 class="text-lg font-semibold text-cyan-600">Dịch vụ</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Dịch vụ đầy đủ</p>
       <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Phasellus lorem quam molestie id quisque diam
         aenean nulla in. Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend condimentum id viverra nulla.
       </p>
     </div>
-    @php
+    {{-- @php
       $materials = [
           [
               'image' => 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
@@ -34,17 +34,18 @@
                 corporis perferendis hic.",
           ],
       ];
-    @endphp
+    @endphp --}}
     <div class="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:grid-cols-3 lg:px-8">
       @foreach ($materials as $material)
         <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
           <div class="flex-shrink-0">
-            <img class="h-48 w-full object-cover" src="{{ $material['image'] }}" alt="" />
+            <img class="h-48 w-full object-cover" src="{{ asset('storage/uploads/category/' . $material['image']) }}"
+              alt="" />
           </div>
           <div class="flex flex-1 flex-col justify-between bg-white p-6">
             <div class="flex-1">
               <p class="text-sm font-medium text-cyan-600">
-                <a href="#" class="hover:underline">{{ $material['type'] }}</a>
+                <a href="#" class="hover:underline">{{ $material['category_name'] }}</a>
               </p>
               <a href="#" class="mt-2 block">
                 <p class="text-xl font-semibold text-gray-900">{{ $material['title'] }}</p>

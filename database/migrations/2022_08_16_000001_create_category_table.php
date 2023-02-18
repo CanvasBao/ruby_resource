@@ -18,6 +18,7 @@ class CreateCategoryTable extends Migration
 
             $table->string('category_name')->nullable();
             $table->string('category_slug')->nullable();
+            $table->string('image')->nullable();
             $table->integer('sort_no')->nullable();
             $table->longText('title')->nullable();
             $table->longText('description')->nullable();

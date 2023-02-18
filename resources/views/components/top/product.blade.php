@@ -52,7 +52,7 @@
     ];
   @endphp
   <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-    <h2 class="text-lg font-semibold text-cyan-600">Dịch vụ đa dạng</h2>
+    <h2 class="text-lg font-semibold text-cyan-600">Sản phẩm đa dạng</h2>
     <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Everything you need to deploy
       your app</p>
     <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Phasellus lorem quam molestie id quisque diam

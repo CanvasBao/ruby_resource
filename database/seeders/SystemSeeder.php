@@ -24,9 +24,9 @@ class SystemSeeder extends Seeder
 
         //Trạng thái đơn hàng
         $categorys = [
-            ['id' => 1, 'category_name' => 'Tem Nhãn', 'category_slug' => 'temnhan', 'sort_no' => 1, 'deleted_at' => NULL],
-            ['id' => 2, 'category_name' => 'Mực In', 'category_slug' => 'mucin', 'sort_no' => 2, 'deleted_at' => NULL],
-            ['id' => 3, 'category_name' => 'Máy In Mã Vạch', 'category_slug' => 'mayinmavach', 'sort_no' => 3, 'deleted_at' => NULL]
+            ['id' => 1, 'category_name' => 'Tem Nhãn', 'category_slug' => 'temnhan', 'image' => 'photo-1496128858413-b36217c2ce36.avif', 'title' => 'Boost your conversion rate', 'sort_no' => 1, 'deleted_at' => NULL],
+            ['id' => 2, 'category_name' => 'Mực In', 'category_slug' => 'mucin', 'image' => 'photo-1547586696-ea22b4d4235d.avif', 'title' => 'How to use search engine optimization to drive sales', 'sort_no' => 2, 'deleted_at' => NULL],
+            ['id' => 3, 'category_name' => 'Máy In Mã Vạch', 'category_slug' => 'mayinmavach', 'image' => 'photo-1492724441997-5dc865305da7.avif', 'title' => 'Improve your customer experience', 'sort_no' => 3, 'deleted_at' => NULL]
         ];
         foreach ($categorys as $category) {
             DB::table('category')->updateOrInsert(['id' => $category['id']], $category);
