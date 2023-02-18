@@ -28,8 +28,8 @@ class SystemSeeder extends Seeder
             ['id' => 2, 'category_name' => 'Mực In', 'category_slug' => 'mucin', 'sort_no' => 2, 'deleted_at' => NULL],
             ['id' => 3, 'category_name' => 'Máy In Mã Vạch', 'category_slug' => 'mayinmavach', 'sort_no' => 3, 'deleted_at' => NULL]
         ];
-        foreach ($categorys as $categorys) {
-            DB::table('category')->updateOrInsert(['id' => $status['id']], $status);
+        foreach ($categorys as $category) {
+            DB::table('category')->updateOrInsert(['id' => $category['id']], $category);
         }
 
         //Trạng thái đơn hàng
