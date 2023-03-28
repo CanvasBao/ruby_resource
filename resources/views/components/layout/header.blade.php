@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="sm:hidden" id="mobile-menu">
+    <div class="hidden" id="mobile-menu">
       <div class="menu pt-2 pb-3 space-y-1">
         <x-layout.header.navbar />
       </div>

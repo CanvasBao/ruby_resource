@@ -3,16 +3,16 @@
     <div class="swiper-wrapper">
       @foreach ($images as $image)
         <div class="swiper-slide ">
-          <div class="w-full">
-            <figure class="w-full h-100">
+          <div class="w-full h-full">
+            <figure class="w-full h-full">
               <img class="w-full h-full object-cover" src="{{ $image }}" alt="slider image">
             </figure>
           </div>
         </div>
       @endforeach
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next opacity-0 hover:opacity-100"></div>
+    <div class="swiper-button-prev opacity-0 hover:opacity-100"></div>
   </div>
   <script>
     window.addEventListener("load", () => {

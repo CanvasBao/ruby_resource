@@ -9,9 +9,9 @@
 @section('content')
   <div class="bg-white">
     @php
-      $topImage = [''];
+      $topImage = [asset('storage/images/slide-1.jpg')];
     @endphp
-    <div class="h-[calc(100vh-65px)]">
+    <div class="h-80 md:h-[calc(100vh-65px)]">
       <x-top.slider :images="$topImage" />
     </div>
 
