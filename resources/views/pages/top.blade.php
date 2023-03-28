@@ -20,14 +20,13 @@
       <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
         <div>
           <h2 class="text-lg font-semibold text-cyan-600">Giới thiệu</h2>
-          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">No server? No problem.</p>
-          <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Phasellus lorem quam molestie id quisque diam
-            aenean nulla in. Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend condimentum id viverra nulla.
+          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">In tem nhãn? Đối tác tin cậy?</p>
+          <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Hãy đến với Ruby Label....
           </p>
         </div>
-        <div class="mt-12 -mb-10 sm:-mb-24 lg:-mb-80">
+        <div class=" flex justify-center mt-12 -mb-3">
           <img class="rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
-            src="https://tailwindui.com/img/component-images/green-project-app-screenshot.jpg" alt="" />
+            src="{{ asset('storage/images/top-feature.jpg') }}" alt="" />
         </div>
       </div>
     </div>
@@ -44,7 +43,7 @@
             <div
               class="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
               <img class="object-cover lg:h-full lg:w-full"
-                src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
+                src="{{ asset('storage/images/top-testimonial.jpg') }}"
                 alt="" />
             </div>
           </div>
@@ -85,16 +84,14 @@
       </div>
       <div class="relative mx-auto max-w-md px-4 py-12 sm:max-w-7xl sm:px-6 sm:py-20 md:py-28 lg:px-8 lg:py-32">
         <div class="md:ml-auto md:w-1/2 md:pl-10">
-          <h2 class="text-lg font-semibold text-gray-300">Award winning support</h2>
-          <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">We’re here to help</p>
-          <p class="mt-3 text-lg text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas
-            tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue. Aliquet amet
-            volutpat quisque ut interdum tincidunt duis.</p>
+          <h2 class="text-lg font-semibold text-gray-300">Hãy liên hệ với chúng tôi!</h2>
+          <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Chúng tôi ở đây để giúp đỡ.</p>
+          <p class="mt-3 text-lg text-gray-300">...</p>
           <div class="mt-8">
             <div class="inline-flex rounded-md shadow">
-              <a href="#"
+              <a href="{{route('contact.show')}}"
                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-gray-900 hover:bg-gray-50">
-                Visit the help center
+                Liên hệ ngay
                 <!-- Heroicon name: mini/arrow-top-right-on-square -->
                 <svg class="-mr-1 ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                   fill="currentColor" aria-hidden="true">
