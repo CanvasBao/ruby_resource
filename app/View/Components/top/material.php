@@ -46,6 +46,7 @@ class material extends Component
 
     // ];
     $this->materials = Category::get();
+    // dd($this->materials );
   }
 
 

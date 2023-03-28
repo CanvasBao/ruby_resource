@@ -1,0 +1,26 @@
+[
+  {
+    "id" : 1,
+    "category_id" : 1,
+    "name" : "Tem Nhan 1",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-01",
+    "sort_no" : 1,
+    "images" : [
+      "product-temnhan-1.jpg"
+    ]
+  },
+  {
+    "id" : 2,
+    "category_id" : 2,
+    "name" : "Tem Nhan 2",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-02",
+    "sort_no" : 2,
+    "images" : []
+  }
+]

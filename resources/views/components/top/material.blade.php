@@ -1,45 +1,17 @@
 <div class="relative bg-gray-50 py-16 sm:py-24 lg:py-32">
   <div class="relative">
     <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-      <h2 class="text-lg font-semibold text-cyan-600">Dịch vụ</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Dịch vụ đầy đủ</p>
-      <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Phasellus lorem quam molestie id quisque diam
+      <h2 class="text-lg font-semibold text-cyan-600">kinh doanh</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Loại sản phẩm kinh doanh</p>
+      {{-- <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Phasellus lorem quam molestie id quisque diam
         aenean nulla in. Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend condimentum id viverra nulla.
-      </p>
+      </p> --}}
     </div>
-    {{-- @php
-      $materials = [
-          [
-              'image' => 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-              'type' => 'Article',
-              'title' => 'Boost your conversion rate',
-              'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis
-                dolorum.",
-          ],
-          [
-              'image' => 'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-              'type' => 'Video',
-              'title' => 'How to use search engine optimization to drive sales',
-              'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore
-                optio animi., tempore temporibus quo laudantium.",
-          ],
-          [
-              'image' => 'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-              'type' => 'Case Study',
-              'title' => 'Improve your customer experience',
-              'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque
-                corporis perferendis hic.",
-          ],
-      ];
-    @endphp --}}
     <div class="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:grid-cols-3 lg:px-8">
       @foreach ($materials as $material)
         <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
           <div class="flex-shrink-0">
-            <img class="h-48 w-full object-cover" src="{{ asset('storage/uploads/category/' . $material['image']) }}"
+            <img class="h-48 w-full object-cover" src="{{ asset('storage/images/' . $material['image']) }}"
               alt="" />
           </div>
           <div class="flex flex-1 flex-col justify-between bg-white p-6">

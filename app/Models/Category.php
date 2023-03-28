@@ -27,7 +27,10 @@ class Category extends Model
 		'id',
 		'category_name',
 		'category_slug',
-		'sort_no'
+		'sort_no',
+		'image',
+		'title',
+		'deleted_at'
 	];
 
 	public function category()

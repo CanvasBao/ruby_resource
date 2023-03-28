@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "category_name": "Tem Nhãn",
+    "category_slug": "temnhan",
+    "image": "category-temnhan.jpg",
+    "title": "Tem Nhãn",
+    "sort_no": 1,
+    "deleted_at": null
+  },
+  {
+    "id": 2,
+    "category_name": "Mực In",
+    "category_slug": "mucin",
+    "image": "category-mucin.jpg",
+    "title": "Mực In",
+    "sort_no": 2,
+    "deleted_at": null
+  },
+  {
+    "id": 3,
+    "category_name": "Máy In Mã Vạch",
+    "category_slug": "mayinmavach",
+    "image": "category-mayin.jpeg",
+    "title": "Máy In Mã Vạch",
+    "sort_no": 3,
+    "deleted_at": null
+  }
+]

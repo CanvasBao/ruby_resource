@@ -1,55 +1,55 @@
 <div class="relative bg-white py-16 sm:py-24 lg:py-32">
   @php
-    $products = [
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-        [
-            'name' => 'Push to Deploy',
-            'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-                rhoncus. Et magna sit morbi vitae lobortis.",
-            'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-        ],
-    ];
+    // $products = [
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    //     [
+    //         'name' => 'Push to Deploy',
+    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
+//             rhoncus. Et magna sit morbi vitae lobortis.",
+    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    //     ],
+    // ];
   @endphp
   <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
     <h2 class="text-lg font-semibold text-cyan-600">Sản phẩm đa dạng</h2>
@@ -65,8 +65,13 @@
           <li class="relative">
             <div
               class="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-              <img src="{{ $product['image'] }}" alt=""
-                class="pointer-events-none object-cover group-hover:opacity-75">
+              @isset($product['images'][0]->image)
+                <img src="{{ asset('storage/uploads/product/' . $product['images'][0]->image) }}" alt=""
+                  class="pointer-events-none object-cover group-hover:opacity-75">
+              @else
+                <img src="{{ asset('storage/images/no_image.jpg') }}" alt=""
+                  class="pointer-events-none object-cover group-hover:opacity-75 border rounded-lg">
+              @endisset
               <button type="button" class="absolute inset-0 focus:outline-none">
                 <span class="sr-only">View details for IMG_4985.HEIC</span>
               </button>
