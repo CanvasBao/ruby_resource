@@ -1,62 +1,9 @@
 <div class="relative bg-white py-16 sm:py-24 lg:py-32">
-  @php
-    // $products = [
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    //     [
-    //         'name' => 'Push to Deploy',
-    //         'short_des' => "Ac tincidunt sapien vehicula erat auctor pellentesque
-//             rhoncus. Et magna sit morbi vitae lobortis.",
-    //         'image' => 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    //     ],
-    // ];
-  @endphp
   <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
     <h2 class="text-lg font-semibold text-cyan-600">Sản phẩm đa dạng</h2>
-    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Everything you need to deploy
-      your app</p>
-    <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Phasellus lorem quam molestie id quisque diam
-      aenean nulla in. Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend condimentum id viverra nulla.
+    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Mọi thứ bạn cần</p>
+    <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">
+      Mọi nhu cầu về in tem nhãn chất lượng cao của khách hàng cho từng ngành nghề, những yêu cầu kỹ thuật đặc biệt, chúng tôi luôn đáp ứng, giúp khách hàng đạt được mục tiêu thương hiệu của mình.
     </p>
     <div class="mt-12">
       <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">

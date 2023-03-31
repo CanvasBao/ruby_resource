@@ -19,10 +19,13 @@
     <div class="relative bg-gray-50 pt-16 sm:pt-24 lg:pt-32">
       <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
         <div>
-          <h2 class="text-lg font-semibold text-cyan-600">Giới thiệu</h2>
-          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">In tem nhãn? Đối tác tin cậy?</p>
-          <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Hãy đến với Ruby Label....
-          </p>
+          <h2 class="text-lg font-semibold text-cyan-600">Chào mừng quý khách đến với Ruby Label!</h2>
+          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bạn cần in tem nhãn, máy in, mực in?</p>
+          <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">
+            Với nhiều năm kinh nghiệm trong lĩnh vực cung cấp các giải pháp in ấn, chúng tôi cam kết mang đến cho quý khách sự hài lòng nhất về chất lượng sản phẩm và dịch vụ.<br>
+            Các sản phẩm chính của chúng tôi bao gồm các loại tem nhãn được sản xuất trên các máy móc hiện đại nhất, với đầy đủ các loại tem nhãn từ tem nhãn in mã vạch đến tem nhãn decal.<br>
+            Ngoài ra, chúng tôi cũng cung cấp các loại máy in barcode và mực in tem, giúp quý khách hàng có thể tự sản xuất tem nhãn của mình nhanh chóng và tiết kiệm chi phí.
+         </p>
         </div>
         <div class=" flex justify-center mt-12 -mb-3">
           <img class="rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
@@ -57,11 +60,8 @@
                     d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
                 <p class="mt-6 text-2xl font-medium text-white">
-                  Chúng tôi luôn đầu tư một cách nghiêm túc, toàn diện về sản phẩm, dịch vụ và cơ sở vật chất để đáp ứng
-                  được yêu cầu ngày càng cao của thị trường.<br>
-                  Xác định việc hỗ trợ giải pháp cho khách hàng là nhiệm vụ quan trọng của mình, do đó, chúng tôi luôn
-                  lắng nghe yêu cầu của khách hàng, để phối hợp với nhà sản xuất thiết kế những sản phẩm phù hợp, đảm bảo
-                  chất lượng, đa dạng với giá cả cạnh tranh.
+                  Với phương châm "Khách hàng là trung tâm", chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và không ngừng cải tiến và phát triển để đáp ứng mọi nhu cầu của khách hàng.<br>
+                  Với chất lượng sản phẩm và dịch vụ tuyệt vời, cùng với cam kết mang lại sự hài lòng cho khách hàng, chúng tôi hy vọng có thể trở thành đối tác tin cậy của quý khách hàng trong lĩnh vực in ấn và đóng gói.
                 </p>
               </div>
             </blockquote>
@@ -86,7 +86,10 @@
         <div class="md:ml-auto md:w-1/2 md:pl-10">
           <h2 class="text-lg font-semibold text-gray-300">Hãy liên hệ với chúng tôi!</h2>
           <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Chúng tôi ở đây để giúp đỡ.</p>
-          <p class="mt-3 text-lg text-gray-300">...</p>
+          <p class="mt-3 text-lg text-gray-300">
+            Nếu quý khách hàng cần tư vấn hoặc đặt hàng các sản phẩm của chúng tôi, hãy liên hệ với chúng tôi.<br>
+            Chúng tôi luôn sẵn sàng hỗ trợ và giải đáp mọi thắc mắc của quý khách hàng.<br>
+            Cảm ơn quý khách đã quan tâm đến công ty chúng tôi!</p>
           <div class="mt-8">
             <div class="inline-flex rounded-md shadow">
               <a href="{{route('contact.show')}}"

@@ -6,7 +6,8 @@
     "image": "category-temnhan.jpg",
     "title": "Tem Nhãn",
     "sort_no": 1,
-    "deleted_at": null
+    "deleted_at": null,
+    "description": "Tem nhãn là một dạng nhãn được in ấn và dán lên sản phẩm để hiển thị thông tin về sản phẩm đó. Tem nhãn có nhiều loại, từ tem nhãn in mã vạch đến tem nhãn decal, và có thể được sử dụng cho nhiều mục đích khác nhau như quảng cáo sản phẩm, hướng dẫn sử dụng, cung cấp thông tin sản phẩm và v.v. Tem nhãn thường được in bằng máy in phun hoặc máy in nhiệt với chất lượng cao để đảm bảo rõ nét và bền vững."
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "image": "category-mucin.jpg",
     "title": "Mực In",
     "sort_no": 2,
-    "deleted_at": null
+    "deleted_at": null,
+    "description":"Mực in barcode là một loại mực được sử dụng để in các mã vạch và nhãn. Nó thường đi kèm với máy in barcode và có nhiều loại khác nhau để phù hợp với các loại giấy, vật liệu in ấn và mục đích sử dụng khác nhau. Mực in barcode đảm bảo chất lượng in ấn tốt và làm cho mã vạch dễ đọc và chính xác hơn. Các loại mực in barcode được sử dụng rộng rãi trong nhiều lĩnh vực như logistic, sản xuất, bán lẻ và vận tải."
   },
   {
     "id": 3,
@@ -24,6 +26,7 @@
     "image": "category-mayin.jpeg",
     "title": "Máy In Mã Vạch",
     "sort_no": 3,
-    "deleted_at": null
+    "deleted_at": null,
+    "description":"Máy in barcode là một thiết bị sử dụng để in các mã vạch được sử dụng để định danh sản phẩm và quản lý kho. Các máy in barcode thường có khả năng kết nối với máy tính hoặc các thiết bị di động khác để in trực tiếp từ chúng. Chất lượng in của máy in barcode là rất quan trọng để đảm bảo mã vạch được đọc đúng và chính xác. Máy in barcode hiện nay được ứng dụng rộng rãi trong các lĩnh vực như logistic, bán lẻ, sản xuất và vận tải."
   }
 ]

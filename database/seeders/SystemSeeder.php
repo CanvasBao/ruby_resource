@@ -43,6 +43,7 @@ class SystemSeeder extends Seeder
                         'image' => $category->image,
                         'title' => $category->title,
                         'sort_no' => $category->sort_no,
+                        'description' => $category->description,
                         'deleted_at' => (!empty($category->deleted_at) ? date("Y/m/d", strtotime($category->deleted_at)) : null)
                     ]
                 );
