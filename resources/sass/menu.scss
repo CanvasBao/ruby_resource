@@ -1,6 +1,8 @@
 // /* menu */
-$scaleRate: scaleX(0.6);
+$scaleRate: scaleX(0.8);
 $timeAni: 1s;
+$icoW: 25px;
+$iconColor: #858585;
 
 @keyframes menuAct {
     0% {
@@ -130,7 +132,7 @@ $timeAni: 1s;
 
 .menu-button-icon {
     padding-top: 7px;
-    width: 36px;
+    width: $icoW;
     height: 15px;
     cursor: pointer;
     position: fixed;
@@ -144,9 +146,9 @@ $timeAni: 1s;
     }
 
     span.menu-line {
-        background: #987b68;
+        background: $iconColor;
         display: block;
-        width: 36px;
+        width: $icoW;
         height: 2px;
         position: absolute;
         z-index: 101;
@@ -232,7 +234,7 @@ $timeAni: 1s;
 }
 @media screen and (max-width: 767px) {
     .menu{
-        z-index: 99;
+        // z-index: 99;
         visibility: hidden;
 
         &.active{
