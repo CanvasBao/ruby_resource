@@ -21,7 +21,7 @@
         <div>
           <h2 class="text-lg font-semibold text-cyan-600">Chào mừng quý khách đến với Ruby Label!</h2>
           <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bạn cần in tem nhãn, máy in, mực in?</p>
-          <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">
+          <p class="mx-auto mt-5 text-xl text-gray-500">
             Với nhiều năm kinh nghiệm trong lĩnh vực cung cấp các giải pháp in ấn, chúng tôi cam kết mang đến cho quý khách sự hài lòng nhất về chất lượng sản phẩm và dịch vụ.<br>
             Các sản phẩm chính của chúng tôi bao gồm các loại tem nhãn được sản xuất trên các máy móc hiện đại nhất, với đầy đủ các loại tem nhãn từ tem nhãn in mã vạch đến tem nhãn decal.<br>
             Ngoài ra, chúng tôi cũng cung cấp các loại máy in barcode và mực in tem, giúp quý khách hàng có thể tự sản xuất tem nhãn của mình nhanh chóng và tiết kiệm chi phí.

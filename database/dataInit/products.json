@@ -14,13 +14,93 @@
   },
   {
     "id" : 2,
-    "category_id" : 2,
+    "category_id" : 1,
     "name" : "Tem Nhan 2",
     "price" : null,
     "description" : "",
     "short_des": "",
     "code" : "TN-02",
     "sort_no" : 2,
-    "images" : []
+    "images" : [
+      "product-temnhan-2.jpg"
+    ]
+  },
+  {
+    "id" : 3,
+    "category_id" : 1,
+    "name" : "Tem Nhan 3",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-03",
+    "sort_no" : 3,
+    "images" : [
+      "product-temnhan-3.jpg"
+    ]
+  },
+  {
+    "id" : 4,
+    "category_id" : 1,
+    "name" : "Tem Nhan 4",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-04",
+    "sort_no" : 4,
+    "images" : [
+      "product-temnhan-4.jpg"
+    ]
+  },
+  {
+    "id" : 5,
+    "category_id" : 1,
+    "name" : "Tem Nhan 5",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-05",
+    "sort_no" : 5,
+    "images" : [
+      "product-temnhan-5.jpg"
+    ]
+  },
+  {
+    "id" : 6,
+    "category_id" : 1,
+    "name" : "Tem Nhan 6",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-06",
+    "sort_no" : 6,
+    "images" : [
+      "product-temnhan-6.jpg"
+    ]
+  },
+  {
+    "id" : 7,
+    "category_id" : 1,
+    "name" : "Tem Nhan 7",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-07",
+    "sort_no" : 7,
+    "images" : [
+      "product-temnhan-7.jpg"
+    ]
+  },
+  {
+    "id" : 8,
+    "category_id" : 1,
+    "name" : "Tem Nhan 8",
+    "price" : null,
+    "description" : "",
+    "short_des": "",
+    "code" : "TN-08",
+    "sort_no" : 8,
+    "images" : [
+      "product-temnhan-8.jpg"
+    ]
   }
 ]

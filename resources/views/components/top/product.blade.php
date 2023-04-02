@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
     <h2 class="text-lg font-semibold text-cyan-600">Sản phẩm đa dạng</h2>
     <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Mọi thứ bạn cần</p>
-    <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">
+    <p class="mx-auto mt-5 text-xl text-gray-500">
       Mọi nhu cầu về in tem nhãn chất lượng cao của khách hàng cho từng ngành nghề, những yêu cầu kỹ thuật đặc biệt, chúng tôi luôn đáp ứng, giúp khách hàng đạt được mục tiêu thương hiệu của mình.
     </p>
     <div class="mt-12">
