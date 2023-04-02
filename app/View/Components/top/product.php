@@ -8,7 +8,6 @@ use App\Models\Category as CategoryMD;
 
 class product extends Component
 {
-  public $products;
   public $categories;
 
   /**
@@ -21,7 +20,6 @@ class product extends Component
   public function __construct()
   {
     $this->categories = CategoryMD::has('products')->with('products')->get();
-    $this->products = ProductMD::get();
   }
 
 
