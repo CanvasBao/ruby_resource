@@ -4,10 +4,12 @@ namespace App\View\Components\top;
 
 use Illuminate\View\Component;
 use App\Models\Product as ProductMD;
+use App\Models\Category as CategoryMD;
 
 class product extends Component
 {
   public $products;
+  public $categories;
 
   /**
    * Create a new component instance.
@@ -18,6 +20,7 @@ class product extends Component
    */
   public function __construct()
   {
+    $this->categories = CategoryMD::has('products')->with('products')->get();
     $this->products = ProductMD::get();
   }
 
