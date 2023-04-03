@@ -11,10 +11,7 @@
       <div class="py-3">
         <h2 class="h2">THÔNG TIN LIÊN HỆ</h2>
         Địa chỉ: Số 164/27B Bùi Quang Là, P12, Quận Gò Vấp, TP.Hồ Chí Minh, Việt Nam <br>
-        {{-- Địa chỉ nhà máy: Số 169/66 Nguyễn Hữu Cảnh, Phường Phú Thọ, Thành Phố Thủ Dầu Một, Tỉnh Bình Dương, Việt Nam. --}}
-
-        {{-- Email : info@binhduongbarcode.com - quocan@binhduongbarcode.com --}}
-      
+        Email : info@rubylabel.net - Ruby.biendegi@gmail.com<br>
         Điện thoại : 028.220 363 79<br>
         Fax: 028.220 363 78
       </div>
