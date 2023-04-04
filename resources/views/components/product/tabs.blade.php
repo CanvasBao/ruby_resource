@@ -19,11 +19,11 @@
     <div class="hidden sm:block">
       <nav class="flex space-x-4" aria-label="Tabs">
         <!-- Current: "bg-indigo-100 text-indigo-700", Default: "text-gray-500 hover:text-gray-700" -->
-        <div class="bg-indigo-100 text-indigo-700 rounded-md px-3 py-2 text-sm font-medium cursor-pointer">Tất cả</div>
+        <div class="productTab bg-indigo-100 text-indigo-700 rounded-md px-3 py-2 text-sm font-medium cursor-pointer">Tất cả</div>
 
         @foreach ($categories as $category)
-          <div
-            class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium cursor-pointer">{{ $category->category_name }}</div>
+          <div class="productTab text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium cursor-pointer">
+            {{ $category->category_name }}</div>
         @endforeach
       </nav>
     </div>
