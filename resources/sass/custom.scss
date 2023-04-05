@@ -2,6 +2,28 @@
     background-color: #2458f4;
 }
 
-.productTab{
-    color: rbg(107 114 128)
+.productTab {
+    color: #6b7280;
+
+    &:hover {
+        color: #374151;
+    }
+
+    &.active {
+        background-color: #e0e7ff;
+        color: #4338ca;
+    }
+}
+
+@keyframes example {
+    from {
+        transform: scale(0.5);}
+    to {transform: scale(1);}
+  }
+
+.productsList {
+    .productEl {
+        animation-name: example;
+        animation-duration: 1s;
+    }
 }

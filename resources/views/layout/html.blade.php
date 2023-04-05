@@ -23,7 +23,12 @@
   {{-- your scripts here --}}
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="{{ mix('js/app.js') }}"></script>
-
+  @livewireScripts
+  <script>
+    document.addEventListener('livewire:load', () => {
+        Livewire.onPageExpired((response, message) => {})
+    })
+</script>
   @yield('scripts')
 
 @show

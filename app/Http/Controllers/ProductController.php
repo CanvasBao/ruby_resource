@@ -18,7 +18,7 @@ class ProductController extends BaseController
      */
     public function index(Request $request)
     {
-        $query = Product::with('images');
+        $query = Product::with(['images','category']);
 
         // page
         $perPage = request()->has('per_page') ? (int)request()->per_page : 10;
