@@ -8,11 +8,8 @@
 
 @section('content')
   <div class="bg-white">
-    @php
-      $topImage = [asset('storage/images/slide-1.jpg'), asset('storage/images/slide-2.jpg')];
-    @endphp
     <div class="h-80 md:h-[calc(100vh-65px)]">
-      <x-top.slider :images="$topImage" />
+      <x-top.slider />
     </div>
 
     <!-- Feature section with screenshot -->

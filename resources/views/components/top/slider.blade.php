@@ -2,10 +2,10 @@
   <div class="swiper swiperTopPage h-full">
     <div class="swiper-wrapper">
       @foreach ($images as $image)
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-title="{{ isset($image['title']) ?  $image['title'] : '' }}"  data-subtitle="{{ isset($image['subtitle']) ?  $image['subtitle'] : '' }}">
           <div class="w-full h-full">
             <figure class="w-full h-full">
-              <img class="w-full h-full object-cover" src="{{ $image }}" alt="slider image">
+              <img class="w-full h-full object-cover" src="{{ $image['image'] }}" alt="slider image">
             </figure>
           </div>
         </div>

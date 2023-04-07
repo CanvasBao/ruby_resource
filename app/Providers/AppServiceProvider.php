@@ -60,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
         //top
         Blade::component('top.material', \App\View\Components\top\material::class);
         Blade::component('top.product', \App\View\Components\top\product::class);
+        Blade::component('top.slider', \App\View\Components\top\slider::class);
 
         Blade::component('product.tabs', \App\View\Components\product\tabs::class);
 
