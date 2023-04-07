@@ -35,17 +35,34 @@
 .slide-captions {
     position: absolute;
     top: 50%;
-    left: 10%;
-    color: #fff;
+    left: 50px;
+    color: #c12f2f;
     z-index: 999;
     transform: translateY(-50%);
+    max-width: 700px;
 
     .current-title {
         margin: 0;
-        font-size: 48px;
+        font-size: 45px;
+        text-shadow:  0 0 3px #f1b4b4, 0 0 15px #ebbbbb;
     }
     .current-subtitle {
         margin: 10px 0 0 0;
-        font-size: 28px;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .slide-captions {
+        left: 15px;
+        max-width: 350px;
+
+        .current-title {
+            font-size: 25px;
+        }
+        .current-subtitle {
+            margin: 5px 0 0 0;
+            font-size: 18px;
+        }
     }
 }

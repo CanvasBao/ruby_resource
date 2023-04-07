@@ -8,7 +8,14 @@
 
 @section('content')
   <div class="bg-white">
-    <div class="h-80 md:h-[calc(100vh-65px)]">
+    <div class=" relative h-80 md:h-[calc(100vh-64px)]">
+      <div class="fixed right-2 bottom-2 md:right-4 md:top-[90px] md:bottom-auto z-10">
+        <a href="tel:02822036379"
+        class="block rounded-md bg-indigo-50 px-3.5 py-3 text-md border border-[#0ca678] font-semibold text-[#0ca678] shadow-sm hover:bg-indigo-100">
+        <img class="h-5 w-5 inline-block mr-1"
+        src="{{ asset('storage/images/phone-solid.svg') }}" alt="028.220 363 79" />
+        028.220 363 79</a>
+      </div>
       <x-top.slider />
     </div>
 
@@ -74,7 +81,7 @@
     <div class="relative bg-gray-900">
       <div class="relative h-56 bg-indigo-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
         <img class="h-full w-full object-cover"
-          src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&sat=-100"
+          src="{{ asset('storage/images/contact.jpg') }}"
           alt="" />
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-600 mix-blend-multiply">
         </div>
