@@ -11,6 +11,10 @@ const mix = require("laravel-mix");
  |
  */
 
+mix.js('node_modules/swiper/swiper-bundle.min.js', 'public/js')
+ .js('node_modules/gsap/dist/gsap.min.js', 'public/js')
+ .postCss('node_modules/swiper/swiper-bundle.min.css', 'public/css')
+
 mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/common.scss", "public/css")
     .postCss("resources/css/app.css", "public/css", [require("tailwindcss")]);

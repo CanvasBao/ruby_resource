@@ -17,13 +17,35 @@
 
 @keyframes example {
     from {
-        transform: scale(0.5);}
-    to {transform: scale(1);}
-  }
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+    }
+}
 
 .productsList {
     .productEl {
         animation-name: example;
         animation-duration: 1s;
+    }
+}
+
+/* Slide captions */
+.slide-captions {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    color: #fff;
+    z-index: 999;
+    transform: translateY(-50%);
+
+    .current-title {
+        margin: 0;
+        font-size: 48px;
+    }
+    .current-subtitle {
+        margin: 10px 0 0 0;
+        font-size: 28px;
     }
 }

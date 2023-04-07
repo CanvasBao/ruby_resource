@@ -16,12 +16,13 @@
 
   @yield('meta')
 
-  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{{ mix('css/swiper-bundle.min.css') }}">
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   <link rel="stylesheet" href="{{ mix('css/common.css') }}">
 
   {{-- your scripts here --}}
-  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="{{ mix('js/swiper-bundle.min.js') }}"></script>
+  <script src="{{ mix('js/gsap.min.js') }}"></script>
   <script src="{{ mix('js/app.js') }}"></script>
   @livewireScripts
   <script>
