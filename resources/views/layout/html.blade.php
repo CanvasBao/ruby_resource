@@ -35,14 +35,14 @@
 @show
 </head>
 
-<body class="max-w-7xl">
+<body>
 <x-layout.header />
 
-<main class="pt-16">
+<main id="mainContent" class="layout-with shadow-2xl">
   @yield('content')
+  <x-layout.footer />
 </main>
 
-<x-layout.footer />
 </body>
 
 </html>
