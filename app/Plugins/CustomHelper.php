@@ -62,7 +62,7 @@ trait CustomHelper
      * @param $input
      * @return
      */
-    protected function getListWithPraram($query, $input)
+    protected function getListWithParam($query, $input)
     {
         if (!empty($input['limit'])) {
             $query = $query->limit($input['limit']);

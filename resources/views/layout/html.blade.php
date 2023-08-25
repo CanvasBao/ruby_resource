@@ -35,7 +35,7 @@
 @show
 </head>
 
-<body>
+<body class="max-w-7xl">
 <x-layout.header />
 
 <main class="pt-16">

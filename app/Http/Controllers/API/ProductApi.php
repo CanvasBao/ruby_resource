@@ -28,7 +28,7 @@ class ProductApi extends Controller
                 $query->orderBy('sort_no');
             }
 
-            $response = $this->getListWithPraram($query, $input);
+            $response = $this->getListWithParam($query, $input);
 
             return ProductResource::collection($response);
         } catch (\Exception $e) {
@@ -77,7 +77,7 @@ class ProductApi extends Controller
             $productInsert = Product::create($registerInput);
 
             // 商品画像登録
-            $this->productImageRegist($productInsert, $request);
+            $this->productImageRegister($productInsert, $request);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -177,7 +177,7 @@ class ProductApi extends Controller
     /**
      * 商品画像登録
      */
-    private function productImageRegist($product, Request $request)
+    private function productImageRegister($product, Request $request)
     {
         try {
             // ファイルチェック
