@@ -5,12 +5,14 @@
 .layout-with{
  max-width: 1140px;
  width: 100%;
- margin: 0 auto;
+ margin-left: auto;
+ margin-right: auto;
 }
 
 #mainContent{
     // box-shadow:  5 5px 5px 0 #774242;;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 0;
 }
 
 
@@ -78,3 +80,11 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 768px) {
+    #mainContent{
+      padding-top: 4rem;
+    }
+}
+

@@ -1,7 +1,15 @@
 @isset($images)
   <div class="swiper swiperTopPage h-full">
     <div class="swiper-wrapper">
-      @foreach ($images as $image)
+
+      <div class="swiper-slide" data-title=""  data-subtitle="">
+        <div class="w-full h-full">
+          <figure class="w-full h-full">
+            <img class="w-full h-full object-cover" src="{{ asset('storage/images/welcome.png') }}" alt="welcome">
+          </figure>
+        </div>
+      </div>
+      {{-- @foreach ($images as $image)
         <div class="swiper-slide" data-title="{{ isset($image['title']) ?  $image['title'] : '' }}"  data-subtitle="{{ isset($image['subtitle']) ?  $image['subtitle'] : '' }}">
           <div class="w-full h-full">
             <figure class="w-full h-full">
@@ -9,7 +17,7 @@
             </figure>
           </div>
         </div>
-      @endforeach
+      @endforeach --}}
     </div>
     <div class="slide-captions"></div>
     <div class="swiper-button-next opacity-0 hover:opacity-100"></div>
@@ -73,7 +81,7 @@
       });
 
       let titleObj = sliderSwiper.slides[sliderSwiper.activeIndex];
-      let currentTitle = titleObj.getAttribute("data-title") || 'In mã vạch, in kết nối sự thành công';
+      let currentTitle = titleObj.getAttribute("data-title") || '';
       let currentSubtitle = titleObj.getAttribute("data-subtitle") || '';
       document.querySelector(".slide-captions").innerHTML = "<h2 class='current-title'>" + currentTitle +
               "</h2>" + "<h3 class='current-subtitle'>" + currentSubtitle + "</h3>";
