@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthApi;
 use App\Http\Controllers\API\UserApi;
 use App\Http\Controllers\API\ProductApi;
+use App\Http\Controllers\API\BannerApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,10 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::controller(ProductApi::class)->prefix('product')->group(function () {
     });
     Route::apiResource('product', ProductApi::class);
+});
+
+// banner
+Route::prefix('banner')->group(function () {
+    Route::get('/', [BannerApi::class, 'index']);
+    Route::post('/register', [BannerApi::class, 'store']);
 });

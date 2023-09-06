@@ -133,6 +133,7 @@ return [
         ],
     ],
     'attributes'           => [
+        'image'                 => 'hình ảnh',
         'address'               => 'địa chỉ',
         'age'                   => 'tuổi',
         'available'             => 'có sẵn',
@@ -163,6 +164,7 @@ return [
         'subject'               => 'tiêu đề',
         'time'                  => 'thời gian',
         'title'                 => 'tiêu đề',
+        'sub_title'             => 'phụ đề',
         'username'              => 'tên đăng nhập',
         'year'                  => 'năm',
         'company'               => 'Tên công ty',
