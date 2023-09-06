@@ -25,7 +25,7 @@ class ApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected function sendResponse($result, $message)
+    protected function sendResponse($result = [], $message = 'success')
     {
         $response = [
             'success' => true,
@@ -41,7 +41,7 @@ class ApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected function sendError($error, $errorMessages = [], $code = 404)
+    protected function sendError($error = 'fail', $errorMessages = [], $code = 404)
     {
         $response = [
             'success' => false,

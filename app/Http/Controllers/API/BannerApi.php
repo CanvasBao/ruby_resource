@@ -17,7 +17,6 @@ class BannerApi extends Controller
      */
     public function index()
     {
-        dd(Banner::getImgFullPath());
         $results = Banner::orderBy('sort_no', 'ASC')->get();
         return $this->sendResponse($results, 'success');
     }
@@ -74,8 +73,8 @@ class BannerApi extends Controller
             // register
             $newOrder = Banner::max('sort_no') + 1;
             $registerInput = array_merge($registerInput, [
-                'title' => $input['title'],
-                'sub_title' => $input['sub_title'],
+                'title' => !empty($input['title']) ? $input['title'] : '',
+                'sub_title' => !empty($input['sub_title']) ? $input['sub_title'] : '',
                 'sort_no' =>  $newOrder
             ]);
             Banner::create($registerInput);
@@ -96,10 +95,11 @@ class BannerApi extends Controller
                     'text' => $e->getMessage(), 'type' => 'original'
                 ));
             }
-            return $this->sendError('fail', $e->getMessage());
+
+            return $this->sendError();
         }
 
-        return $this->sendResponse('', 'success');
+        return $this->sendResponse();
     }
 
     // /**
@@ -163,23 +163,23 @@ class BannerApi extends Controller
     //     return $this->response->registed();
     // }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy($id)
-    // {
-    //     // check exist
-    //     $category = Category::find($id);
-    //     if ($category === null) {
-    //         return $this->response->error('category is not exist');
-    //     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        // check exist
+        $banner = Banner::find($id);
+        if ($banner === null) {
+            return $this->response->error('record is not exist');
+        }
 
-    //     //update DB
-    //     $category->delete();
+        //update DB
+        $banner->delete();
 
-    //     return $this->response->success();
-    // }
+        return $this->sendResponse();
+    }
 }

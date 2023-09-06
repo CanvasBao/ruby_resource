@@ -29,4 +29,24 @@ trait UploadPath
         return $uploadPath . $file_path;
     }
   }
+
+
+  public static function getAssetPath(): string
+  {
+    $imgDir = (new self)->imgDir;
+
+
+    $assetPath = 'storage/uploads';
+    if (!str_starts_with($imgDir, '/')) {
+        $assetPath .= '/';
+    }
+
+    $assetPath .=  $imgDir;
+
+    if (!str_ends_with($assetPath, '/')){
+        $assetPath .= '/';
+    }
+
+    return $assetPath;
+  }
 }

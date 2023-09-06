@@ -3,10 +3,13 @@
 namespace App\View\Components\top;
 
 use Illuminate\View\Component;
+use App\Models\Banner;
 
 class slider extends Component
 {
   public $images;
+
+  public $assetDir;
 
   /**
    * Create a new component instance.
@@ -17,20 +20,9 @@ class slider extends Component
    */
   public function __construct()
   {
-    $this->images = [
-      [
-        'image' => asset('storage/images/slide-1.jpg'),
-        'title' => "Chất lượng tạo niềm tin",
-        'subtitle' => 'Với sự chuyên nghiệp, sáng tạo và tiên tiến, chúng tôi cam kết cùng khách hàng xây dựng thương hiệu bền vững và thành công',
-        'color' => ''
-      ],
-      [
-        'image' => asset('storage/images/slide-2.jpg'),
-        'title' => "Dấu ấn phong cách của bạn",
-        'subtitle' => "Chúng tôi cung cấp các giải pháp nhãn và mã vạch linh hoạt, hiệu quả và độc đáo để đáp ứng nhu cầu sản xuất của bạn",
-        'color' => ''
-      ]
-    ];
+    $this->images = Banner::orderBy('sort_no', 'ASC')->get()->toArray();
+
+    $this->assetDir = Banner::getAssetPath();
   }
 
 
