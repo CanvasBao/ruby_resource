@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\UploadPath;
 
 class ProductImage extends Model
 {
 
-	use HasFactory;
+	use HasFactory, UploadPath;
 
 	protected $table = 'product_image';
+	public $imgDir = 'product';
 	public $timestamps = false;
 
 	protected $casts = [
