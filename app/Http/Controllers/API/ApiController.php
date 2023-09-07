@@ -63,6 +63,8 @@ class ApiController extends Controller
                 $response['data'] = array(
                         'text' => $error->getMessage(), 'type' => 'original'
                     );
+            }else{
+                \Log::error($error);
             }
         }
         elseif ($error instanceof MessageBag) {
