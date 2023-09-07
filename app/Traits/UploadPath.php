@@ -58,7 +58,7 @@ trait UploadPath
       return false;
     }
 
-    $dirPath = ProductImage::getImgFullPath();
+    $dirPath = self::getImgFullPath();
 
     foreach($files as $file){
       try {

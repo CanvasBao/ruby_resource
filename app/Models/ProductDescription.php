@@ -26,7 +26,8 @@ class ProductDescription extends Model
 			'id',
 			'product_id',
 			'title',
-			'content'
+			'content',
+			'sort_no'
     ];
 	
 
