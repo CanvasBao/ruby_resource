@@ -30,7 +30,6 @@ trait UploadPath
     }
   }
 
-
   public static function getAssetPath(): string
   {
     $imgDir = (new self)->imgDir;
@@ -48,5 +47,32 @@ trait UploadPath
     }
 
     return $assetPath;
+  }
+
+  public static function removeFileUploaded($files = []): bool
+  {
+    if (empty($files)){
+      return true;
+    }
+    elseif (!is_array($files)){
+      return false;
+    }
+
+    $dirPath = ProductImage::getImgFullPath();
+
+    foreach($files as $file){
+      try {
+        $filePath = $dirPath . $file;
+        if (file_exists($filePath) && is_file($filePath)) {
+          unlink($imagePath);
+        }else{
+          \Log::warning($filePath . ' is not file.');
+        }
+      } catch (\Exception $e) {
+        \Log::warning($e->getMessage());
+      }
+    }
+
+    return true;
   }
 }
