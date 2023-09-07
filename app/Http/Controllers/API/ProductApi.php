@@ -37,6 +37,33 @@ class ProductApi extends Controller
     }
 
     /**
+     * 商品画像登録
+     */
+    private function productImageRegister($product, Request $request)
+    {
+        try {
+            // ファイルチェック
+            $productImage = $request->file('image');
+            if (!$productImage) {
+                throw new \Exception();
+            }
+
+            // メイン画像
+            foreach ($productImage as $file) {
+                $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $this->saveImage($file, 'product/', $fileName);
+
+                ProductImage::create([
+                    'product_id' =>  $product->id,
+                    'image' =>  $fileName,
+                ]);
+            }
+        } catch (\Exception $e) {
+            throw new \Exception('画像のアップロードに失敗しました。再度アップロードをお願いいたします。', 3000);
+        }
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,14 +76,14 @@ class ProductApi extends Controller
         $validatorInput = [
             'code' => 'required|code_ex|max:30',
             'name' => 'required|max:30',
-            'price' => 'required|numeric',
+            // 'price' => 'required|numeric',
             'image' => 'required|array',
             'image.*' => 'image'
         ];
 
         // 入力チェック
         $validator = Validator::make($input, $validatorInput)
-            ->setAttributeNames(['name' => '商品名']);
+            ->setAttributeNames(['name' => 'Tên sản phẩm']);
 
         if ($validator->fails()) {
             return $this->response->valiError($validator->errors());
@@ -116,7 +143,7 @@ class ProductApi extends Controller
         // 商品存在チェック
         $product = Product::with('images')->where('id', '=', $id)->first();
         if ($product === null) {
-            return $this->sendError('商品が存在しません。', '');
+            return $this->sendError(null, "product isn't exist");
         }
 
         $input = $request->all();
@@ -172,33 +199,6 @@ class ProductApi extends Controller
         $product->delete();
 
         return $this->response->success();
-    }
-
-    /**
-     * 商品画像登録
-     */
-    private function productImageRegister($product, Request $request)
-    {
-        try {
-            // ファイルチェック
-            $productImage = $request->file('image');
-            if (!$productImage) {
-                throw new \Exception();
-            }
-
-            // メイン画像
-            foreach ($productImage as $file) {
-                $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-                $this->saveImage($file, 'product/', $fileName);
-
-                ProductImage::create([
-                    'product_id' =>  $product->id,
-                    'image' =>  $fileName,
-                ]);
-            }
-        } catch (\Exception $e) {
-            throw new \Exception('画像のアップロードに失敗しました。再度アップロードをお願いいたします。', 3000);
-        }
     }
 
     /**

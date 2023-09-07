@@ -90,13 +90,7 @@ class BannerApi extends Controller
                 }
             }
 
-            if ($e->getCode() === 3000) {
-                return $this->sendError('fail', array(
-                    'text' => $e->getMessage(), 'type' => 'original'
-                ));
-            }
-
-            return $this->sendError();
+            return $this->sendError($e);
         }
 
         return $this->sendResponse();
