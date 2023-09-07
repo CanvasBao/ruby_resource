@@ -77,8 +77,9 @@ class BannerApi extends Controller
                 'sub_title' => !empty($input['sub_title']) ? $input['sub_title'] : '',
                 'sort_no' =>  $newOrder
             ]);
-            Banner::create($registerInput);
+            $banner = Banner::create($registerInput);
 
+            $data = $banner->fresh();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
@@ -93,7 +94,7 @@ class BannerApi extends Controller
             return $this->sendError($e);
         }
 
-        return $this->sendResponse();
+        return $this->registered($data);
     }
 
     // /**
