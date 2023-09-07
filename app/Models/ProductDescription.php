@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ProductImage extends Model
+class ProductDescription extends Model
 {
 
 	use HasFactory;
 
-	protected $table = 'product_image';
+	protected $table = 'product_description';
 	public $timestamps = false;
 
 	protected $casts = [
@@ -25,9 +25,8 @@ class ProductImage extends Model
     protected $fillable = [
 			'id',
 			'product_id',
-			'image',
-			'sort_no',
-			'create_at'
+			'title',
+			'content'
     ];
 	
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('product_id');
             $table->string('title','100');
             $table->longText('content');
+            $table->unsignedInteger('sort_no');
 
             $table->timestamp('created_at')->useCurrent();
 
