@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller as Controller;
 use App\Plugins\Response;
 use App\Plugins\CustomHelper;
-
+use Illuminate\Support\MessageBag;
 class ApiController extends Controller
 {
     use CustomHelper;
@@ -25,7 +25,17 @@ class ApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected function sendResponse($result = [], $message = 'success')
+    protected function registered($data = [], $message = 'registered')
+    {
+        return $this->sendResponse($data, $message, 201);
+    }
+
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendResponse($result = [], $message = 'success', $code = 200)
     {
         $response = [
             'success' => true,
@@ -33,7 +43,7 @@ class ApiController extends Controller
             'message' => $message,
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response, $code);
     }
 
     /**
@@ -49,10 +59,16 @@ class ApiController extends Controller
         ];
 
         if ($error instanceof \Exception) {
-            $response['data'] = array(
-                    'text' => $error->getMessage(), 'type' => 'original'
-                );
-        } elseif (is_array($error) && !empty($error)){
+            if ($error->getCode() === 3000) {
+                $response['data'] = array(
+                        'text' => $error->getMessage(), 'type' => 'original'
+                    );
+            }
+        }
+        elseif ($error instanceof MessageBag) {
+            $response['data'] = $error;
+        }
+        elseif (is_array($error) && !empty($error)){
             $response['data'] = $error;
         }
 

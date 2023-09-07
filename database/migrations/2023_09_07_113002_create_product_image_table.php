@@ -18,7 +18,7 @@ class CreateProductImageTable extends Migration
 
             $table->unsignedInteger('product_id');
             $table->string('image','100');
-            $table->longText('description')->nullable();
+            $table->unsignedInteger('sort_no');
 
             $table->timestamp('created_at')->useCurrent();
 

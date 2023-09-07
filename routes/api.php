@@ -28,20 +28,28 @@ Route::controller(AuthApi::class)->group(function () {
     });
 });
 
-//
-Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
-    //　ユーザー
-    Route::controller(UserApi::class)->prefix('user')->group(function () {
-    });
-    Route::apiResource('user', UserApi::class);
-    //　商品
-    Route::controller(ProductApi::class)->prefix('product')->group(function () {
-    });
-    Route::apiResource('product', ProductApi::class);
-});
+// Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
+    // //
+    // Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
+    //     //　ユーザー
+    //     Route::controller(UserApi::class)->prefix('user')->group(function () {
+    //     });
+    //     Route::apiResource('user', UserApi::class);
+    //     //　商品
+    //     Route::controller(ProductApi::class)->prefix('product')->group(function () {
+    //     });
+    //     Route::apiResource('product', ProductApi::class);
+    // });
 
-// banner
-Route::prefix('banner')->group(function () {
-    Route::get('/', [BannerApi::class, 'index']);
-    Route::post('/register', [BannerApi::class, 'store']);
-});
+    // banner
+    Route::controller(BannerApi::class)->prefix('banner')->group(function () {
+        Route::get('/', 'index');
+        Route::post('/register', 'store');
+    });
+
+    // banner
+    Route::controller(ProductApi::class)->prefix('product')->group(function () {
+        Route::get('/', 'index');
+        Route::post('/register', 'store');
+    });
+// });

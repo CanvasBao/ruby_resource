@@ -81,12 +81,12 @@ class ProductApi extends Controller
             'image.*' => 'image'
         ];
 
-        // 入力チェック
+        // check input
         $validator = Validator::make($input, $validatorInput)
             ->setAttributeNames(['name' => 'Tên sản phẩm']);
 
         if ($validator->fails()) {
-            return $this->response->valiError($validator->errors());
+            return $this->sendError($validator->errors(), 'check input error', 403);
         }
 
         DB::beginTransaction();
@@ -109,9 +109,10 @@ class ProductApi extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->response->data($e)->rollback();
+            return $this->sendError($e);
         }
-        return $this->response->registed();
+
+        return $this->registered($productInsert->toArray());
     }
 
     /**

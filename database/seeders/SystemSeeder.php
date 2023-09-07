@@ -56,17 +56,18 @@ class SystemSeeder extends Seeder
                         'id' => $product->id,
                         'category_id' => $product->category_id,
                         'name' => $product->name,
-                        'price' => $product->price,
-                        'description' => $product->description,
+                        // 'price' => $product->price,
+                        'short_des' => $product->short_des,
                         'code' => $product->code,
                         'sort_no' => $product->sort_no,
                         'deleted_at' => (!empty($product->deleted_at) ? date("Y/m/d", strtotime($product->deleted_at)) : null)
                     ]
                 );
 
-                foreach ($product->images as $image) {
+                foreach ($product->images as $idx => $image) {
                     $productNew->images()->create([
                         'image' => $image,
+                        'sort_no' => $idx,
                     ]);
                 }
             }

@@ -20,8 +20,7 @@ class CreateProductTable extends Migration
             $table->string('code', '50')->nullable();
             $table->string('name', '100')->nullable();
             $table->unsignedInteger('price')->nullable();
-            $table->longText('short_des')->nullable();
-            $table->longText('description')->nullable();
+            $table->text('short_des')->nullable();
             $table->unsignedInteger('sort_no');
 
             $table->timestamp('created_at')->useCurrent();
