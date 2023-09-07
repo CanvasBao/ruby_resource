@@ -67,7 +67,7 @@ class SystemSeeder extends Seeder
                 foreach ($product->images as $idx => $image) {
                     $productNew->images()->create([
                         'image' => $image,
-                        'sort_no' => $idx,
+                        'sort_no' => $idx + 1,
                     ]);
                 }
             }
