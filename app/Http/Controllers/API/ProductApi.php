@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductDescription;
 
 class ProductApi extends Controller
 {
@@ -32,34 +33,125 @@ class ProductApi extends Controller
 
             return ProductResource::collection($response);
         } catch (\Exception $e) {
-            return $this->response->data($e)->rollback();
+            return $this->sendError($e);
         }
     }
 
     /**
-     * 商品画像登録
+     * register product images
      */
-    private function productImageRegister($product, Request $request)
+    private function handleProdImage($product, $input, $isCreate = true)
     {
+        $images = [];
         try {
-            // ファイルチェック
-            $productImage = $request->file('image');
-            if (!$productImage) {
+            // check has file
+            if (!$input) {
                 throw new \Exception();
             }
 
-            // メイン画像
-            foreach ($productImage as $file) {
-                $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-                $this->saveImage($file, 'product/', $fileName);
+            $uploadDir = ProductImage::getImgFullPath();
+            // save image
+            $imageIds = [];
+            $newImgData = [];
+            foreach ($input as $key => $item) {
+                $file = $item['image'];
+                if(is_uploaded_file($file)){
 
-                ProductImage::create([
-                    'product_id' =>  $product->id,
-                    'image' =>  $fileName,
-                ]);
+                    $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    $file->move($uploadDir, $fileName);
+                    $images[] = $fileName;
+
+                    array_push($newImgData, [
+                        'product_id' =>  $product->id,
+                        'image' =>  $fileName,
+                        'sort_no' =>  $key + 1,
+                    ]);
+                }
+                else if (!empty($file) && $isCreate){
+                    $copyImagePath =  $uploadDir . $image;
+                    if (file_exists($copyImagePath)) {
+                        $fileName = time() . '_' . uniqid() . '.' . pathinfo($copyImagePath, PATHINFO_EXTENSION);
+                        copy($copyImagePath, $uploadDir . $fileName);
+                        $images[] = $fileName;
+
+                        array_push($newImgData, [
+                            'product_id' =>  $product->id,
+                            'image' =>  $fileName,
+                            'sort_no' =>  $key + 1,
+                        ]);
+                    }
+                }
+                else if (!empty($file) && !$isCreate && !empty($item['id'])){
+                    array_push($imageIds, $item['id']);
+                }
             }
+            // delete image
+            ProductImage::where('product_id', $product->id)->whereNotIn('id', $imageIds)->delete();
+            // create new image
+            $product->images()->createMany($newImgData);
         } catch (\Exception $e) {
-            throw new \Exception('画像のアップロードに失敗しました。再度アップロードをお願いいたします。', 3000);
+            \Log::error($e);
+            ProductImage::removeFileUploaded($images);
+            throw new \Exception('upload image fail, please reupload.', 3000);
+        }
+
+        return $images;
+    }
+
+    /**
+     * handle register update product descriptions
+     */
+    private function handleProdDes($product, $input)
+    {
+        try {
+            // check
+            if (!$input) {
+                return false;
+            }
+
+            $newData = [];
+            $desIds = [];
+            // register description
+            foreach ($input as $key => $description) {
+                if (empty($description['title']) || empty($description['content'])) continue;
+
+                if (empty($item['id'])){
+                    array_push($newData, [
+                        'product_id' =>  $product->id,
+                        'title' =>  $description['title'],
+                        'content' =>  $description['content'],
+                        'sort_no' =>  $key + 1,
+                    ]);
+                }
+                else {
+                    $des = ProductDescription::where('id', $item['id'])->where('product_id', $product->id)->first();
+                    if($des){
+                        $des->update([
+                            'title' =>  $description['title'],
+                            'content' =>  $description['content'],
+                            'sort_no' =>  $key + 1
+                        ]);
+
+                        array_push($desIds, $des->id);
+                    }else{
+                        array_push($newData, [
+                            'product_id' =>  $product->id,
+                            'title' =>  $description['title'],
+                            'content' =>  $description['content'],
+                            'sort_no' =>  $key + 1,
+                        ]);
+                    }
+                }
+            }
+
+            // delete image
+            ProductDescription::where('product_id', $product->id)->whereNotIn('id', $desIds)->delete();
+            // create new image
+            $product->descriptions()->createMany($newData);
+
+        } catch (\Exception $e) {
+            \Log::error($e);
+            throw new \Exception('register descriptions fail.', 3000);
         }
     }
 
@@ -76,9 +168,8 @@ class ProductApi extends Controller
         $validatorInput = [
             'code' => 'required|code_ex|max:30',
             'name' => 'required|max:30',
-            // 'price' => 'required|numeric',
-            'image' => 'required|array',
-            'image.*' => 'image'
+            'images' => 'required|array',
+            'images.*.image' => 'image'
         ];
 
         // check input
@@ -95,24 +186,33 @@ class ProductApi extends Controller
             $registerInput = [
                 'name' => $input['name'],
                 'code' => $input['code'],
-                'description' => !empty($input['description']) ? $input['description'] : '',
+                'short_des' => !empty($input['short_des']) ? $input['short_des'] : '',
                 'sort_no' => $newOrder,
                 'price' => !empty($input['price']) ? $input['price'] : null
             ];
 
-            // 商品登録
-            $productInsert = Product::create($registerInput);
+            // register product
+            $product = Product::create($registerInput);
 
-            // 商品画像登録
-            $this->productImageRegister($productInsert, $request);
+            // register product images
+            $images = $input['images'];
+            $uploadedImg = $this->handleProdImage($product, $images);
 
+            // register product descriptions
+            $prodDes = $input['description'];
+            $this->handleProdDes($product, $prodDes);
+
+            $data = $product->fresh(['images', 'descriptions']);
             DB::commit();
         } catch (\Exception $e) {
+            if(isset($uploadedImg)){
+                ProductImage::removeFileUploaded($uploadedImg);
+            }
             DB::rollback();
             return $this->sendError($e);
         }
 
-        return $this->registered($productInsert->toArray());
+        return $this->registered($data);
     }
 
     /**
@@ -141,7 +241,7 @@ class ProductApi extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 商品存在チェック
+        // check product exist
         $product = Product::with('images')->where('id', '=', $id)->first();
         if ($product === null) {
             return $this->sendError(null, "product isn't exist");
@@ -149,14 +249,13 @@ class ProductApi extends Controller
 
         $input = $request->all();
         $validatorInput = [
-            'code' => 'sometimes|required|code_ex|max:30',
-            'name' => 'sometimes|required|string|max:30',
-            'price' => 'sometimes|required|numeric',
-            'image' => 'sometimes|required|array',
-            'image.*' => 'image',
+            'code' => 'required|code_ex|max:30',
+            'name' => 'required|max:30',
+            'images' => 'required|array',
+            'images.*.image' => 'image'
         ];
 
-        // 入力チェック
+        // check input
         $validator = Validator::make($input, $validatorInput)
             ->setAttributeNames(['name' => '商品名']);
 
@@ -169,17 +268,29 @@ class ProductApi extends Controller
             $input = array_merge($input, [
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
-            // 商品情報変更
+            // update product
             $product->update($input);
 
-            $this->productImageUpdate($product, $request);
+            // handle product images
+            $images = $input['images'];
+            $uploadedImg = $this->handleProdImage($product, $images);
+
+            // handle product descriptions
+            $prodDes = $input['description'];
+            $this->handleProdDes($product, $prodDes);
+
+            $data = $product->fresh(['images', 'descriptions']);
 
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->response->data($e)->rollback();
+            if(isset($uploadedImg)){
+                ProductImage::removeFileUploaded($uploadedImg);
+            }
+            return $this->sendError($e);
         }
-        return $this->response->registed();
+        
+        return $this->registered($data);
     }
 
     /**
@@ -190,57 +301,16 @@ class ProductApi extends Controller
      */
     public function destroy($id)
     {
-        //存在チェック
+        //check exist
         $product = Product::find($id);
         if ($product === null) {
-            return $this->response->error('商品が存在しません。');
+            return $this->sendError(null, "product isn't exist");
         }
 
-        //DBに登録
+        // update db
         $product->delete();
 
         return $this->response->success();
     }
 
-    /**
-     * 商品画像登録
-     */
-    private function productImageUpdate($product, Request $request)
-    {
-        try {
-            $productImage = $request->file('image');
-            if ($productImage) {
-                // メイン画像
-                foreach ($productImage as $file) {
-                    $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-                    $this->saveImage($file, 'product/', $fileName);
-
-                    ProductImage::create([
-                        'product_id' =>  $product->id,
-                        'image' =>  $fileName,
-                    ]);
-                }
-            }
-
-            // DBで画像削除
-            $removeImg = [];
-            if (!empty($request->delete_img)) {
-                foreach ($request->delete_img as $image) {
-                    $productImg = $product->images->where('image', $image)->first();
-                    if ($productImg) {
-                        $removeImg[] = $image;
-                        $removeImg[] = '350xh-' . $image;
-                        $productImg->delete();
-                    }
-                }
-            }
-
-            // ファイル画像削除
-            foreach ($removeImg as $image) {
-                $this->removeImage('product/', $image);
-            }
-        } catch (\Exception $e) {
-            throw new \Exception('画像のアップロードに失敗しました。再度アップロードをお願いいたします。', 3000);
-        }
-    }
 }
