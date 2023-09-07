@@ -16,9 +16,9 @@ class CreateProductImageTable extends Migration
         Schema::create('product_image', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('product_id');
-            $table->string('image','100');
-            $table->unsignedInteger('sort_no');
+            $table->unsignedInteger('product_id')->nullable();
+            $table->string('image','100')->nullable();
+            $table->unsignedInteger('sort_no')->nullable();
 
             $table->timestamp('created_at')->useCurrent();
 

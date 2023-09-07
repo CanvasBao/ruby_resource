@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('product_description', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('product_id');
-            $table->string('title','100');
-            $table->longText('content');
-            $table->unsignedInteger('sort_no');
+            $table->unsignedInteger('product_id')->nullable();
+            $table->string('title','100')->nullable();
+            $table->longText('content')->nullable();
+            $table->unsignedInteger('sort_no')->nullable();
 
             $table->timestamp('created_at')->useCurrent();
 
