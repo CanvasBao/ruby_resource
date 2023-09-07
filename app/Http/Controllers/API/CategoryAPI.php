@@ -41,11 +41,13 @@ class CategoryAPI extends Controller
         $validatorInput = [
             'category_name' => 'required|max:30',
             'category_slug' => 'required|regex:/^[a-zA-Z0-9\-]+$/',
+            'image' => 'required'
         ];
-        // 入力チェック
+
+        // check input
         $validator = Validator::make($input, $validatorInput);
         if ($validator->fails()) {
-            return $this->response->valiError($validator->errors());
+            return $this->sendError($validator->errors(), 'check input error', 403);
         }
         DB::beginTransaction();
         try {
@@ -54,17 +56,20 @@ class CategoryAPI extends Controller
             $registerInput = [
                 'category_name' => $input['category_name'],
                 'category_slug' => $input['category_slug'],
+                'title' => $input['title'],
+                'description' => $input['description'],
                 'sort_no' =>  $newOrder
             ];
-            Category::create($registerInput);
+            $category = Category::create($registerInput);
 
+            $data = $category->fresh();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->response->data($e)->error();
+            return $this->sendError($e);
         }
 
-        return $this->response->registed();
+        return $this->registered($data);
     }
 
     /**
@@ -105,6 +110,7 @@ class CategoryAPI extends Controller
         $validatorInput = [
             'category_name' => 'sometimes|required|max:30',
             'category_slug' => 'sometimes|required|regex:/^[a-zA-Z0-9\-]+$/',
+            'image' => 'required'
         ];
         // check input
         $validator = Validator::make($input, $validatorInput);
@@ -116,6 +122,9 @@ class CategoryAPI extends Controller
             // update category information
             if (isset($input['category_name'])) $category->category_name = $input['category_name'];
             if (isset($input['category_slug'])) $category->category_slug = $input['category_slug'];
+            if (isset($input['title'])) $category->category_name = $input['title'];
+            if (isset($input['description'])) $category->category_slug = $input['description'];
+            if (isset($input['sort_no'])) $category->category_slug = $input['sort_no'];
             $category->updated_at = date('Y-m-d H:i:s');
 
             $category->update();
