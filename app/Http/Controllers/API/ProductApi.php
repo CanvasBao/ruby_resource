@@ -33,7 +33,7 @@ class ProductApi extends Controller
 
             return ProductResource::collection($response);
         } catch (\Exception $e) {
-            return $this->sendError($e);
+            return $this->errorResponse($e);
         }
     }
 
@@ -177,7 +177,7 @@ class ProductApi extends Controller
             ->setAttributeNames(['name' => 'Tên sản phẩm']);
 
         if ($validator->fails()) {
-            return $this->sendError($validator->errors(), 'check input error', 403);
+            return $this->validateError($validator->errors());
         }
 
         DB::beginTransaction();
@@ -209,10 +209,10 @@ class ProductApi extends Controller
                 ProductImage::removeFileUploaded($uploadedImg);
             }
             DB::rollback();
-            return $this->sendError($e);
+            return $this->errorResponse($e);
         }
 
-        return $this->registered($data);
+        return $this->registeredResponse($data);
     }
 
     /**
@@ -226,7 +226,7 @@ class ProductApi extends Controller
         $product = Product::with('images')->find($id);
         //存在チェック
         if ($product === null) {
-            return $this->response->error('商品が存在しません。');
+            return $this->notExist();
         }
 
         return new ProductResource($product);
@@ -244,7 +244,7 @@ class ProductApi extends Controller
         // check product exist
         $product = Product::with('images')->where('id', '=', $id)->first();
         if ($product === null) {
-            return $this->sendError(null, "product isn't exist");
+            return $this->errorResponse(null, "product isn't exist");
         }
 
         $input = $request->all();
@@ -260,7 +260,7 @@ class ProductApi extends Controller
             ->setAttributeNames(['name' => '商品名']);
 
         if ($validator->fails()) {
-            return $this->response->valiError($validator->errors());
+            return $this->validateError($validator->errors());
         }
 
         DB::beginTransaction();
@@ -287,10 +287,10 @@ class ProductApi extends Controller
             if(isset($uploadedImg)){
                 ProductImage::removeFileUploaded($uploadedImg);
             }
-            return $this->sendError($e);
+            return $this->errorResponse($e);
         }
 
-        return $this->registered($data);
+        return $this->registeredResponse($data);
     }
 
     /**
@@ -304,13 +304,13 @@ class ProductApi extends Controller
         //check exist
         $product = Product::find($id);
         if ($product === null) {
-            return $this->sendError(null, "product isn't exist");
+            return $this->errorResponse(null, "product isn't exist");
         }
 
         // update db
         $product->delete();
 
-        return $this->response->success();
+        return $this->successResponse();
     }
 
 }

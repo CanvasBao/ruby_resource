@@ -24,7 +24,7 @@ class CategoryAPI extends Controller
 
             return CategoryResource::collection($response);
         } catch (\Exception $e) {
-            return $this->response->data($e)->rollback();
+            return $this->errorResponse($e);
         }
     }
 
@@ -41,13 +41,15 @@ class CategoryAPI extends Controller
         $validatorInput = [
             'category_name' => 'required|max:30',
             'category_slug' => 'required|regex:/^[a-zA-Z0-9\-]+$/',
+            'title' => 'required',
+            'description' => 'required',
             'image' => 'required'
         ];
 
         // check input
         $validator = Validator::make($input, $validatorInput);
         if ($validator->fails()) {
-            return $this->sendError($validator->errors(), 'check input error', 403);
+            return $this->validateError($validator->errors());
         }
         DB::beginTransaction();
         $uploadedImg = [];
@@ -81,10 +83,10 @@ class CategoryAPI extends Controller
             if(isset($uploadedImg)){
                 Category::removeFileUploaded($uploadedImg);
             }
-            return $this->sendError($e);
+            return $this->errorResponse($e);
         }
 
-        return $this->registered($data);
+        return $this->registeredResponse($data);
     }
 
     /**
@@ -99,7 +101,7 @@ class CategoryAPI extends Controller
 
         // check exist
         if ($category === null) {
-            return $this->response->error('category is not exist');
+            return $this->notExist();
         }
 
         return new CategoryResource($category);
@@ -117,7 +119,7 @@ class CategoryAPI extends Controller
         // check exist
         $category = Category::where('id', '=', $id)->first();
         if ($category === null) {
-            return $this->response->error('category is not exist');
+            return $this->notExist();
         }
 
         $input = $request->all();
@@ -125,12 +127,14 @@ class CategoryAPI extends Controller
         $validatorInput = [
             'category_name' => 'sometimes|required|max:30',
             'category_slug' => 'sometimes|required|regex:/^[a-zA-Z0-9\-]+$/',
+            'title' => 'required',
+            'description' => 'required',
             'image' => 'required'
         ];
         // check input
         $validator = Validator::make($input, $validatorInput);
         if ($validator->fails()) {
-            return $this->response->valiError($validator->errors());
+            return $this->validateError($validator->errors());
         }
 
         $uploadedImg = [];
@@ -163,10 +167,10 @@ class CategoryAPI extends Controller
             if(isset($uploadedImg)){
                 Category::removeFileUploaded($uploadedImg);
             }
-            return $this->sendError($e);
+            return $this->errorResponse($e);
         }
 
-        return $this->registered($data);
+        return $this->registeredResponse($data);
     }
 
     /**
@@ -180,12 +184,12 @@ class CategoryAPI extends Controller
         // check exist
         $category = Category::find($id);
         if ($category === null) {
-            return $this->response->error('category is not exist');
+            return $this->notExist();
         }
 
         //update DB
         $category->delete();
 
-        return $this->response->success();
+        return $this->successResponse();
     }
 }
