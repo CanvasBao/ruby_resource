@@ -19,7 +19,8 @@ class ProductImageResource extends JsonResource
         return [
             'id' => $this->id,
             'image' => $this->uri . $this->image,
-            'created_at' => date('Y年m月d日 H:i:s', strtotime($this->created_at)),
+            'sort_no' => $this->sort_no,
+            'created_at' => date('Y-m-d H:i:s', strtotime($this->created_at)),
         ];
     }
 }

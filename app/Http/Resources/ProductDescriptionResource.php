@@ -4,8 +4,10 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryResource extends JsonResource
+class ProductDescriptionResource extends JsonResource
 {
+    private $uri = '/storage/uploads/product/';
+
     /**
      * Transform the resource into an array.
      *
@@ -15,13 +17,11 @@ class CategoryResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'category_name' => $this->category_name,
-            'category_slug' => $this->category_slug,
+            'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
+            'content' => $this->content,
             'sort_no' => $this->sort_no,
             'created_at' => date('Y-m-d H:i:s', strtotime($this->created_at)),
-            'updated_at' =>date('Y-m-d H:i:s', strtotime($this->updated_at))
         ];
     }
 }

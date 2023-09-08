@@ -18,11 +18,13 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'code' => $this->code,
             'name' => $this->name,
-            'price' => $this->price,
+            'short_des' => $this->short_des,
+            'sort_no' => $this->sort_no,
+            'created_at' => date('Y-m-d H:i:s', strtotime($this->created_at)),
+            'updated_at' =>date('Y-m-d H:i:s', strtotime($this->updated_at)),
             'category' => new CategoryResource($this->category),
             'images' => ProductImageResource::collection($this->images),
-            'description' => $this->description,
-            'created_at' => date('Y年m月d日 H:i:s', strtotime($this->created_at))
+            'descriptions' => ProductDescriptionResource::collection($this->descriptions),
         ];
     }
 }
