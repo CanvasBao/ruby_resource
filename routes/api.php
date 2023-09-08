@@ -5,6 +5,7 @@ use App\Http\Controllers\API\AuthApi;
 use App\Http\Controllers\API\UserApi;
 use App\Http\Controllers\API\ProductApi;
 use App\Http\Controllers\API\BannerApi;
+use App\Http\Controllers\API\CategoryAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,13 +42,19 @@ Route::controller(AuthApi::class)->group(function () {
     //     Route::apiResource('product', ProductApi::class);
     // });
 
+    // category
+    Route::controller(CategoryAPI::class)->prefix('category')->group(function () {
+        Route::get('/', 'index');
+        Route::post('/register', 'store');
+    });
+
     // banner
     Route::controller(BannerApi::class)->prefix('banner')->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
     });
 
-    // banner
+    // product
     Route::controller(ProductApi::class)->prefix('product')->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');

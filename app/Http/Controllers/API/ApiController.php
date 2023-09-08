@@ -10,8 +10,6 @@ class ApiController extends Controller
 {
     use ControllerTraits, ResponseTrait;
 
-    protected $response;
-
     /**
      * Instantiate a new UserController instance.
      */
