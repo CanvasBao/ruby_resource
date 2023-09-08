@@ -24,17 +24,21 @@ class Product extends Model
 	];
 
 	protected $dates = [
+		'created_at',
+		'updated_at',
 		'deleted_at'
 	];
 
 	protected $fillable = [
 		'id',
+		'category_id',
+		'code',
 		'name',
 		'price',
-		'description',
-		'code',
+		'short_des',
 		'sort_no',
 		'created_at',
+		'updated_at',
 		'deleted_at'
 	];
 

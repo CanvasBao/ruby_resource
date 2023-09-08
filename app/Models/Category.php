@@ -32,6 +32,7 @@ class Category extends Model
 		'sort_no',
 		'image',
 		'title',
+		'description',
 		'deleted_at'
 	];
 
