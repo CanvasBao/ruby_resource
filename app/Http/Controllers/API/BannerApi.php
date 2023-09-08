@@ -97,66 +97,62 @@ class BannerApi extends Controller
         return $this->registeredResponse($data);
     }
 
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show($id)
-    // {
-    //     $category = Category::find($id);
+    /**
+     * order update
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateBannerIndex(Request $request)
+    {
+        // check input
+        $input = $request->all();
 
-    //     // check exist
-    //     if ($category === null) {
-    //         return $this->response->error('category is not exist');
-    //     }
+        $validatorInput = [
+            'list' => 'required|array',
+            'list.*.id' => 'required|distinct|exists:'.((new Banner)->getTable()).',id',
+            'list.*.sort_no' => 'required|numeric|distinct|max:'.Banner::count(),
+        ];
+        // check input
+        $validator = Validator::make($input, $validatorInput);
+        if ($validator->fails()) {
+            return $this->validateError($validator->errors());
+        }
 
-    //     return new CategoryResource($category);
-    // }
+        DB::beginTransaction();
+        try {
+            $data = Banner::select(['id', 'sort_no', DB::raw('1 as db')])
+                    ->get()
+                    ->keyBy('id')
+                    ->toArray();
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function update(Request $request, $id)
-    // {
-    //     // check exist
-    //     $category = Category::where('id', '=', $id)->first();
-    //     if ($category === null) {
-    //         return $this->response->error('category is not exist');
-    //     }
+            $list = collect($input['list'])
+                    ->keyBy('id')->union($data)
+                    ->sortBy([
+                        ['sort_no', 'asc'],
+                        ['db', 'asc'],
+                    ])->values();
 
-    //     $input = $request->all();
+            $list->mapWithKeys(function ($item, $key) {
+                $affected = Banner::where('id', $item['id'])->update(['sort_no' =>  $key + 1]);
+                if(!$affected){
+                    throw new \Exception('update fail', 3000);
+                }
+                return [$key => ['id' => $item['id'], 'sort_no' =>  $key + 1]];
+            })->all();
 
-    //     $validatorInput = [
-    //         'category_name' => 'sometimes|required|max:30',
-    //         'category_slug' => 'sometimes|required|regex:/^[a-zA-Z0-9\-]+$/',
-    //     ];
-    //     // check input
-    //     $validator = Validator::make($input, $validatorInput);
-    //     if ($validator->fails()) {
-    //         return $this->response->valiError($validator->errors());
-    //     }
-    //     DB::beginTransaction();
-    //     try {
-    //         // update category information
-    //         if (isset($input['category_name'])) $category->category_name = $input['category_name'];
-    //         if (isset($input['category_slug'])) $category->category_slug = $input['category_slug'];
-    //         $category->updated_at = date('Y-m-d H:i:s');
+        //    $a =  Banner::query()->upsert($data, ['id'], ['sort_no']);
 
-    //         $category->update();
+            $data = Banner::orderBy('sort_no')->get();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
 
-    //         DB::commit();
-    //     } catch (\Exception $e) {
-    //         DB::rollback();
-    //         return $this->response->data($e)->error();
-    //     }
-    //     return $this->response->registed();
-    // }
+            return $this->errorResponse($e);
+        }
+
+        return $this->registeredResponse($data);
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -52,6 +52,7 @@ Route::controller(AuthApi::class)->group(function () {
     Route::controller(BannerApi::class)->prefix('banner')->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
+        Route::post('/update-index', 'updateBannerIndex');
     });
 
     // product
