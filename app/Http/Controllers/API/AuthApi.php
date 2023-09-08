@@ -27,13 +27,13 @@ class AuthApi extends ApiController
             );
 
             if (!Auth::attempt($credentials)) {
-                return $this->response->error('認証に失敗しました。');
+                return $this->errorResponse([], 'certification failed.');
             }
         } catch (\Exception $e) {
-            return $this->response->data($e)->rollback();
+            return $this->errorResponse($e);
         }
 
-        return $this->response->data(Auth::user())->success();
+        return $this->successResponse(Auth::user());
     }
 
     /**
@@ -47,10 +47,10 @@ class AuthApi extends ApiController
             Auth::user()->tokens()->delete();
             $request->session()->invalidate();
         } catch (\Exception $e) {
-            return $this->response->data($e)->rollback();
+            return $this->errorResponse($e);
         }
 
-        return $this->response->success();
+        return $this->successResponse();
     }
 
     /**
@@ -63,12 +63,12 @@ class AuthApi extends ApiController
         try {
             $user = Auth::user();
             if (!$user) {
-                throw new \Exception("レコードがありません。");
+                return $this->notExist();
             }
 
             return new JsonResource($user);
         } catch (\Exception $e) {
-            return $this->response->data($e)->rollback();
+            return $this->errorResponse($e);
         }
     }
 }

@@ -18,7 +18,7 @@ class BannerApi extends Controller
     public function index()
     {
         $results = Banner::orderBy('sort_no', 'ASC')->get();
-        return $this->sendResponse($results, 'success');
+        return $this->successResponse($results, 'success');
     }
 
     /**
@@ -40,7 +40,7 @@ class BannerApi extends Controller
         // check input
         $validator = Validator::make($input, $validatorInput);
         if ($validator->fails()) {
-            return $this->response->valiError($validator->errors());
+            return $this->validateError($validator->errors());
         }
 
         DB::beginTransaction();
@@ -91,10 +91,10 @@ class BannerApi extends Controller
                 }
             }
 
-            return $this->sendError($e);
+            return $this->errorResponse($e);
         }
 
-        return $this->registered($data);
+        return $this->registeredResponse($data);
     }
 
     // /**
@@ -169,12 +169,12 @@ class BannerApi extends Controller
         // check exist
         $banner = Banner::find($id);
         if ($banner === null) {
-            return $this->response->error('record is not exist');
+            return $this->notExist();
         }
 
         //update DB
         $banner->delete();
 
-        return $this->sendResponse();
+        return $this->successResponse();
     }
 }
