@@ -1,5 +1,5 @@
 @isset($images)
-  <div class="swiper swiperTopPage h-full">
+  <div class="swiper swiperTopPage">
     <div class="swiper-wrapper">
 
       <div class="swiper-slide" data-title=""  data-subtitle="">
