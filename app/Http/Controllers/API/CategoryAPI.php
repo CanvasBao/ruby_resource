@@ -50,6 +50,7 @@ class CategoryAPI extends Controller
             return $this->sendError($validator->errors(), 'check input error', 403);
         }
         DB::beginTransaction();
+        $uploadedImg = [];
         try {
             // カテゴリー登録
             $newOrder = Category::max('sort_no') + 1;
@@ -60,12 +61,26 @@ class CategoryAPI extends Controller
                 'description' => $input['description'],
                 'sort_no' =>  $newOrder
             ];
+
+            // 説明の画像
+            if ($request->hasFile('image')) {
+                $uploadDir = Category::getImgFullPath();
+                $image = $request->file('image');
+                $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move($uploadDir, $fileName);
+                $registerInput['image'] = $fileName;
+                array_push($uploadedImg, $fileName);
+            }
+
             $category = Category::create($registerInput);
 
             $data = $category->fresh();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
+            if(isset($uploadedImg)){
+                Category::removeFileUploaded($uploadedImg);
+            }
             return $this->sendError($e);
         }
 
@@ -117,8 +132,20 @@ class CategoryAPI extends Controller
         if ($validator->fails()) {
             return $this->response->valiError($validator->errors());
         }
+
+        $uploadedImg = [];
         DB::beginTransaction();
         try {
+            // image
+            if ($request->hasFile('image')) {
+                $uploadDir = Category::getImgFullPath();
+                $image = $request->file('image');
+                $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move($uploadDir, $fileName);
+                $category->image = $fileName;
+                array_push($uploadedImg, $fileName);
+            }
+
             // update category information
             if (isset($input['category_name'])) $category->category_name = $input['category_name'];
             if (isset($input['category_slug'])) $category->category_slug = $input['category_slug'];
@@ -129,12 +156,17 @@ class CategoryAPI extends Controller
 
             $category->update();
 
+            $data = $category->fresh();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->response->data($e)->error();
+            if(isset($uploadedImg)){
+                Category::removeFileUploaded($uploadedImg);
+            }
+            return $this->sendError($e);
         }
-        return $this->response->registed();
+
+        return $this->registered($data);
     }
 
     /**

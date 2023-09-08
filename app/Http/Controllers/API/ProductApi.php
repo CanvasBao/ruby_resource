@@ -289,7 +289,7 @@ class ProductApi extends Controller
             }
             return $this->sendError($e);
         }
-        
+
         return $this->registered($data);
     }
 

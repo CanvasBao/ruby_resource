@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\UploadPath;
 
 class Category extends Model
 {
-	use SoftDeletes, HasFactory;
+	use SoftDeletes, HasFactory, UploadPath;
 	const DELETED_AT = 'deleted_at';
+	public $imgDir = 'category';
 	protected $table = 'category';
 	public $timestamps = false;
 	//
