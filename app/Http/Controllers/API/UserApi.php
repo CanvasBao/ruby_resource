@@ -27,7 +27,7 @@ class UserApi extends Controller
         try {
             $query = User::query();
 
-            $response = $this->getListWithParam($query, $input);
+            $response = $this->getListWithParams($query, $input);
 
             return UserResource::collection($response);
         } catch (\Exception $e) {

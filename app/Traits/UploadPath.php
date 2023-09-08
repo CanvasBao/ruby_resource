@@ -64,7 +64,7 @@ trait UploadPath
       try {
         $filePath = $dirPath . $file;
         if (file_exists($filePath) && is_file($filePath)) {
-          unlink($imagePath);
+          unlink($filePath);
         }else{
           \Log::warning($filePath . ' is not file.');
         }

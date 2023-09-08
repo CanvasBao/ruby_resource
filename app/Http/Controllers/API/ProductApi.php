@@ -29,7 +29,7 @@ class ProductApi extends Controller
                 $query->orderBy('sort_no');
             }
 
-            $response = $this->getListWithParam($query, $input);
+            $response = $this->getListWithParams($query, $input);
 
             return ProductResource::collection($response);
         } catch (\Exception $e) {
