@@ -31,7 +31,7 @@ class UserApi extends Controller
 
             return UserResource::collection($response);
         } catch (\Exception $e) {
-            return $this->response->data($e)->rollback();
+            return $this->errorResponse($e);
         }
     }
 
@@ -59,7 +59,7 @@ class UserApi extends Controller
 
         $validator = Validator::make($input, $valiRule);
         if ($validator->fails()) {
-            return $this->response->valiError($validator->errors());
+            return $this->validateError($validator->errors());
         }
 
         //begin
@@ -71,10 +71,10 @@ class UserApi extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->response->data($e)->rollback();
+            return $this->errorResponse($e);
         }
 
-        return $this->response->registed();
+        return $this->registeredResponse([]);
     }
 
     /**
@@ -88,7 +88,7 @@ class UserApi extends Controller
         $user = User::find($id);
         // check exist
         if ($user === null) {
-            return $this->response->error('レコードがありません。');
+            return $this->notExist();
         }
 
         return new UserResource($user);
@@ -106,7 +106,7 @@ class UserApi extends Controller
         //check exists
         $user = User::find($id);
         if ($user === null) {
-            return $this->response->error('ユーザーが存在しません。');
+            return $this->notExist();
         }
 
         //check input
@@ -130,7 +130,7 @@ class UserApi extends Controller
 
         $validator = Validator::make($input, $valiRule);
         if ($validator->fails()) {
-            return $this->response->valiError($validator->errors());
+            return $this->validateError($validator->errors());
         }
 
         //begin
@@ -147,10 +147,10 @@ class UserApi extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->response->data($e)->rollback();
+            return $this->errorResponse($e);
         }
 
-        return $this->response->registed();
+        return $this->registeredResponse([]);
     }
 
     /**
@@ -164,17 +164,17 @@ class UserApi extends Controller
         //check exists
         $user = User::find($id);
         if ($user === null) {
-            return $this->response->error('ユーザーが存在しません。');
+            return $this->notExist();
         }
 
         // check root admin
         if ($id == Auth::id()) {
-            return $this->response->error('自分を削除できません。');
+            return $this->errorResponse([], "can't yourself");
         }
 
         //update DB
         $user->delete();
 
-        return $this->response->success();
+        return $this->successResponse();
     }
 }
