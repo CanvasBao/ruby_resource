@@ -141,8 +141,6 @@ class BannerApi extends Controller
                 return [$key => ['id' => $item['id'], 'sort_no' =>  $key + 1]];
             })->all();
 
-        //    $a =  Banner::query()->upsert($data, ['id'], ['sort_no']);
-
             $data = Banner::orderBy('sort_no')->get();
             DB::commit();
         } catch (\Exception $e) {
