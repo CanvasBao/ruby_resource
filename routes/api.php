@@ -30,17 +30,6 @@ Route::controller(AuthApi::class)->group(function () {
 });
 
 // Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
-    // //
-    // Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
-    //     //　ユーザー
-    //     Route::controller(UserApi::class)->prefix('user')->group(function () {
-    //     });
-    //     Route::apiResource('user', UserApi::class);
-    //     //　商品
-    //     Route::controller(ProductApi::class)->prefix('product')->group(function () {
-    //     });
-    //     Route::apiResource('product', ProductApi::class);
-    // });
 
     // category
     Route::controller(CategoryAPI::class)->prefix('category')->group(function () {
@@ -53,6 +42,7 @@ Route::controller(AuthApi::class)->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
         Route::post('/update-index', 'updateBannerIndex');
+        Route::delete('/{id}', 'destroy');
     });
 
     // product
