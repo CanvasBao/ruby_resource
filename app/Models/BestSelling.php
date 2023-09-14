@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\UploadPath;
 
-class Banner extends Model
+class BestSelling extends Model
 {
-    use HasFactory, UploadPath;
+    use HasFactory;
 
-	protected $table = 'banners';
-	public $imgDir = 'banners';
+	protected $table = 'best_selling';
 	public $timestamps = false;
 	//
 	protected $casts = [
@@ -24,11 +22,7 @@ class Banner extends Model
 	];
 
 	protected $fillable = [
-		'id',
-		'image',
-		'title',
-		'sub_title',
-		'sort_no',
-		'created_at'
+		'product_id',
+		'sort_no'
 	];
 }

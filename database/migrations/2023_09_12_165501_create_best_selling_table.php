@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('best_selling', function (Blueprint $table) {
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('sort_no')->nullable();
 
             $table->timestamp('created_at')->useCurrent();
 
