@@ -313,4 +313,24 @@ class ProductApi extends Controller
         return $this->successResponse();
     }
 
+    /**
+     * add to best sell
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function registerBestSell($id)
+    {
+        //check exist
+        $product = Product::find($id);
+        if ($product === null) {
+            return $this->errorResponse(null, "product isn't exist");
+        }
+
+        // update db
+        
+
+        return $this->successResponse();
+    }
+
 }
