@@ -320,19 +320,19 @@ class ProductApi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function registerBestSell($id)
+    public function registerBestSell(Request $request, $id)
     {
+        $isBest = $request->input('is_best', true);
+
         //check exist
         $product = Product::find($id);
         if ($product === null) {
             return $this->errorResponse(null, "product isn't exist");
         }
 
-        // check product was best sell
-        $bestSell = BestSelling::find($id);
-        if ($bestSell) {
-            $bestSell->delete();
-        }else{
+        // check product was best sell and handle database
+        $bestSellDB = BestSelling::find($id);
+        if ($isBest && !$bestSellDB) {
             // update db
             $newOrder = BestSelling::max('sort_no') + 1;
             $registerInput = [
@@ -342,6 +342,9 @@ class ProductApi extends Controller
 
             // register product
             BestSelling::create($registerInput);
+        }
+        else if (!$isBest && $bestSellDB){
+            $bestSellDB->delete();
         }
 
         return $this->successResponse();
