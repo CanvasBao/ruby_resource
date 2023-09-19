@@ -35,6 +35,8 @@ Route::controller(AuthApi::class)->group(function () {
     Route::controller(CategoryAPI::class)->prefix('category')->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
+        Route::post('/{id}', 'update');
+        Route::delete('/{id}', 'destroy');
     });
 
     // banner
