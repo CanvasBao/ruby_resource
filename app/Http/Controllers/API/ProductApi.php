@@ -346,20 +346,4 @@ class ProductApi extends Controller
 
         return $this->successResponse();
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function removeBestSell($id)
-    {
-        $bestSell = BestSelling::find($id);
-        if ($bestSell) {
-            $bestSell->delete();
-        }
-
-        return $this->successResponse();
-    }
 }
