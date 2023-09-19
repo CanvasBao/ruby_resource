@@ -50,5 +50,7 @@ Route::controller(AuthApi::class)->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
         Route::post('/{id}/best-sell', 'registerBestSell');
+        Route::post('/{id}', 'update');
+        Route::delete('/{id}', 'destroy');
     });
 // });

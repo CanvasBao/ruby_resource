@@ -258,7 +258,7 @@ class ProductApi extends Controller
 
         // check input
         $validator = Validator::make($input, $validatorInput)
-            ->setAttributeNames(['name' => '商品名']);
+            ->setAttributeNames(['code' => 'mã sản phẩm']);
 
         if ($validator->fails()) {
             return $this->validateError($validator->errors());

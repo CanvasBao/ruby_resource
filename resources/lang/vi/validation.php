@@ -168,5 +168,6 @@ return [
         'username'              => 'tên đăng nhập',
         'year'                  => 'năm',
         'company'               => 'Tên công ty',
+        'images'                => 'hình ảnh',
     ],
 ];
