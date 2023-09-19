@@ -49,6 +49,6 @@ Route::controller(AuthApi::class)->group(function () {
     Route::controller(ProductApi::class)->prefix('product')->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
-        Route::post('/{id}/register-best-sell', 'registerBestSell');
+        Route::post('/{id}/best-sell', 'registerBestSell');
     });
 // });

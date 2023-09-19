@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\ProductResource;
+use App\Models\BestSelling;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductDescription;
@@ -327,10 +328,38 @@ class ProductApi extends Controller
             return $this->errorResponse(null, "product isn't exist");
         }
 
-        // update db
-        
+        // check product was best sell
+        $bestSell = BestSelling::find($id);
+        if ($bestSell) {
+            $bestSell->delete();
+        }else{
+            // update db
+            $newOrder = BestSelling::max('sort_no') + 1;
+            $registerInput = [
+                'product_id' => $product->id,
+                'sort_no' => $newOrder
+            ];
+
+            // register product
+            BestSelling::create($registerInput);
+        }
 
         return $this->successResponse();
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function removeBestSell($id)
+    {
+        $bestSell = BestSelling::find($id);
+        if ($bestSell) {
+            $bestSell->delete();
+        }
+
+        return $this->successResponse();
+    }
 }

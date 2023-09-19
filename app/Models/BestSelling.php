@@ -11,9 +11,9 @@ class BestSelling extends Model
 
 	protected $table = 'best_selling';
 	public $timestamps = false;
+	protected $primaryKey = 'product_id';
 	//
 	protected $casts = [
-		'id' => 'int',
 		'sort_no' => 'int'
 	];
 
