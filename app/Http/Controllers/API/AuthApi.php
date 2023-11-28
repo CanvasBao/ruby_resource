@@ -5,14 +5,12 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class AuthApi extends ApiController
 {
     /**
-     * ログイン
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,11 +34,10 @@ class AuthApi extends ApiController
             return $this->errorResponse($e);
         }
 
-        return $this->successResponse([Auth::user()->tokens()]);
+        return $this->successResponse(Auth::user());
     }
 
     /**
-     * ログイン
      *
      * @return \Illuminate\Http\Response
      */
@@ -63,16 +60,20 @@ class AuthApi extends ApiController
 
             $user = User::where('role', 9)->first();
             Auth::login($user);
-            
+
+            $token = $user->createToken('authToken')->plainTextToken;
+
         } catch (\Exception $e) {
             return $this->errorResponse([], 'certification failed.', 401);
         }
 
-        return $this->successResponse(Auth::user());
+        return $this->successResponse([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ]);
     }
 
     /**
-     * ログアウト
      *
      * @return \Illuminate\Http\Response
      */
@@ -89,7 +90,6 @@ class AuthApi extends ApiController
     }
 
     /**
-     * ログインしているユーザー情報取得
      *
      * @return \Illuminate\Http\Response
      */
