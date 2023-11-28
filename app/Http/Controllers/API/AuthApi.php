@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthApi extends ApiController
 {
@@ -31,6 +34,46 @@ class AuthApi extends ApiController
             }
         } catch (\Exception $e) {
             return $this->errorResponse($e);
+        }
+
+        return $this->successResponse([Auth::user()->tokens()]);
+    }
+
+    /**
+     * ログイン
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function appRefresh(Request $request)
+    {
+        try {
+            $input = $request->all();
+
+            $validatorInput = [
+                'token' => 'required'
+            ];
+
+            // check input
+            $validator = Validator::make($input, $validatorInput);
+            if ($validator->fails()) {
+                throw new \Exception();
+            }
+
+            $appKey = env('ADMIN_APP_KEY');
+            if (!$appKey || empty($appKey)) {
+                throw new \Exception();
+            }
+
+            $token = $request->token;
+            if (!Hash::check($appKey, $token)) {
+                throw new \Exception();
+            }
+
+            $user = User::where('role', 9)->first();
+            Auth::login($user);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse([], 'certification failed.', 401);
         }
 
         return $this->successResponse(Auth::user());

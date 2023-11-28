@@ -23,14 +23,14 @@ use App\Http\Controllers\API\CategoryAPI;
 //　Auth
 Route::controller(AuthApi::class)->group(function () {
     Route::post('/login', 'login');
+    Route::post('/app_refresh', 'appRefresh');
     Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
         Route::post('/logout', 'logout');
         Route::get('/loginInfo', 'loginInfo');
     });
 });
 
-// Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
-
+Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     // category
     Route::controller(CategoryAPI::class)->prefix('category')->group(function () {
         Route::get('/', 'index');
@@ -55,4 +55,4 @@ Route::controller(AuthApi::class)->group(function () {
         Route::post('/{id}', 'update');
         Route::delete('/{id}', 'destroy');
     });
-// });
+});
