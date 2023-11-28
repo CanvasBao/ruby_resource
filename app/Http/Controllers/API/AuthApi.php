@@ -57,7 +57,6 @@ class AuthApi extends ApiController
                 throw new \Exception('');
             }
 
-            \Log::info('refresh 4');
             if (!Hash::check($appKey, $token)) {
                 throw new \Exception('');
             }
