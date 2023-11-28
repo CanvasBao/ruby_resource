@@ -47,31 +47,24 @@ class AuthApi extends ApiController
     public function appRefresh(Request $request)
     {
         try {
-            $input = $request->all();
-
-            $validatorInput = [
-                'token' => 'required'
-            ];
-
-            // check input
-            $validator = Validator::make($input, $validatorInput);
-            if ($validator->fails()) {
-                throw new \Exception();
+            $token = $request->header('Refresh-Token');
+            if (!$token || empty($token)) {
+                throw new \Exception('');
             }
 
             $appKey = env('ADMIN_APP_KEY');
             if (!$appKey || empty($appKey)) {
-                throw new \Exception();
+                throw new \Exception('');
             }
 
-            $token = $request->token;
+            \Log::info('refresh 4');
             if (!Hash::check($appKey, $token)) {
-                throw new \Exception();
+                throw new \Exception('');
             }
 
             $user = User::where('role', 9)->first();
             Auth::login($user);
-
+            
         } catch (\Exception $e) {
             return $this->errorResponse([], 'certification failed.', 401);
         }

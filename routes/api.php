@@ -23,7 +23,7 @@ use App\Http\Controllers\API\CategoryAPI;
 //　Auth
 Route::controller(AuthApi::class)->group(function () {
     Route::post('/login', 'login');
-    Route::post('/app_refresh', 'appRefresh');
+    Route::get('/token_refresh', 'appRefresh');
     Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
         Route::post('/logout', 'logout');
         Route::get('/loginInfo', 'loginInfo');
