@@ -45,17 +45,19 @@ class AuthApi extends ApiController
     {
         try {
             $token = $request->header('Refresh-Token');
+            \Log::info($token);
             if (!$token || empty($token)) {
-                throw new \Exception('');
+                throw new \Exception('token empty');
             }
+            $token=base64_decode($token);
 
             $appKey = env('ADMIN_APP_KEY');
             if (!$appKey || empty($appKey)) {
-                throw new \Exception('');
+                throw new \Exception('app key empty');
             }
 
             if (!Hash::check($appKey, $token)) {
-                throw new \Exception('');
+                throw new \Exception('not compare');
             }
 
             $user = User::where('role', 9)->first();
@@ -69,7 +71,7 @@ class AuthApi extends ApiController
 
         return $this->successResponse([
             'access_token' => $token,
-            'token_type' => 'Bearer',
+            'token_type' => 'Bearer'
         ]);
     }
 
