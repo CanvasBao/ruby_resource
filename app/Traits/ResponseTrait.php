@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\MessageBag;
 
 trait ResponseTrait
@@ -25,11 +24,14 @@ trait ResponseTrait
      */
     protected function successResponse($result = [], $message = 'success', $code = 200)
     {
-        $response = [
-            'success' => true,
-            'data'    => $result,
-            'message' => $message,
-        ];
+        if(!empty($result)){
+            $response = $result;
+        }else{
+            $response = [
+                'success' => true,
+                'message' => $message,
+            ];
+        }
 
         return response()->json($response, $code);
     }
@@ -42,13 +44,12 @@ trait ResponseTrait
     protected function errorResponse($error = [], $message = 'fail', $code = 404)
     {
         $response = [
-            'success' => false,
             'message' => $message,
         ];
 
         if ($error instanceof \Exception) {
             if ($error->getCode() === 3000) {
-                $response['data'] = array(
+                $response['error'] = array(
                         'text' => $error->getMessage(), 'type' => 'original'
                     );
             }else{
@@ -56,10 +57,10 @@ trait ResponseTrait
             }
         }
         elseif ($error instanceof MessageBag) {
-            $response['data'] = $error;
+            $response['error'] = $error;
         }
         elseif (is_array($error) && !empty($error)){
-            $response['data'] = $error;
+            $response['error'] = $error;
         }
 
         return response()->json($response, $code);
