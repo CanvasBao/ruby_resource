@@ -61,7 +61,7 @@ class BannerApi extends Controller
                     if (file_exists($copyImagePath)) {
                         $fileName = time() . '_' . uniqid() . '.' . pathinfo($copyImagePath, PATHINFO_EXTENSION);
                         // $this->saveImage(null, 'uploads/banner', $fileName, $copyImagePath);
-                        copy($copyImagePath , $uploadDir . $fileName);
+                        copy($copyImagePath, $uploadDir . $fileName);
                         $registerInput['image'] = $fileName;
                         $rollbackImage[] =  $uploadDir . $fileName;
                     }
@@ -97,6 +97,89 @@ class BannerApi extends Controller
         return $this->registeredResponse($data);
     }
 
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function multiUpload(Request $request)
+    {
+        $input = $request->all();
+
+        $validatorInput = [
+            'upload' => 'required|array',
+            'upload.*.image' => 'required'
+        ];
+
+        // check input
+        $validator = Validator::make($input, $validatorInput);
+        if ($validator->fails()) {
+            return $this->validateError($validator->errors());
+        }
+
+        $rollbackImage = [];
+        DB::beginTransaction();
+        try {
+            $bannerUpload = [];
+
+            // upload image
+            try {
+                $banners = $input['upload'];
+                \Log::info($banners);
+                $uploadDir = Banner::getImgFullPath();
+                $newOrder = Banner::max('sort_no') + 1;
+                foreach ($banners as $banner) {
+                    $image = $banner['image'];
+                    if (is_uploaded_file($image)) {
+                        $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                        $image->move($uploadDir, $fileName);
+                        $bannerUpload[] = [
+                            'image' => $fileName,
+                            'sort_no' =>  $newOrder
+                        ];
+                        $rollbackImage[] = $uploadDir . $fileName;
+                    } else {
+                        $copyImagePath =  $uploadDir . $image;
+                        if (file_exists($copyImagePath)) {
+                            $fileName = time() . '_' . uniqid() . '.' . pathinfo($copyImagePath, PATHINFO_EXTENSION);
+                            $this->saveImage(null, 'uploads/product', $fileName, $copyImagePath);
+                            $bannerUpload[] = [
+                                'image' => $fileName,
+                                'sort_no' =>  $newOrder
+                            ];
+                            $rollbackImage[] = $uploadDir . $fileName;
+                        }
+                    }
+                    $newOrder++;
+                }
+            } catch (\Exception $e) {
+                \Log::info($e);
+                throw new \Exception('upload image fail, please reupload.', 3000);
+            }
+
+            foreach($bannerUpload as $uploadData){
+                Banner::create($uploadData);
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            foreach ($rollbackImage as $imagePath) {
+                if (empty($imagePath)) continue;
+                if (file_exists($imagePath) && is_file($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            return $this->errorResponse($e);
+        }
+
+        return $this->registeredResponse();
+    }
+
     /**
      * order update
      *
@@ -110,8 +193,8 @@ class BannerApi extends Controller
 
         $validatorInput = [
             'list' => 'required|array',
-            'list.*.id' => 'required|distinct|exists:'.((new Banner)->getTable()).',id',
-            'list.*.sort_no' => 'required|numeric|distinct|max:'.Banner::count(),
+            'list.*.id' => 'required|distinct|exists:' . ((new Banner)->getTable()) . ',id',
+            'list.*.sort_no' => 'required|numeric|distinct|max:' . Banner::count(),
         ];
         // check input
         $validator = Validator::make($input, $validatorInput);
@@ -122,20 +205,20 @@ class BannerApi extends Controller
         DB::beginTransaction();
         try {
             $data = Banner::select(['id', 'sort_no', DB::raw('1 as db')])
-                    ->get()
-                    ->keyBy('id')
-                    ->toArray();
+                ->get()
+                ->keyBy('id')
+                ->toArray();
 
             $list = collect($input['list'])
-                    ->keyBy('id')->union($data)
-                    ->sortBy([
-                        ['sort_no', 'asc'],
-                        ['db', 'asc'],
-                    ])->values();
+                ->keyBy('id')->union($data)
+                ->sortBy([
+                    ['sort_no', 'asc'],
+                    ['db', 'asc'],
+                ])->values();
 
             $list->mapWithKeys(function ($item, $key) {
                 $affected = Banner::where('id', $item['id'])->update(['sort_no' =>  $key + 1]);
-                if(!$affected){
+                if (!$affected) {
                     throw new \Exception('update fail', 3000);
                 }
                 return [$key => ['id' => $item['id'], 'sort_no' =>  $key + 1]];
