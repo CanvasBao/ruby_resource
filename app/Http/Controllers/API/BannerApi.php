@@ -127,7 +127,6 @@ class BannerApi extends Controller
             // upload image
             try {
                 $banners = $input['upload'];
-                \Log::info($banners);
                 $uploadDir = Banner::getImgFullPath();
                 $newOrder = Banner::max('sort_no') + 1;
                 foreach ($banners as $banner) {
@@ -144,7 +143,7 @@ class BannerApi extends Controller
                         $copyImagePath =  $uploadDir . $image;
                         if (file_exists($copyImagePath)) {
                             $fileName = time() . '_' . uniqid() . '.' . pathinfo($copyImagePath, PATHINFO_EXTENSION);
-                            $this->saveImage(null, 'uploads/product', $fileName, $copyImagePath);
+                            copy($copyImagePath,  $uploadDir.$fileName);
                             $bannerUpload[] = [
                                 'image' => $fileName,
                                 'sort_no' =>  $newOrder
@@ -155,7 +154,6 @@ class BannerApi extends Controller
                     $newOrder++;
                 }
             } catch (\Exception $e) {
-                \Log::info($e);
                 throw new \Exception('upload image fail, please reupload.', 3000);
             }
 
