@@ -190,10 +190,9 @@ class BannerApi extends Controller
         $input = $request->all();
 
         $validatorInput = [
-            'list' => 'required|array',
-            'list.*.id' => 'required|distinct|exists:' . ((new Banner)->getTable()) . ',id',
-            'list.*.sort_no' => 'required|numeric|distinct|max:' . Banner::count(),
+            'ids' => 'required|array',
         ];
+
         // check input
         $validator = Validator::make($input, $validatorInput);
         if ($validator->fails()) {
@@ -202,27 +201,18 @@ class BannerApi extends Controller
 
         DB::beginTransaction();
         try {
-            $data = Banner::select(['id', 'sort_no', DB::raw('1 as db')])
-                ->get()
-                ->keyBy('id')
-                ->toArray();
-
-            $list = collect($input['list'])
-                ->keyBy('id')->union($data)
-                ->sortBy([
-                    ['sort_no', 'asc'],
-                    ['db', 'asc'],
-                ])->values();
-
-            $list->mapWithKeys(function ($item, $key) {
-                $affected = Banner::where('id', $item['id'])->update(['sort_no' =>  $key + 1]);
-                if (!$affected) {
+            $bannerIds = $input['ids'];
+            foreach ($bannerIds as $idx => $id) {
+                $banner = Banner::find($id);
+                if ($banner === null) {
                     throw new \Exception('update fail', 3000);
                 }
-                return [$key => ['id' => $item['id'], 'sort_no' =>  $key + 1]];
-            })->all();
 
-            $data = Banner::orderBy('sort_no')->get();
+                if( $banner->sort_no != ($idx + 1)){
+                    $banner->sort_no = $idx + 1;
+                    $banner->update();
+                }
+            }
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
@@ -230,7 +220,7 @@ class BannerApi extends Controller
             return $this->errorResponse($e);
         }
 
-        return $this->registeredResponse($data);
+        return $this->registeredResponse();
     }
 
     /**
