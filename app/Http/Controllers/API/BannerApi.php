@@ -242,4 +242,40 @@ class BannerApi extends Controller
 
         return $this->successResponse();
     }
+
+
+    /**
+     * order update
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteBanners(Request $request)
+    {
+        // check input
+        $input = $request->all();
+
+        $validatorInput = [
+            'ids' => 'required|array',
+        ];
+
+        // check input
+        $validator = Validator::make($input, $validatorInput);
+        if ($validator->fails()) {
+            return $this->validateError($validator->errors());
+        }
+
+        DB::beginTransaction();
+        try {
+            $bannerIds = $input['ids'];
+            Banner::whereIn('id', $bannerIds)->delete();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return $this->errorResponse($e);
+        }
+
+        return $this->registeredResponse();
+    }
 }
