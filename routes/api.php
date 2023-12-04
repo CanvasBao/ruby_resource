@@ -43,7 +43,9 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::controller(BannerApi::class)->prefix('banner')->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
+        Route::post('/upload', 'multiUpload');
         Route::post('/update-index', 'updateBannerIndex');
+        Route::delete('/remove', 'deleteBanners');
         Route::delete('/{id}', 'destroy');
     });
 
