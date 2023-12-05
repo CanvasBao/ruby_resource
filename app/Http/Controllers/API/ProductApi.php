@@ -225,13 +225,15 @@ class ProductApi extends Controller
      */
     public function show($id)
     {
-        $product = Product::with('images')->find($id);
+        $product = Product::with(['images','descriptions', 'category'])->find($id);
         //存在チェック
         if ($product === null) {
             return $this->notExist();
         }
 
-        return new ProductResource($product);
+        $data = (new ProductResource($product))->resolve();
+
+        return $this->successResponse($data, 'success');
     }
 
     /**
