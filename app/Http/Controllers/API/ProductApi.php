@@ -278,7 +278,7 @@ class ProductApi extends Controller
             $uploadedImg = $this->handleProdImage($product, $images);
 
             // handle product descriptions
-            $prodDes = $input['description'];
+            $prodDes = $input['descriptions'];
             $this->handleProdDes($product, $prodDes);
 
             $data = $product->fresh(['images', 'descriptions']);
