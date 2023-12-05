@@ -256,7 +256,7 @@ class ProductApi extends Controller
             'code' => 'required|code_ex|max:30',
             'name' => 'required|max:30',
             'images' => 'required|array',
-            'images.*.image' => 'image'
+            // 'images.*.image' => 'image'
         ];
 
         // check input
@@ -277,7 +277,7 @@ class ProductApi extends Controller
 
             // handle product images
             $images = $input['images'];
-            $uploadedImg = $this->handleProdImage($product, $images);
+            $uploadedImg = $this->handleProdImage($product, $images, false);
 
             // handle product descriptions
             $prodDes = $input['descriptions'];
