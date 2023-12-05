@@ -185,6 +185,7 @@ class ProductApi extends Controller
         try {
             $newOrder = Product::max('sort_no') + 1;
             $registerInput = [
+                'category_id' => !empty($input['category']['id']) ? $input['category']['id'] : null,
                 'name' => $input['name'],
                 'code' => $input['code'],
                 'short_des' => !empty($input['short_des']) ? $input['short_des'] : '',
@@ -200,7 +201,7 @@ class ProductApi extends Controller
             $uploadedImg = $this->handleProdImage($product, $images);
 
             // register product descriptions
-            $prodDes = $input['description'];
+            $prodDes = $input['descriptions'];
             $this->handleProdDes($product, $prodDes);
 
             $data = $product->fresh(['images', 'descriptions']);
