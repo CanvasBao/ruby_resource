@@ -84,6 +84,9 @@ class ProductApi extends Controller
                 }
                 else if (!empty($file) && !$isCreate && !empty($item['id'])){
                     array_push($imageIds, $item['id']);
+                    ProductImage::where('id', $item['id'])->update([
+                        'sort_no' =>  $key + 1
+                    ]);
                 }
             }
             // delete image
