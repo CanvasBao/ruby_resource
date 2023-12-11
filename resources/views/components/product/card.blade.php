@@ -1,6 +1,6 @@
 @isset($product)
   <div data-cat="{{ $product->category->category_slug ?? 'ALL' }}" class="productEl group">
-    <a href="#" class="relative z-0 block bg-white rounded-lg shadow-lg cursor-pointer">
+    <a href="{{route('product.show', ['id' => $product->id, 'text' => urlencode($product->name)])}}" class="relative z-0 block bg-white rounded-lg shadow-lg cursor-pointer">
       <div class=" aspect-w-3 aspect-h-2">
         <img class="  rounded-t-lg object-cover "
           src="{{ $product->images->count() > 0 ? asset('storage/uploads/product/' . $product->images[0]->image) : asset('storage/images/no_image.jpg') }}"
