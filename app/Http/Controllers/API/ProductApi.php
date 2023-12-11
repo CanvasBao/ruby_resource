@@ -46,7 +46,7 @@ class ProductApi extends Controller
         $images = [];
         try {
             // check has file
-            if (!$input) {
+            if (!$input || empty($input)) {
                 throw new \Exception();
             }
 
@@ -109,7 +109,7 @@ class ProductApi extends Controller
     {
         try {
             // check
-            if (!$input) {
+            if (!$input || empty($input)) {
                 return false;
             }
 
@@ -173,7 +173,7 @@ class ProductApi extends Controller
             'code' => 'required|code_ex|max:30',
             'name' => 'required|max:30',
             'images' => 'required|array',
-            'images.*.image' => 'image'
+            // 'images.*.image' => 'image'
         ];
 
         // check input
@@ -204,7 +204,7 @@ class ProductApi extends Controller
             $uploadedImg = $this->handleProdImage($product, $images);
 
             // register product descriptions
-            $prodDes = $input['descriptions'];
+            $prodDes = !empty($input['descriptions']) ? $input['descriptions'] : [];
             $this->handleProdDes($product, $prodDes);
 
             $data = $product->fresh(['images', 'descriptions']);
@@ -283,7 +283,7 @@ class ProductApi extends Controller
             $uploadedImg = $this->handleProdImage($product, $images, false);
 
             // handle product descriptions
-            $prodDes = $input['descriptions'];
+            $prodDes = !empty($input['descriptions']) ? $input['descriptions'] : [];;
             $this->handleProdDes($product, $prodDes);
 
             $data = $product->fresh(['images', 'descriptions']);
