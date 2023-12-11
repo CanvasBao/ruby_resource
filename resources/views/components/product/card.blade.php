@@ -1,5 +1,5 @@
 @isset($product)
-  <div data-cat="{{$product->category->category_slug}}" class="productEl">
+  <div data-cat="{{$product->category->category_slug ?? 'ALL'}}" class="productEl">
     <div class="space-y-4">
       <div class="aspect-w-3 aspect-h-2">
         <img class="rounded-lg object-cover shadow-lg"
