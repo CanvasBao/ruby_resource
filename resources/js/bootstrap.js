@@ -1,3 +1,5 @@
+const { forEach } = require('lodash');
+
 window._ = require('lodash');
 
 /**
@@ -11,18 +13,24 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
+ * custom onload
  */
+window.onload = () => {
+    // handel click open/close toggle
+    for (let toggle of document.querySelectorAll('.toggleSection .toggleItem')){
+        let openBth = toggle.getElementsByClassName("toggleItemButton")[0];
+        if(!openBth){
+            openBth = toggle.getElementsByClassName("toggleItemHeader")[0];
+        }
 
-// import Echo from 'laravel-echo';
+        if(!openBth) continue
 
-// window.Pusher = require('pusher-js');
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
+        openBth.addEventListener('click', (e) => {
+            if(toggle.classList.contains('isOpened')){
+                toggle.classList.remove('isOpened')
+            }else{
+                toggle.classList.add('isOpened')
+            }
+        })
+    }
+}
