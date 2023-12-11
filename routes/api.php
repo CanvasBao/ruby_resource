@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::controller(CategoryAPI::class)->prefix('category')->group(function () {
         Route::get('/', 'index');
         Route::post('/register', 'store');
-        Route::post('/{id}', 'update');
+        Route::post('/{id}/update', 'update');
         Route::delete('/{id}', 'destroy');
     });
 
@@ -52,9 +52,10 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     // product
     Route::controller(ProductApi::class)->prefix('product')->group(function () {
         Route::get('/', 'index');
+        Route::get('/{id}', 'show');
         Route::post('/register', 'store');
         Route::post('/{id}/best-sell', 'registerBestSell');
-        Route::post('/{id}', 'update');
+        Route::post('/{id}/update', 'update');
         Route::delete('/{id}', 'destroy');
     });
 });

@@ -46,7 +46,7 @@ class ProductApi extends Controller
         $images = [];
         try {
             // check has file
-            if (!$input) {
+            if (!$input || empty($input)) {
                 throw new \Exception();
             }
 
@@ -84,6 +84,9 @@ class ProductApi extends Controller
                 }
                 else if (!empty($file) && !$isCreate && !empty($item['id'])){
                     array_push($imageIds, $item['id']);
+                    ProductImage::where('id', $item['id'])->update([
+                        'sort_no' =>  $key + 1
+                    ]);
                 }
             }
             // delete image
@@ -106,7 +109,7 @@ class ProductApi extends Controller
     {
         try {
             // check
-            if (!$input) {
+            if (!$input || empty($input)) {
                 return false;
             }
 
@@ -170,7 +173,7 @@ class ProductApi extends Controller
             'code' => 'required|code_ex|max:30',
             'name' => 'required|max:30',
             'images' => 'required|array',
-            'images.*.image' => 'image'
+            // 'images.*.image' => 'image'
         ];
 
         // check input
@@ -201,7 +204,7 @@ class ProductApi extends Controller
             $uploadedImg = $this->handleProdImage($product, $images);
 
             // register product descriptions
-            $prodDes = $input['descriptions'];
+            $prodDes = !empty($input['descriptions']) ? $input['descriptions'] : [];
             $this->handleProdDes($product, $prodDes);
 
             $data = $product->fresh(['images', 'descriptions']);
@@ -225,13 +228,15 @@ class ProductApi extends Controller
      */
     public function show($id)
     {
-        $product = Product::with('images')->find($id);
+        $product = Product::with(['images','descriptions', 'category'])->find($id);
         //存在チェック
         if ($product === null) {
             return $this->notExist();
         }
 
-        return new ProductResource($product);
+        $data = (new ProductResource($product))->resolve();
+
+        return $this->successResponse($data, 'success');
     }
 
     /**
@@ -254,7 +259,7 @@ class ProductApi extends Controller
             'code' => 'required|code_ex|max:30',
             'name' => 'required|max:30',
             'images' => 'required|array',
-            'images.*.image' => 'image'
+            // 'images.*.image' => 'image'
         ];
 
         // check input
@@ -275,10 +280,10 @@ class ProductApi extends Controller
 
             // handle product images
             $images = $input['images'];
-            $uploadedImg = $this->handleProdImage($product, $images);
+            $uploadedImg = $this->handleProdImage($product, $images, false);
 
             // handle product descriptions
-            $prodDes = $input['descriptions'];
+            $prodDes = !empty($input['descriptions']) ? $input['descriptions'] : [];
             $this->handleProdDes($product, $prodDes);
 
             $data = $product->fresh(['images', 'descriptions']);
