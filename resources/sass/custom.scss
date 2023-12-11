@@ -2,20 +2,21 @@
     background-color: #2458f4;
 }
 
-.layout-with{
- max-width: 1140px;
- width: 100%;
- margin-left: auto;
- margin-right: auto;
+.layout-with {
+    max-width: 1140px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#mainContent{
+#mainContent {
     // box-shadow:  5 5px 5px 0 #774242;;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-top: 0;
-  padding-top: 4rem;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 0;
+    padding-top: 4rem;
 }
-
 
 .productTab {
     color: #6b7280;
@@ -59,7 +60,9 @@
     .current-title {
         margin: 0;
         font-size: 45px;
-        text-shadow:  0 0 3px #f1b4b4, 0 0 15px #ebbbbb;
+        text-shadow:
+            0 0 3px #f1b4b4,
+            0 0 15px #ebbbbb;
     }
     .current-subtitle {
         margin: 10px 0 0 0;
@@ -82,10 +85,66 @@
     }
 }
 
-
 @media only screen and (max-width: 768px) {
-    #mainContent{
-      padding-top: 4rem;
+    #mainContent {
+        padding-top: 4rem;
+    }
+}
+.toggleSection {
+    .toggleItem {
+        &.isOpened {
+            .toggleItemClosed {
+                display: none;
+            }
+            .toggleItemOpened {
+                display: block;
+            }
+            .toggleItemContent {
+                display: block;
+            }
+            .toggleItemHeader {
+                color: #4f46e5;
+            }
+        }
+        &:not(.isOpened) {
+            .toggleItemClosed {
+                display: block;
+            }
+            .toggleItemOpened {
+                display: none;
+            }
+            .toggleItemContent {
+                display: none;
+            }
+            .toggleItemHeader {
+                color: #111827;
+            }
+        }
+        // .toggleItemContent{
+        //     display: none;
+        // }
     }
 }
 
+.productImage {
+    .imageTab {
+        &.isShow {
+            .borderSelected {
+                outline-width: 2px;
+                outline-color: #2458f4;
+                outline-offset: 2px;
+                outline-style: solid;
+            }
+        }
+        &:not(.isShow) {
+            .borderSelected {
+                outline: none;
+            }
+        }
+    }
+    .imagesPanelSection .imagePanel {
+        &:not(.isShow) {
+            display: none;
+        }
+    }
+}
