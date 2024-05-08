@@ -7,16 +7,17 @@
 @endsection
 
 @section('content')
-  <div class="bg-white">
+  <div class="pb-20">
     <div class="relative h-80 md:h-auto">
       <x-top.slider />
     </div>
 
     <!-- Feature section with screenshot -->
-    <div class="relative bg-gray-50 pt-16 sm:pt-24 lg:pt-32">
+    <div class="relative bg-gradient-to-b from-gray-50 via-slate-50 mt-32 pt-4 rounded-t-lg sm:pt-6 lg:pt-16">
       <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
         <div>
-          <h2 class="text-lg font-semibold text-cyan-600">Chào mừng quý khách đến với Ruby Label!</h2>
+          <h2 class="text-xl font-semibold text-cyan-600">Chào mừng quý khách đến với</h2>
+          <h2 class="text-5xl font-semibold py-2 text-rose-600">RUBY LABEL</h2>
           <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bạn cần in tem nhãn, máy in, mực in?
           </p>
           <p class="mx-auto mt-5 text-xl text-gray-500">
@@ -35,14 +36,17 @@
       </div>
     </div>
 
+
+    <!-- Blog section -->
+    <x-top.material />
+
     <!-- Feature section with grid -->
     <x-top.product />
 
     <!-- Testimonial section -->
-    <div class="bg-gradient-to-r from-teal-500 to-cyan-600 pb-16 lg:relative lg:z-10 lg:pb-0">
-      <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
-        <div class="relative lg:-my-8">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"></div>
+    <div class="bg-gradient-to-r from-teal-500 rounded-lg mt-20 to-cyan-600 pb-16 :relative lg:z-10 lg:pb-0">
+      <div class="lg:mx-auto grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
+        <div class="relative -mt-16 lg:-my-8">
           <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:h-full lg:p-0">
             <div
               class="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
@@ -72,13 +76,10 @@
       </div>
     </div>
 
-    <!-- Blog section -->
-    <x-top.material />
-
     <!-- CTA Section -->
-    <div class="relative isolate bg-white mt-10 sm:rounded-xl">
+    <div class="relative isolate bg-white mt-32 sm:rounded-xl">
       <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-        <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
+        <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-20">
           <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <div
               class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2 sm:rounded-xl">
@@ -143,7 +144,7 @@
             </dl>
           </div>
         </div>
-        <form action="{{ route('contact.send') }}" method="POST" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
+        <form action="{{ route('contact.send') }}" method="POST" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-20">
           <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               {{ csrf_field() }}

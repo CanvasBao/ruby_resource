@@ -1,27 +1,24 @@
-<div class="relative bg-gray-50 py-16 sm:py-24 lg:py-32">
+<div class="relative py-16 mt-20 rounded-lg sm:py-24 lg:py-32">
   <div class="relative">
     <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-      <h2 class="text-lg font-semibold text-cyan-600">kinh doanh</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Loại sản phẩm kinh doanh</p>
+      {{-- <h2 class="text-lg font-semibold text-cyan-600">kinh doanh</h2> --}}
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-50 sm:text-4xl">dịch vụ</p>
       {{-- <p class="mx-auto mt-5 max-w-prose text-xl text-gray-500">Phasellus lorem quam molestie id quisque diam
         aenean nulla in. Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend condimentum id viverra nulla.
       </p> --}}
     </div>
-    <div class="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:grid-cols-3 lg:px-8">
-      @foreach ($materials as $material)
-        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-          <div class="flex-shrink-0">
-            <img class="h-48 w-full object-cover" src="{{ asset('storage/images/' . $material['image']) }}"
+    <div class="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-full lg:max-w-7xl grid-cols-1 lg:px-8 ">
+      @foreach ($materials  as $idx => $material)
+        <div class="flex flex-col lg:flex-row overflow-hidden rounded-lg lg:gap-x-6">
+          <div class="flex-shrink-0 rounded-lg {{ $idx % 2 == 0 ? "lg:order-last" : '' }}">
+            <img class="h-48 sm:h-56 lg:h-80 w-full lg:w-auto rounded-t-xl lg:rounded-lg lg:aspect-[4/3] object-cover" src="{{ asset('storage/images/' . $material['image']) }}"
               alt="" />
           </div>
-          <div class="flex flex-1 flex-col justify-between bg-white p-6">
-            <div class="flex-1">
-              <p class="text-sm font-medium text-cyan-600">
-                <a href="#" class="hover:underline">{{ $material['category_name'] }}</a>
-              </p>
-              <a href="#" class="mt-2 block">
-                <p class="text-xl font-semibold text-gray-900">{{ $material['title'] }}</p>
-                <p class="mt-3 text-base text-gray-500">{{ $material['description'] }}</p>
+          <div class="flex flex-1 flex-col justify-between p-6 bg-slate-50 lg:bg-inherit lg:from-slate-50 rounded-b-xl lg:rounded-lg {{ $idx % 2 == 0 ? "lg:text-right lg:pr-12 lg:bg-gradient-to-l" : 'lg:pl-12 lg:bg-gradient-to-r' }}">
+            <div class="flex {{ $idx % 2 == 0 ? "md:justify-end" : '' }}">
+              <a href="#" class="mt-2 block lg:w-3/4">
+                <p class="text-xl font-semibold text-cyan-600">{{ $material['title'] }}</p>
+                <p class="mt-3 text-base text-gray-900">{{ $material['description'] }}</p>
               </a>
             </div>
             {{-- <div class="mt-6 flex items-center">
