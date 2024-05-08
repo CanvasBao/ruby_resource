@@ -1,5 +1,5 @@
 @isset($images)
-  <div class="swiper swiperTopPage max-h-[640px] overflow-hidden">
+  <div class="swiper swiperTopPage h-64 lg:h-[640px] overflow-hidden">
     <div class="swiper-wrapper">
 
       <div class="swiper-slide" data-title=""  data-subtitle="">

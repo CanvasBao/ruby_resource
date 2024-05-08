@@ -8,7 +8,7 @@
 
 @section('content')
   <div class="pb-20">
-    <div class="relative h-80 md:h-auto">
+    <div class="relative h-64 md:h-auto">
       <x-top.slider />
     </div>
 
@@ -20,7 +20,7 @@
           <h2 class="text-5xl font-semibold py-2 text-rose-600">RUBY LABEL</h2>
           <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bạn cần in tem nhãn, máy in, mực in?
           </p>
-          <p class="mx-auto mt-5 text-xl text-gray-500">
+          <p class="mx-auto mt-5 text-sm lg:text-xl text-gray-500">
             Với nhiều năm kinh nghiệm trong lĩnh vực cung cấp các giải pháp in ấn, chúng tôi cam kết mang đến cho quý
             khách sự hài lòng nhất về chất lượng sản phẩm và dịch vụ.<br>
             Các sản phẩm chính của chúng tôi bao gồm các loại tem nhãn được sản xuất trên các máy móc hiện đại nhất, với
@@ -44,7 +44,7 @@
     <x-top.product />
 
     <!-- Testimonial section -->
-    <div class="bg-gradient-to-r from-teal-500 rounded-lg mt-20 to-cyan-600 pb-16 :relative lg:z-10 lg:pb-0">
+    <div class="bg-gradient-to-r from-teal-500 rounded-lg mt-32 to-cyan-600 pb-16 :relative lg:z-10 lg:pb-0">
       <div class="lg:mx-auto grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
         <div class="relative -mt-16 lg:-my-8">
           <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:h-full lg:p-0">
@@ -63,7 +63,7 @@
                   <path
                     d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
-                <p class="mt-6 text-2xl font-medium text-white">
+                <p class="mt-6 text-base md:text-2xl font-medium text-white">
                   Với phương châm "Khách hàng là trung tâm", chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và
                   không ngừng cải tiến và phát triển để đáp ứng mọi nhu cầu của khách hàng.<br>
                   Với chất lượng sản phẩm và dịch vụ tuyệt vời, cùng với cam kết mang lại sự hài lòng cho khách hàng,
@@ -79,7 +79,7 @@
     <!-- CTA Section -->
     <div class="relative isolate bg-white mt-32 sm:rounded-xl">
       <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-        <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-20">
+        <div class="relative px-6 py-12 lg:static lg:px-8 lg:py-20">
           <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <div
               class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2 sm:rounded-xl">
@@ -101,12 +101,12 @@
             </div>
             <h2 class="text-3xl font-bold tracking-tight text-gray-900">Hãy liên hệ với chúng tôi!</h2>
             {{-- <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Chúng tôi ở đây để giúp đỡ.</p> --}}
-            <p class="mt-6 text-lg leading-8 text-gray-600">
+            <p class="mt-6 text-sm md:text-base text-gray-600">
               Nếu quý khách hàng cần tư vấn hoặc đặt hàng các sản phẩm của chúng tôi, hãy liên hệ với chúng tôi.<br>
               Chúng tôi luôn sẵn sàng hỗ trợ và giải đáp mọi thắc mắc của quý khách hàng.<br>
               Cảm ơn quý khách đã quan tâm đến công ty chúng tôi!</p>
-            <dl class="mt-10 space-y-4 text-base leading-7 text-gray-600">
-              <div class="flex gap-x-4">
+            <dl class="mt-10 space-y-2 md:space-y-4 text-sm  md:text-base leading-7 text-gray-600">
+              <div class="flex gap-x-2 md:gap-x-4">
                 <dt class="flex-none">
                   <span class="sr-only">Address</span>
                   <svg class="h-7 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -117,7 +117,7 @@
                 </dt>
                 <dd>Số 164/27B Bùi Quang Là, Phường 12<br>Quận Gò Vấp, TP.Hồ Chí Minh</dd>
               </div>
-              <div class="flex gap-x-4">
+              <div class="flex gap-x-2 md:gap-x-4">
                 <dt class="flex-none">
                   <span class="sr-only">Telephone</span>
                   <svg class="h-7 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -128,7 +128,7 @@
                 </dt>
                 <dd><a class="hover:text-gray-900" href="tel:+8428220 363 79">028.220 363 79</a></dd>
               </div>
-              <div class="flex gap-x-4">
+              <div class="flex gap-x-2 md:gap-x-4">
                 <dt class="flex-none">
                   <span class="sr-only">Email</span>
                   <svg class="h-7 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -144,7 +144,7 @@
             </dl>
           </div>
         </div>
-        <form action="{{ route('contact.send') }}" method="POST" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-20">
+        <form action="{{ route('contact.send') }}" method="POST" class="px-6 py-12 lg:px-8 lg:py-20">
           <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               {{ csrf_field() }}

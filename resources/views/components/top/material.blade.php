@@ -18,7 +18,7 @@
             <div class="flex {{ $idx % 2 == 0 ? "md:justify-end" : '' }}">
               <a href="#" class="mt-2 block lg:w-3/4">
                 <p class="text-xl font-semibold text-cyan-600">{{ $material['title'] }}</p>
-                <p class="mt-3 text-base text-gray-900">{{ $material['description'] }}</p>
+                <p class="mt-3 text-sm md:text-base text-gray-900">{{ $material['description'] }}</p>
               </a>
             </div>
             {{-- <div class="mt-6 flex items-center">
