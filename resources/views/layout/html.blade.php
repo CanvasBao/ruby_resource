@@ -97,6 +97,7 @@
   @yield('content')
   <x-layout.footer />
 </main>
+
 </body>
 
 </html>

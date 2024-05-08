@@ -15,7 +15,7 @@
         <!-- Contact information -->
         <div class="relative z-0 overflow-hidden  py-10 px-6 sm:px-10 xl:p-12">
           <div
-          class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 sm:rounded-xl">
+          class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10  sm:w-[99%] sm:rounded-xl">
           <svg
             class="absolute inset-0 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
             aria-hidden="true">
