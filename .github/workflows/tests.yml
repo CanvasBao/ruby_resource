@@ -28,12 +28,12 @@ jobs:
         run: |
           composer install --no-interaction
 
-services:
-  mysql:
-    image: mysql:8.0
-    env:
-      MYSQL_ALLOW_EMPTY_PASSWORD: yes
-      MYSQL_DATABASE: ruby_db
-    ports:
-      - 3306:3306
-    options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=5s --health-retries=3
+  services:
+    mysql:
+      image: mysql:8.0
+      env:
+        MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        MYSQL_DATABASE: ruby_db
+      ports:
+        - 3306:3306
+      options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=5s --health-retries=3
