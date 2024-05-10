@@ -28,6 +28,7 @@ jobs:
         run: |
           composer install --no-interaction
 
+
   services:
     mysql:
       image: mysql:8.0
