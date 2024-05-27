@@ -4,7 +4,7 @@
     <div class="md:grid md:grid-cols-2">
       <div class="py-3">
         <a href="{{ route('top') }}" class="">
-          <img class="block h-16 w-auto mx-auto" src="{{ asset('storage/images/logo.jpg') }}" alt="Workflow">
+          <img class="block h-16 w-auto mx-auto" src="{{ asset('storage/images/logo.png') }}" alt="Workflow">
           <label class="block text-center mx-auto mt-4 text-xl font-bold text-red-600">CÔNG TY TNHH RUBY LABEL</label>
         </a>
       </div>
