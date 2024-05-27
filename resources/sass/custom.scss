@@ -19,14 +19,14 @@
 }
 
 .productTab {
-    color: #6b7280;
+    color: #f3f3f3;
 
     &:hover {
-        color: #374151;
+        color: #86b3fb;
     }
 
     &.active {
-        background-color: #e0e7ff;
+        background-color: #f4f6ff;
         color: #4338ca;
     }
 }
