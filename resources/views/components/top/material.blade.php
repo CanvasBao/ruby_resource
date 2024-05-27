@@ -1,4 +1,4 @@
-<div class="relative py-16 mt-20 rounded-lg sm:py-24 lg:py-32">
+<div class="relative py-4 mt-20 rounded-lg sm:py-6 lg:py-8">
   <div class="relative">
     <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
       {{-- <h2 class="text-lg font-semibold text-cyan-600">kinh doanh</h2> --}}

@@ -11,22 +11,22 @@
 
 #mainContent {
     // box-shadow:  5 5px 5px 0 #774242;;
-    box-shadow:
-        0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    // box-shadow:
+    //     0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    //     0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 0;
     padding-top: 4rem;
 }
 
 .productTab {
-    color: #6b7280;
+    color: #f3f3f3;
 
     &:hover {
-        color: #374151;
+        color: #86b3fb;
     }
 
     &.active {
-        background-color: #e0e7ff;
+        background-color: #f4f6ff;
         color: #4338ca;
     }
 }
@@ -145,6 +145,14 @@
     .imagesPanelSection .imagePanel {
         &:not(.isShow) {
             display: none;
+        }
+    }
+}
+
+.swiperTopPage {
+    .swiper-slide {
+        &:not(.swiper-slide-active){
+            filter: blur(4px);
         }
     }
 }

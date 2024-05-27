@@ -69,7 +69,7 @@ class meta extends Component
      */
     public function __construct($title = null, $description = null, $type = 'website', $siteName = null, $locale = 'ja_JP', $image = null, $url = null)
     {
-        $this->title = empty($title) ? config('app.name') : $title . ' | ' .  config('app.name');
+        $this->title = empty($title) ? config('app.name') :  config('app.name') . ' | ' . $title;
         $this->description = empty($description) ? config('app.description') : $description;
         $this->type = $type;
         $this->siteName = empty($siteName) ? config('app.name') : $siteName;
