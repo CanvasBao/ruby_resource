@@ -1,10 +1,10 @@
-<footer class="bg-gray-50" aria-labelledby="footer-heading">
+<footer class="bg-gray-50 sm:rounded-t-xl" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="max-w-md mx-auto pt-12 px-4 sm:max-w-7xl sm:px-6 lg:pt-16 lg:px-8">
     <div class="md:grid md:grid-cols-2">
       <div class="py-3">
         <a href="{{ route('top') }}" class="">
-          <img class="block h-16 w-auto mx-auto" src="{{ asset('storage/images/logo.jpg') }}" alt="Workflow">
+          <img class="block h-16 w-auto mx-auto" src="{{ asset('storage/images/logo.png') }}" alt="Workflow">
           <label class="block text-center mx-auto mt-4 text-xl font-bold text-red-600">CÔNG TY TNHH RUBY LABEL</label>
         </a>
       </div>

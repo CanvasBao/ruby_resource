@@ -7,29 +7,27 @@
 @endsection
 
 @section('content')
-  <div class="bg-white">
-    <div class="relative h-80 md:h-auto">
-      <div class="fixed right-2 bottom-2 md:right-4 md:top-[90px] md:bottom-auto z-10">
-        <a href="tel:02822036379"
-        class="block rounded-md bg-indigo-50 px-3.5 py-3 text-md border border-[#0ca678] font-semibold text-[#0ca678] shadow-sm hover:bg-indigo-100">
-        <img class="h-5 w-5 inline-block mr-1"
-        src="{{ asset('storage/images/phone-solid.svg') }}" alt="028.220 363 79" />
-        028.220 363 79</a>
-      </div>
+  <div class="pb-20">
+    <div class="relative h-64 md:h-auto">
       <x-top.slider />
     </div>
 
     <!-- Feature section with screenshot -->
-    <div class="relative bg-gray-50 pt-16 sm:pt-24 lg:pt-32">
+    <div class="relative bg-gradient-to-b from-gray-50 via-slate-50 mt-32 pt-4 rounded-t-lg sm:pt-6 lg:pt-16">
       <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
         <div>
-          <h2 class="text-lg font-semibold text-cyan-600">Chào mừng quý khách đến với Ruby Label!</h2>
-          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bạn cần in tem nhãn, máy in, mực in?</p>
-          <p class="mx-auto mt-5 text-xl text-gray-500">
-            Với nhiều năm kinh nghiệm trong lĩnh vực cung cấp các giải pháp in ấn, chúng tôi cam kết mang đến cho quý khách sự hài lòng nhất về chất lượng sản phẩm và dịch vụ.<br>
-            Các sản phẩm chính của chúng tôi bao gồm các loại tem nhãn được sản xuất trên các máy móc hiện đại nhất, với đầy đủ các loại tem nhãn từ tem nhãn in mã vạch đến tem nhãn decal.<br>
-            Ngoài ra, chúng tôi cũng cung cấp các loại máy in barcode và mực in tem, giúp quý khách hàng có thể tự sản xuất tem nhãn của mình nhanh chóng và tiết kiệm chi phí.
-         </p>
+          <h2 class="text-xl font-semibold text-cyan-600">Chào mừng quý khách đến với</h2>
+          <h2 class="text-5xl font-semibold py-2 text-rose-600">RUBY LABEL</h2>
+          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bạn cần in tem nhãn, máy in, mực in?
+          </p>
+          <p class="mx-auto mt-5 text-sm lg:text-xl text-gray-500">
+            Với nhiều năm kinh nghiệm trong lĩnh vực cung cấp các giải pháp in ấn, chúng tôi cam kết mang đến cho quý
+            khách sự hài lòng nhất về chất lượng sản phẩm và dịch vụ.<br>
+            Các sản phẩm chính của chúng tôi bao gồm các loại tem nhãn được sản xuất trên các máy móc hiện đại nhất, với
+            đầy đủ các loại tem nhãn từ tem nhãn in mã vạch đến tem nhãn decal.<br>
+            Ngoài ra, chúng tôi cũng cung cấp các loại máy in barcode và mực in tem, giúp quý khách hàng có thể tự sản
+            xuất tem nhãn của mình nhanh chóng và tiết kiệm chi phí.
+          </p>
         </div>
         <div class=" flex justify-center mt-12 -mb-3">
           <img class="rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
@@ -38,19 +36,21 @@
       </div>
     </div>
 
+
+    <!-- Blog section -->
+    <x-top.material />
+
     <!-- Feature section with grid -->
     <x-top.product />
 
     <!-- Testimonial section -->
-    <div class="bg-gradient-to-r from-teal-500 to-cyan-600 pb-16 lg:relative lg:z-10 lg:pb-0">
-      <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
-        <div class="relative lg:-my-8">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"></div>
+    <div class="bg-gradient-to-r from-teal-500 rounded-lg mt-32 to-cyan-600 pb-16 :relative lg:z-10 lg:pb-0">
+      <div class="lg:mx-auto grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
+        <div class="relative -mt-16 lg:-my-8">
           <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:h-full lg:p-0">
             <div
               class="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
-              <img class="object-cover lg:h-full lg:w-full"
-                src="{{ asset('storage/images/top-testimonial.jpg') }}"
+              <img class="object-cover lg:h-full lg:w-full" src="{{ asset('storage/images/top-testimonial.jpg') }}"
                 alt="" />
             </div>
           </div>
@@ -63,9 +63,11 @@
                   <path
                     d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
-                <p class="mt-6 text-2xl font-medium text-white">
-                  Với phương châm "Khách hàng là trung tâm", chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và không ngừng cải tiến và phát triển để đáp ứng mọi nhu cầu của khách hàng.<br>
-                  Với chất lượng sản phẩm và dịch vụ tuyệt vời, cùng với cam kết mang lại sự hài lòng cho khách hàng, chúng tôi hy vọng có thể trở thành đối tác tin cậy của quý khách hàng trong lĩnh vực in ấn và đóng gói.
+                <p class="mt-6 text-base md:text-2xl font-medium text-white">
+                  Với phương châm "Khách hàng là trung tâm", chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và
+                  không ngừng cải tiến và phát triển để đáp ứng mọi nhu cầu của khách hàng.<br>
+                  Với chất lượng sản phẩm và dịch vụ tuyệt vời, cùng với cam kết mang lại sự hài lòng cho khách hàng,
+                  chúng tôi hy vọng có thể trở thành đối tác tin cậy của quý khách hàng trong lĩnh vực in ấn và đóng gói.
                 </p>
               </div>
             </blockquote>
@@ -74,45 +76,92 @@
       </div>
     </div>
 
-    <!-- Blog section -->
-    <x-top.material />
-
     <!-- CTA Section -->
-    <div class="relative bg-gray-900">
-      <div class="relative h-56 bg-indigo-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-        <img class="h-full w-full object-cover"
-          src="{{ asset('storage/images/contact.jpg') }}"
-          alt="" />
-        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-600 mix-blend-multiply">
-        </div>
-      </div>
-      <div class="relative mx-auto max-w-md px-4 py-12 sm:max-w-7xl sm:px-6 sm:py-20 md:py-28 lg:px-8 lg:py-32">
-        <div class="md:ml-auto md:w-1/2 md:pl-10">
-          <h2 class="text-lg font-semibold text-gray-300">Hãy liên hệ với chúng tôi!</h2>
-          <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Chúng tôi ở đây để giúp đỡ.</p>
-          <p class="mt-3 text-lg text-gray-300">
-            Nếu quý khách hàng cần tư vấn hoặc đặt hàng các sản phẩm của chúng tôi, hãy liên hệ với chúng tôi.<br>
-            Chúng tôi luôn sẵn sàng hỗ trợ và giải đáp mọi thắc mắc của quý khách hàng.<br>
-            Cảm ơn quý khách đã quan tâm đến công ty chúng tôi!</p>
-          <div class="mt-8">
-            <div class="inline-flex rounded-md shadow">
-              <a href="{{route('contact.show')}}"
-                class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-gray-900 hover:bg-gray-50">
-                Liên hệ ngay
-                <!-- Heroicon name: mini/arrow-top-right-on-square -->
-                <svg class="-mr-1 ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                  fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd"
-                    d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z"
-                    clip-rule="evenodd" />
-                  <path fill-rule="evenodd"
-                    d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z"
-                    clip-rule="evenodd" />
+    <div class="relative isolate bg-white mt-32 sm:rounded-xl">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
+        <div class="relative px-6 py-12 lg:static lg:px-8 lg:py-20">
+          <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+            <div
+              class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2 sm:rounded-xl">
+              <svg
+                class="absolute inset-0 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+                aria-hidden="true">
+                <defs>
+                  <pattern id="83fd4e5a-9d52-42fc-97b6-718e5d7ee527" width="200" height="200" x="100%" y="-1"
+                    patternUnits="userSpaceOnUse">
+                    <path d="M130 200V.5M.5 .5H200" fill="none" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" stroke-width="0" fill="white" />
+                <svg x="100%" y="-1" class="overflow-visible fill-gray-50">
+                  <path d="M-470.5 0h201v201h-201Z" stroke-width="0" />
                 </svg>
-              </a>
+                <rect width="100%" height="100%" stroke-width="0" fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" />
+              </svg>
             </div>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900">Hãy liên hệ với chúng tôi!</h2>
+            {{-- <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Chúng tôi ở đây để giúp đỡ.</p> --}}
+            <p class="mt-6 text-sm md:text-base text-gray-600">
+              Nếu quý khách hàng cần tư vấn hoặc đặt hàng các sản phẩm của chúng tôi, hãy liên hệ với chúng tôi.<br>
+              Chúng tôi luôn sẵn sàng hỗ trợ và giải đáp mọi thắc mắc của quý khách hàng.<br>
+              Cảm ơn quý khách đã quan tâm đến công ty chúng tôi!</p>
+            <dl class="mt-10 space-y-2 md:space-y-4 text-sm  md:text-base leading-7 text-gray-600">
+              <div class="flex gap-x-2 md:gap-x-4">
+                <dt class="flex-none">
+                  <span class="sr-only">Address</span>
+                  <svg class="h-7 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                  </svg>
+                </dt>
+                <dd>Số 164/27B Bùi Quang Là, Phường 12<br>Quận Gò Vấp, TP.Hồ Chí Minh</dd>
+              </div>
+              <div class="flex gap-x-2 md:gap-x-4">
+                <dt class="flex-none">
+                  <span class="sr-only">Telephone</span>
+                  <svg class="h-7 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                  </svg>
+                </dt>
+                <dd><a class="hover:text-gray-900" href="tel:+8428220 363 79">028.220 363 79</a></dd>
+              </div>
+              <div class="flex gap-x-2 md:gap-x-4">
+                <dt class="flex-none">
+                  <span class="sr-only">Email</span>
+                  <svg class="h-7 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                </dt>
+                <dd><a class="hover:text-gray-900" href="mailto:info@rubylabel.net">info@rubylabel.net</a><br />
+                  <a class="hover:text-gray-900" href="mailto:ruby.biendegi@gmail.com">ruby.biendegi@gmail.com</a>
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
+        <form action="{{ route('contact.send') }}" method="POST" class="px-6 py-12 lg:px-8 lg:py-20">
+          <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
+            <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+              {{ csrf_field() }}
+              <x-form.field title="Họ và Tên" type="text" name="name" />
+              <x-form.field title="Tên Công Ty" type="text" name="company" />
+              <x-form.field title="Email" type="text" name="email" />
+              <x-form.field title="Số điện thoại" type="text" name="phone" />
+              <x-form.field boxclass="sm:col-span-2" title="Tiêu đề" type="text" name="subject"
+                note="Tối đa 50 kí tự" />
+              <x-form.field boxclass="sm:col-span-2" title="Nội dung liên hệ" type="textarea" name="content"
+                note="Tối đa 500 kí tự" />
+              <div class="sm:col-span-2 sm:flex sm:justify-end">
+                <button type="submit"
+                  class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Gửi</button>
+              </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
