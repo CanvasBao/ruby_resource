@@ -1,5 +1,5 @@
 @isset($images)
-  <div class="swiper swiperTopPage h-64 lg:h-[640px] overflow-hidden">
+  <div class="swiper swiperTopPage h-64 lg:h-[420px] overflow-hidden">
     <div class="swiper-wrapper">
 
       <div class="swiper-slide" data-title=""  data-subtitle="">
@@ -27,15 +27,24 @@
     window.addEventListener("load", () => {
       const sliderSwiper = new Swiper('.swiperTopPage', {
         loop: true,
+      speed: 1500,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
         slidesPerView: "auto",
+        centeredSlides: true,
         autoplay: {
           delay: 5000,
           disableOnInteraction: false,
         },
+         breakpoints: {
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 1.4,
+            spaceBetween: 0
+          }
+        }
         // on: {
         //   slideChangeTransitionStart: function() {
         //     // Slide captions
