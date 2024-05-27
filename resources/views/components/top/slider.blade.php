@@ -27,7 +27,7 @@
     window.addEventListener("load", () => {
       const sliderSwiper = new Swiper('.swiperTopPage', {
         loop: true,
-      speed: 1500,
+        speed: 3000,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",

@@ -93,7 +93,7 @@
   </div>
 <x-layout.header />
 
-<main id="mainContent" class="layout-with shadow-2xl">
+<main id="mainContent" class="layout-with">
   @yield('content')
   <x-layout.footer />
 </main>

@@ -13,7 +13,7 @@
     </div>
 
     <!-- Feature section with screenshot -->
-    <div class="relative bg-gradient-to-b from-gray-50 via-slate-50 mt-32 pt-4 rounded-t-lg sm:pt-6 lg:pt-16">
+    <div class="relative bg-gradient-to-b from-gray-50 via-slate-50 mt-4 pt-4 rounded-t-lg sm:pt-6 lg:pt-16">
       <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
         <div>
           <h2 class="text-xl font-semibold text-cyan-600">Chào mừng quý khách đến với</h2>
